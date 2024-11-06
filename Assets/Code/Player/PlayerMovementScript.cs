@@ -49,6 +49,11 @@ public class PlayerMovementScript : MonoBehaviour
         return hit.collider != null;
     }
 
+    [ContextMenu("Write IsGrounded")]
+    void WriteIsGrounded() {
+        Debug.Log(IsGrounded());
+    }
+
     void Update() {
         grounded = IsGrounded();
         if (grounded) { currDoubleJumps = maxDoubleJumps; }
