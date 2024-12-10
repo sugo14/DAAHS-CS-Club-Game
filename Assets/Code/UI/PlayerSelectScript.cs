@@ -7,18 +7,26 @@ using UnityEngine.UIElements;
 public class PlayerSelectScript : MonoBehaviour
 {
     public GameObject playerPrefab;
-    public GameObject levelPrefab;
 
-    public void BeginFightScene() {
+    public List<GameObject> levels;
+
+    public void BeginLevel1() {
+        BeginFightScene(0);
+    }
+    public void BeginLevel2() {
+        BeginFightScene(1);
+    }
+
+    void BeginFightScene(int i) {
         SceneManager.sceneLoaded += (scene, mode) => {
-            beginFightScene();
+            OnSceneLoaded(i);
         };
         SceneManager.LoadScene("FightScene");
     }
 
-    void beginFightScene() {
+    void OnSceneLoaded(int i) {
         GameObject playerClone = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-        GameObject levelClone = Instantiate(levelPrefab, new Vector3(0, -3), Quaternion.identity);
+        GameObject levelClone = Instantiate(levels[i], new Vector3(0, -3), Quaternion.identity);
         
         GameObject camera = GameObject.Find("Main Camera");
         CameraScript cameraScript = camera.GetComponent<CameraScript>();

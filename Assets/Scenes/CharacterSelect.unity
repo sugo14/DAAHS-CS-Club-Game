@@ -202,7 +202,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 574502229}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1210935873}
+        m_TargetAssemblyTypeName: PlayerSelectScript, Assembly-CSharp
+        m_MethodName: BeginLevel2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &574502229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,7 +642,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 953122851969902895, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
-  levelPrefab: {fileID: 737156815545575464, guid: adf368d665ab4f2489eab78d14f756e4, type: 3}
+  levels:
+  - {fileID: 737156815545575464, guid: adf368d665ab4f2489eab78d14f756e4, type: 3}
+  - {fileID: 4304742472972027797, guid: 19b638a11a78c934f811bd54b807bd9c, type: 3}
 --- !u!4 &1210935874
 Transform:
   m_ObjectHideFlags: 0
@@ -731,7 +745,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1210935873}
         m_TargetAssemblyTypeName: PlayerSelectScript, Assembly-CSharp
-        m_MethodName: BeginFightScene
+        m_MethodName: BeginLevel1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
