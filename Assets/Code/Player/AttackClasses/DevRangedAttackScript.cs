@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class DevRangedAttack : AttackScript
 {
+
+    public bool DevDoSideAttack;
+    bool DevDoSideAttackOld;
+    public bool DevLeftRight;
+    public GameObject ProjectileClass;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +19,18 @@ public class DevRangedAttack : AttackScript
     // Update is called once per frame
     void Update()
     {
-        
+        if (DevDoSideAttack!=DevDoSideAttackOld) 
+        {
+            AttackSide();
+            // Save the current state of the check box
+            DevDoSideAttackOld = DevDoSideAttack;
+        }
     }
-     public override void AttackSide()
+    public override void AttackSide()
     {
         UnityEngine.Debug.Log("DevRanged AttackSide");
+        GameObject ProjectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
+        ProjectileObject.transform.SetParent(this.transform);
     }
     public override void AttackUp()
     {

@@ -1,0 +1,862 @@
+fileFormatVersion: 2
+guid: 54274413187741f4baf9402c8b436571
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2038934612794682689
+    second: cannon anim test_0
+  - first:
+      213: 116752621431768922
+    second: cannon anim test_1
+  - first:
+      213: 2582094798416238711
+    second: cannon anim test_2
+  - first:
+      213: 412444276585091103
+    second: cannon anim test_3
+  - first:
+      213: -8864165602098877815
+    second: cannon anim test_4
+  - first:
+      213: 5458613503782019686
+    second: cannon anim test_5
+  - first:
+      213: -5143400321479014502
+    second: cannon anim test_6
+  - first:
+      213: -2290802091126498567
+    second: cannon anim test_7
+  - first:
+      213: -4292295787738246712
+    second: cannon anim test_8
+  - first:
+      213: 7416469669531789793
+    second: cannon anim test_9
+  - first:
+      213: -5822149467787360096
+    second: cannon anim test_10
+  - first:
+      213: -7471271447190694748
+    second: cannon anim test_11
+  - first:
+      213: -6474006096585785436
+    second: cannon anim test_12
+  - first:
+      213: -478911987086898877
+    second: cannon anim test_13
+  - first:
+      213: 2021611949600159976
+    second: cannon anim test_14
+  - first:
+      213: -7968274330388851874
+    second: cannon anim test_15
+  - first:
+      213: -7457359673385937985
+    second: cannon anim test_16
+  - first:
+      213: 587495365895763686
+    second: cannon anim test_17
+  - first:
+      213: -6306633872818050822
+    second: cannon anim test_18
+  - first:
+      213: 6636169619446016785
+    second: cannon anim test_19
+  - first:
+      213: 4060409930642314664
+    second: cannon anim test_20
+  - first:
+      213: 6240907636508532160
+    second: cannon anim test_21
+  - first:
+      213: 2584465831854831092
+    second: cannon anim test_22
+  - first:
+      213: 807595476041428019
+    second: cannon anim test_23
+  - first:
+      213: 2241124916733017087
+    second: cannon anim test_24
+  - first:
+      213: 5256139458604989529
+    second: cannon anim test_25
+  - first:
+      213: 4745989023798521467
+    second: cannon anim test_26
+  - first:
+      213: -4867690524592340069
+    second: cannon anim test_27
+  - first:
+      213: -8940042195672835837
+    second: cannon anim test_28
+  - first:
+      213: 1516994813828708411
+    second: cannon anim test_29
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cannon anim test_0
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 3455
+        width: 322
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb2df1cb5cf34b3e0800000000000000
+      internalID: -2038934612794682689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_1
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 3455
+        width: 290
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a57490ff3e9ce9100800000000000000
+      internalID: 116752621431768922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_2
+      rect:
+        serializedVersion: 2
+        x: 2175
+        y: 3455
+        width: 514
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 778dbf3e98175d320800000000000000
+      internalID: 2582094798416238711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_3
+      rect:
+        serializedVersion: 2
+        x: 2271
+        y: 3711
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f105f7362eb49b500800000000000000
+      internalID: 412444276585091103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_4
+      rect:
+        serializedVersion: 2
+        x: 3295
+        y: 3423
+        width: 418
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98ae8a869582cf480800000000000000
+      internalID: -8864165602098877815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_5
+      rect:
+        serializedVersion: 2
+        x: 3167
+        y: 3519
+        width: 162
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 662e31b8f04e0cb40800000000000000
+      internalID: 5458613503782019686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_6
+      rect:
+        serializedVersion: 2
+        x: 2271
+        y: 3423
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a970d9498a8fe98b0800000000000000
+      internalID: -5143400321479014502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_7
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 2655
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fadea3a2af6530e0800000000000000
+      internalID: -2290802091126498567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_8
+      rect:
+        serializedVersion: 2
+        x: 3327
+        y: 2719
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c1d4fcf8b3be64c0800000000000000
+      internalID: -4292295787738246712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_9
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 2431
+        width: 322
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e9a6ebced79ce660800000000000000
+      internalID: 7416469669531789793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_10
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 2623
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a80e47f7e1933fa0800000000000000
+      internalID: -5822149467787360096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_11
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 2431
+        width: 322
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a41ea90436b05890800000000000000
+      internalID: -7471271447190694748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_12
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 2431
+        width: 354
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4af7a4381c5b726a0800000000000000
+      internalID: -6474006096585785436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_13
+      rect:
+        serializedVersion: 2
+        x: 3359
+        y: 2431
+        width: 354
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349420bc5109a59f0800000000000000
+      internalID: -478911987086898877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_14
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 2527
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e83a917b553e0c10800000000000000
+      internalID: 2021611949600159976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_15
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 2559
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e531f48d6b00b6190800000000000000
+      internalID: -7968274330388851874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_16
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 2399
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb3128943e2228890800000000000000
+      internalID: -7457359673385937985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_17
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 2463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e6b76f2ce3372800800000000000000
+      internalID: 587495365895763686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_18
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 1759
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af8eb3a18e55a78a0800000000000000
+      internalID: -6306633872818050822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_19
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 1791
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11ba154eb19681c50800000000000000
+      internalID: 6636169619446016785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_20
+      rect:
+        serializedVersion: 2
+        x: 2303
+        y: 1791
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a55766a159795830800000000000000
+      internalID: 4060409930642314664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_21
+      rect:
+        serializedVersion: 2
+        x: 3359
+        y: 1759
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cd1d1efd682c9650800000000000000
+      internalID: 6240907636508532160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_22
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 1407
+        width: 386
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f577d12bfdddd320800000000000000
+      internalID: 2584465831854831092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_23
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 1663
+        width: 66
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33c69af7ec7253b00800000000000000
+      internalID: 807595476041428019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_24
+      rect:
+        serializedVersion: 2
+        x: 2303
+        y: 1695
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffbf52fdc331a1f10800000000000000
+      internalID: 2241124916733017087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_25
+      rect:
+        serializedVersion: 2
+        x: 3359
+        y: 1663
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95c70184dfe81f840800000000000000
+      internalID: 5256139458604989529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_26
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 1407
+        width: 354
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7ee96f2fd32dd140800000000000000
+      internalID: 4745989023798521467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_27
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 1407
+        width: 354
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b93832d024d727cb0800000000000000
+      internalID: -4867690524592340069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_28
+      rect:
+        serializedVersion: 2
+        x: 3391
+        y: 1407
+        width: 322
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 309dae94df69ee380800000000000000
+      internalID: -8940042195672835837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cannon anim test_29
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 383
+        width: 322
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b38be5ceeb27d0510800000000000000
+      internalID: 1516994813828708411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      cannon anim test_0: -2038934612794682689
+      cannon anim test_1: 116752621431768922
+      cannon anim test_10: -5822149467787360096
+      cannon anim test_11: -7471271447190694748
+      cannon anim test_12: -6474006096585785436
+      cannon anim test_13: -478911987086898877
+      cannon anim test_14: 2021611949600159976
+      cannon anim test_15: -7968274330388851874
+      cannon anim test_16: -7457359673385937985
+      cannon anim test_17: 587495365895763686
+      cannon anim test_18: -6306633872818050822
+      cannon anim test_19: 6636169619446016785
+      cannon anim test_2: 2582094798416238711
+      cannon anim test_20: 4060409930642314664
+      cannon anim test_21: 6240907636508532160
+      cannon anim test_22: 2584465831854831092
+      cannon anim test_23: 807595476041428019
+      cannon anim test_24: 2241124916733017087
+      cannon anim test_25: 5256139458604989529
+      cannon anim test_26: 4745989023798521467
+      cannon anim test_27: -4867690524592340069
+      cannon anim test_28: -8940042195672835837
+      cannon anim test_29: 1516994813828708411
+      cannon anim test_3: 412444276585091103
+      cannon anim test_4: -8864165602098877815
+      cannon anim test_5: 5458613503782019686
+      cannon anim test_6: -5143400321479014502
+      cannon anim test_7: -2290802091126498567
+      cannon anim test_8: -4292295787738246712
+      cannon anim test_9: 7416469669531789793
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
