@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class PlayerSelectScript : MonoBehaviour
+public class LevelLoaderScript : MonoBehaviour
 {
     public GameObject playerPrefab;
 
@@ -13,8 +13,14 @@ public class PlayerSelectScript : MonoBehaviour
     public void BeginLevel1() {
         BeginFightScene(0);
     }
-    public void BeginLevel2() {
+    public IEnumerator BeginLevel2() {
         BeginFightScene(1);
+        yield return null;
+    }
+
+    public void Do() {
+        TransitionManagerScript.Instance.AddTask(BeginLevel2);
+        TransitionManagerScript.Instance.StartTransition();
     }
 
     void BeginFightScene(int i) {
