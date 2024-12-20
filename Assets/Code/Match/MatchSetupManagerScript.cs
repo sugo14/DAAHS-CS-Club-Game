@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MatchManagerScript : MonoBehaviour
+public class MatchSetupManagerScript : MonoBehaviour
 {
-    public static MatchManagerScript Instance;
+    public static MatchSetupManagerScript Instance { get; private set; }
     public GameObject playerPrefab;
-    public List<AttackScript> characters; // temp, will replace with character scriptable objects
+    public List<AttackScript> characters; // temp, will replace with character scriptable object list
     public LevelList levels;
 
-    void Start() {
+    // Singleton
+    void Awake()
+    {
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -45,9 +47,19 @@ public class MatchManagerScript : MonoBehaviour
     // Called when the scene is loaded to instantiate the player and level
     void OnSceneLoaded(MatchInfo matchInfo)
     {
-        GameObject playerClone = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        GameObject playerClone = Instantiate
+        (
+            playerPrefab,
+            Vector3.zero,
+            Quaternion.identity
+        );
 
-        GameObject levelClone = Instantiate(levels.levels[matchInfo.level].levelPrefab, new Vector3(0, -3), Quaternion.identity);
+        GameObject levelClone = Instantiate
+        (
+            levels.levels[matchInfo.level].levelPrefab,
+            new Vector3(0, -1f),
+            Quaternion.identity
+        );
         
         GameObject camera = GameObject.Find("Main Camera");
         CameraScript cameraScript = camera.GetComponent<CameraScript>();

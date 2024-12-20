@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CellElementScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class LevelCellScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Vector3 originalScale;
     public Vector3 hoverScale = new Vector3(1.2f, 1.2f, 1.2f);
@@ -31,12 +31,18 @@ public class CellElementScript : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        MatchManagerScript.Instance.BeginMatch(index);
+        MatchSetupManagerScript.Instance.BeginMatch(index);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, isHovered ? hoverScale : originalScale, animationSpeed * Time.deltaTime);
+        Vector3 targetScale = isHovered ? hoverScale : originalScale;
+        transform.localScale = Vector3.Lerp
+        (
+            transform.localScale,
+            targetScale,
+            animationSpeed * Time.deltaTime
+        );
     }
 }

@@ -24,7 +24,7 @@ public class LevelSelectionScript : MonoBehaviour
         for (int i = 0; i < levelList.levels.Length; i++)
         {
             GameObject cell = Instantiate(cellPrefab, transform);
-            cell.GetComponent<CellElementScript>().index = i;
+            cell.GetComponent<LevelCellScript>().index = i;
             GameObject cellImage = cell.transform.Find("CellImage").gameObject;
             cellImage.GetComponent<Image>().sprite = levelList.levels[i].sprite;
         }

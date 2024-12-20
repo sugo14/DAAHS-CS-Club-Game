@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class TransitionManagerScript : MonoBehaviour
 {
-    public static TransitionManagerScript Instance { get; private set; } // Don't allow other scripts to modify this
+    public static TransitionManagerScript Instance { get; private set; }
     public Animator transitionAnimator;
     public event Action OnTransitionEnd;
     // Queue of tasks to be performed after the start transition finishes and before the end animation begins (e.g level loading)
     Queue<Func<IEnumerator>> taskQueue = new Queue<Func<IEnumerator>>();
 
-    private void Awake()
+    void Awake()
     {
         // Prevent any duplicate SceneTransitioner objects from existing simultaneously
         if (Instance != null && Instance != this)
@@ -29,17 +29,19 @@ public class TransitionManagerScript : MonoBehaviour
         taskQueue.Enqueue(task);
     }
 
-    // Performs the entire transition
+    // Performs the entire transition, ran by other scripts
     public void StartTransition()
     {
         StartCoroutine(HandleTransition());
     }
 
-    private IEnumerator HandleTransition(string transitionName = "RectWipe")
+    // Coroutine to perform transition start, tasks, transition end, and notify objects
+    IEnumerator HandleTransition(string transitionName = "RectWipe")
     {
         string start = $"{transitionName}_Start";
         string end = $"{transitionName}_End";
 
+        // Perform the start transition
         transitionAnimator.SetTrigger(start);
         yield return new WaitForSeconds(GetAnimationClipLength(start));
 
@@ -48,9 +50,10 @@ public class TransitionManagerScript : MonoBehaviour
             var task = taskQueue.Dequeue();
             Debug.Log("Performing task " + task.Method.Name);
             yield return task();
-            // Could later be done in parallel to improve efficiency if needed, but may cause issues with synchronization so don't bother until necessary
+            // Could later be done in parallel to improve efficiency if needed, but will cause issues with synchronization so don't bother until necessary
         }
 
+        // Perform the end transition
         transitionAnimator.SetTrigger(end);
         yield return new WaitForSeconds(GetAnimationClipLength(end));
 
@@ -60,6 +63,7 @@ public class TransitionManagerScript : MonoBehaviour
     }
 
     float GetAnimationClipLength(string clipName) {
+        // I dont know if this is sketchy or not
         AnimationClip[] clips = transitionAnimator.runtimeAnimatorController.animationClips;
         foreach (var clip in clips)
         {
