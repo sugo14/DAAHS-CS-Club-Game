@@ -41,14 +41,13 @@ public class TransitionManagerScript : MonoBehaviour
         string end = $"{transitionName}_End";
 
         transitionAnimator.SetTrigger(start);
-
         yield return new WaitForSeconds(GetAnimationClipLength(start));
 
         while (taskQueue.Count > 0)
         {
             var task = taskQueue.Dequeue();
             Debug.Log("Performing task " + task.Method.Name);
-            yield return StartCoroutine(task());
+            yield return task();
             // Could later be done in parallel to improve efficiency if needed, but may cause issues with synchronization so don't bother until necessary
         }
 
@@ -64,7 +63,10 @@ public class TransitionManagerScript : MonoBehaviour
         AnimationClip[] clips = transitionAnimator.runtimeAnimatorController.animationClips;
         foreach (var clip in clips)
         {
-            if (clip.name == clipName) { return clip.length; }
+            if (clip.name == clipName)
+            {
+                return clip.length;
+            }
         }
         return 0f;
     }

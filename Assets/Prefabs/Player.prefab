@@ -56,11 +56,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   MaxHorizontalSpeed: 11
-  JumpForce: 18
+  JumpForce: 22
   AirAcceleration: 3
   GroundAcceleration: 4
   DecelerationFactor: 25
-  MaxDoubleJumps: 3
+  MaxDoubleJumps: 1
 --- !u!61 &7819567898317729845
 BoxCollider2D:
   m_ObjectHideFlags: 0
