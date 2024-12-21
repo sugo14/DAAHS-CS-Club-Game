@@ -32,7 +32,7 @@ public class AttackPhysicsScript : MonoBehaviour
             // Save the current state of the check box
             DevDoImpulseOld = DevDoImpulse;
         }
-        percentText.text = ((int)Damage).ToString() + "%";
+        /* percentText.text = ((int)Damage).ToString() + "%"; */
     }
 
     // Function for when somthing gets hit
