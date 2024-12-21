@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LevelCellScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class CellScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Vector3 originalScale;
     public Vector3 hoverScale = new Vector3(1.2f, 1.2f, 1.2f);
@@ -31,7 +31,7 @@ public class LevelCellScript : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        MatchSetupManagerScript.Instance.BeginMatch(index);
+        gameObject.SendMessageUpwards("Select", index);
     }
 
     // Update is called once per frame

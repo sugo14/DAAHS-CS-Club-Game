@@ -7,8 +7,12 @@ public class MatchSetupManagerScript : MonoBehaviour
 {
     public static MatchSetupManagerScript Instance { get; private set; }
     public GameObject playerPrefab;
-    public List<AttackScript> characters; // temp, will replace with character scriptable object list
+
     public LevelList levels;
+    public CharacterList characters;
+
+    public int levelIndex;
+    public List<int> characterIndices;
 
     // Singleton
     void Awake()
@@ -22,11 +26,25 @@ public class MatchSetupManagerScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void SelectLevel(int index)
+    {
+        levelIndex = index;
+    }
+
+    public void SelectCharacter(int index, int player)
+    {
+        while (characterIndices.Count <= player)
+        {
+            characterIndices.Add(-1);
+        }
+        characterIndices[player] = index;
+    }
+
     // Called externally to begin a match
-    public void BeginMatch(int i)
+    public void BeginMatch()
     {
         MatchInfo matchInfo = new MatchInfo();
-        matchInfo.level = i;
+        matchInfo.level = levelIndex;
         TransitionManagerScript.Instance.AddTask(() => LoadMatch(matchInfo));
         TransitionManagerScript.Instance.StartTransition();
     }
