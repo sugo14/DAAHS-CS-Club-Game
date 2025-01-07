@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+//using ProjectileScript;
 
-public class DevRangedAttack : AttackScript
+public class ZuesClass : AttackScript
 {
 
     public bool DevDoSideAttack;
@@ -29,8 +30,17 @@ public class DevRangedAttack : AttackScript
     public override void AttackSide()
     {
         UnityEngine.Debug.Log("DevRanged AttackSide");
-        GameObject ProjectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
-        ProjectileObject.transform.SetParent(this.transform);
+
+
+        GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
+        projectileObject.transform.position = this.transform.position;
+        ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
+        projectileScript.HorizontalMovmentAmount = 0.25F;
+        projectileScript.LeftOrRight = DevLeftRight;
+        projectileScript.StartMoving = true;
+
+
+
     }
     public override void AttackUp()
     {

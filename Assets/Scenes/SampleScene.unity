@@ -1169,8 +1169,8 @@ GameObject:
   - component: {fileID: 1960711438}
   - component: {fileID: 1960711440}
   - component: {fileID: 1960711441}
-  - component: {fileID: 1960711442}
   - component: {fileID: 1960711443}
+  - component: {fileID: 1960711445}
   - component: {fileID: 1960711444}
   m_Layer: 0
   m_Name: Player
@@ -1402,24 +1402,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1960711442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960711435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c3780897d135b4f995fdc09b2e2243, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  percentText: {fileID: 1258389130}
-  Damage: 0
-  DevDoImpulse: 0
-  DevDoImpulseOld: 0
-  DevDamagePerHitAmount: 0
-  RB: {fileID: 0}
 --- !u!212 &1960711443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1487,6 +1469,22 @@ MonoBehaviour:
   DevDoSideAttack: 0
   DevLeftRight: 0
   ProjectileClass: {fileID: 3992127911880967214, guid: 150ff760c131e5940b0951e3f45a0108, type: 3}
+--- !u!114 &1960711445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960711435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c3780897d135b4f995fdc09b2e2243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  percentText: {fileID: 1258389130}
+  Damage: 0
+  DevDoImpulse: 0
+  DevDamagePerHitAmount: 0
 --- !u!1001 &3943086511029954158
 PrefabInstance:
   m_ObjectHideFlags: 0
