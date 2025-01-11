@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ac48c6246fd1f45b088b42b00c63aa, type: 3}
+  m_Name: WidePlatforms
+  m_EditorClassIdentifier: 
+  levelName: Large Platforms
+  levelPrefab: {fileID: 4304742472972027797, guid: 19b638a11a78c934f811bd54b807bd9c, type: 3}
+  sprite: {fileID: 6946410374676734164, guid: 851642930917bae4c82b7fb04362f6d2, type: 3}

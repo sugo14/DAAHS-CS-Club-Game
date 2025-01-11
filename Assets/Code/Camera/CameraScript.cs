@@ -19,6 +19,10 @@ public class CameraScript : MonoBehaviour
 
     void Update()
     {
+        if (FocalPoints.Count == 0) {
+            return;
+        }
+        
         float minX = FocalPoints[0].transform.position.x, minY = FocalPoints[0].transform.position.y;
         float maxX = FocalPoints[0].transform.position.x, maxY = FocalPoints[0].transform.position.y;
 
