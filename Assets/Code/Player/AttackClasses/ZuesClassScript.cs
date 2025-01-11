@@ -37,7 +37,8 @@ public class ZuesClass : AttackScript
         ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
         projectileScript.HorizontalMovmentAmount = 0.25F;
         projectileScript.LeftOrRight = DevLeftRight;
-        projectileScript.StartMoving = true;
+        projectileScript.IsMoving = true;
+        projectileScript.OwningAttackScript = this;
 
 
 
