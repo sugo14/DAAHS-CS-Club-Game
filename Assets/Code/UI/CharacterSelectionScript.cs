@@ -1,22 +1,11 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterSelectionScript : MonoBehaviour
+public class CharacterSelectionScript : SelectionScript
 {
-    public GameObject cellPrefab;
     public GameObject levelSelection;
 
-    void Start()
-    {
-        UpdateCharacters();
-    }
-
-    [ContextMenu("Update Characters")]
-    public void UpdateCharacters()
+    public override void UpdateCells()
     {
         Character[] characters = MatchSetupManagerScript.Instance.characters.characters;
 
@@ -41,22 +30,13 @@ public class CharacterSelectionScript : MonoBehaviour
         }
     }
 
-    void Select(int index)
+    public override void Select()
     {
-        MatchSetupManagerScript.Instance.SelectCharacter(index, 0);
+        /* MatchSetupManagerScript.Instance.SelectCharacter(selected, 0);
         TransitionManagerScript.Instance.AddTask(OnTransitionCallback);
-        TransitionManagerScript.Instance.StartTransition();
-    }
+        TransitionManagerScript.Instance.StartTransition(); */
 
-    private System.Collections.IEnumerator OnTransitionCallback()
-    {
-        gameObject.SetActive(false);
-        levelSelection.SetActive(true);
-        yield return null;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        MatchSetupManagerScript.Instance.SelectCharacter(selected, 0);
+        MenuManagerScript.Instance.PushState(MenuState.LevelSelection);
     }
 }
