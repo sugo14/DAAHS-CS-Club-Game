@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      revolver anim test_0: -8340942411749476526
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -8,6 +8,7 @@ public class TransitionManagerScript : MonoBehaviour
     public static TransitionManagerScript Instance { get; private set; }
     public Animator transitionAnimator;
     public event Action OnTransitionEnd;
+
     // Queue of tasks to be performed after the start transition finishes and before the end animation begins (e.g level loading)
     Queue<Func<IEnumerator>> taskQueue = new Queue<Func<IEnumerator>>();
 
@@ -27,6 +28,7 @@ public class TransitionManagerScript : MonoBehaviour
     public void AddTask(Func<IEnumerator> task)
     {
         taskQueue.Enqueue(task);
+        Debug.Log("Added task " + task.Method.Name);
     }
 
     // Performs the entire transition, ran by other scripts

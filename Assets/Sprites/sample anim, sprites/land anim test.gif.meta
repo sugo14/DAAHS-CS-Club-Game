@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      land anim test_0: -62175927019218469
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

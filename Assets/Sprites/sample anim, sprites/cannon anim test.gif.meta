@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cannon anim test_0: -2038934612794682689
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

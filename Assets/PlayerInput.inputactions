@@ -1,5 +1,5 @@
 {
-    "name": "DAAHS-CS-Club",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
@@ -366,6 +366,15 @@
                     "type": "PassThrough",
                     "id": "ecb5cb2a-d771-47a7-92e8-e4ff82189e78",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "3cb68c6a-70c1-47b6-8f2e-2d807dab556b",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -787,6 +796,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90c2517a-082c-4551-a61b-73951f336f65",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

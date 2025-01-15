@@ -224,7 +224,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      implosion_energy ball anim test_0: -7957788198528517535
+      implosion_energy ball anim test_1: 1253685406044457900
+      implosion_energy ball anim test_2: 8790827511377284582
+      implosion_energy ball anim test_3: -7226390189904643805
+      implosion_energy ball anim test_4: 2817187226330740319
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      punch anim test (1)_0: -6850266460222799236
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CellScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class CellScript : MonoBehaviour, IPointerClickHandler
 {
-    public Vector3 originalScale;
-    public Vector3 hoverScale = new Vector3(1.2f, 1.2f, 1.2f);
-    public float animationSpeed = 6;
     public int index;
+    
+    Vector3 originalScale;
+    Vector3 hoverScale = new Vector3(1.2f, 1.2f, 1.2f);
+    float animationSpeed = 6;
 
-    bool isHovered;
+    bool isHovered = false;
 
     // Start is called before the first frame update
     void Start()
     {
         originalScale = transform.localScale;
-        isHovered = false;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void Hover()
     {
         isHovered = true;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void Unhover()
     {
         isHovered = false;
     }
