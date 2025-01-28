@@ -14,25 +14,27 @@ public class AttackPhysicsScript : MonoBehaviour
     bool DevDoImpulseOld;
     public float DevDamagePerHitAmount = 0;
 
+    public bool IsInvulnerable;
+
     private Rigidbody2D RB;
 
     void Start()
     {
         // Get a refrence to the charcters RigidBody
         RB = GetComponent<Rigidbody2D>();
+        //TODO: set sprite
     }
 
     void Update()
     {
         // Dev testing the Impulse funcionality
         // If the impulse checkbox has changed do an impulse
-        if (DevDoImpulse!=DevDoImpulseOld) 
+        if (DevDoImpulse != DevDoImpulseOld)
         {
             OnHit(DevDamagePerHitAmount, 1, new Vector2(0, -1.5f));
             // Save the current state of the check box
             DevDoImpulseOld = DevDoImpulse;
         }
-        /* percentText.text = ((int)Damage).ToString() + "%"; */
     }
 
     // Function for when somthing gets hit
@@ -41,7 +43,7 @@ public class AttackPhysicsScript : MonoBehaviour
     // AttackFromPos is where the attacker is so we can find the direction to move the player
     public void OnHit(float HitDamage, float AttackStrength, Vector2 AttackedFromPos)
     {
-        if (RB != null)
+        if (RB != null && IsInvulnerable == false)
         {
             // Create variable to store which way the character is pushed
             Vector2 dir = new Vector2(0,0);
@@ -67,6 +69,12 @@ public class AttackPhysicsScript : MonoBehaviour
             float verticalForce = (Damage * AttackStrength) / 4;
 
             RB.AddForce(new Vector2(horizontalForce, verticalForce), ForceMode2D.Impulse);
+            //Update Precent text
+            if(percentText != null) 
+            {
+                percentText.text = ((int)Damage).ToString() + "%";
+            }  
         }
     }
 }
+
