@@ -60,7 +60,7 @@ public class ProjectileScript : MonoBehaviour
         Vector3 MoveOffset = new Vector3(HorizontalMovmentAmount, VerticalMovmentAmount, 0);
         //update the position
         this.transform.position = this.transform.position + MoveOffset;
-        UnityEngine.Debug.Log(this.transform.position.x - startPositionX);
+        //UnityEngine.Debug.Log(this.transform.position.x - startPositionX);
         //Destory the projectile if the location diffrence is more than the max distance it can travel. 
         if (this.transform.position.x - startPositionX >= MaxDistance || this.transform.position.x - startPositionX <= MaxDistance * -1)
         {
