@@ -42,6 +42,7 @@ public class ZuesClass : ClassBaseScript
 
         projectileScript.OwningClassScript = this;
         projectileScript.DamageAmount = 5;
+        projectileScript.MaxDistance = 15;
 
         projectileScript.IsMoving = true;
 

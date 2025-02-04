@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using UnityEngine;
 
@@ -18,6 +19,9 @@ public class ProjectileScript : MonoBehaviour
     public float DamageAmount = 5;
     public float AttackStrength = 1;
 
+    public float MaxDistance = 10;
+    private float startPositionX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,8 @@ public class ProjectileScript : MonoBehaviour
         {
             UnityEngine.Debug.LogError("Projecile Collider or owner Collider is NUll");
         }
+
+        startPositionX = this.transform.position.x;
     }
 
     // Update is called once per frame
@@ -54,8 +60,13 @@ public class ProjectileScript : MonoBehaviour
         Vector3 MoveOffset = new Vector3(HorizontalMovmentAmount, VerticalMovmentAmount, 0);
         //update the position
         this.transform.position = this.transform.position + MoveOffset;
+        UnityEngine.Debug.Log(this.transform.position.x - startPositionX);
+        //Destory the projectile if the location diffrence is more than the max distance it can travel. 
+        if (this.transform.position.x - startPositionX >= MaxDistance || this.transform.position.x - startPositionX <= MaxDistance * -1)
+        {
+            Destroy(this.gameObject);
+        }
 
-        //TODO: destroy based on dist Travled
     }
     //Called on collison with another object
     void OnTriggerEnter2D(Collider2D collider)

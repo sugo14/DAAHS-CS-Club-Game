@@ -22,7 +22,7 @@ public class AttackPhysicsScript : MonoBehaviour
     {
         // Get a refrence to the charcters RigidBody
         RB = GetComponent<Rigidbody2D>();
-        //TODO: set sprite
+        
     }
 
     void Update()
