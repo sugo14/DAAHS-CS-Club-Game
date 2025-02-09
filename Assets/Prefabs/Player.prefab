@@ -56,10 +56,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   MaxHorizontalSpeed: 8
+  deadZone: 15
   JumpForce: 22
+  DashForce: 20
+  dashTest: 0
+  dropThroughHoldTime: 10
+  dropAheadSpeedModifier: 0.05
   AirAcceleration: 3
   GroundAcceleration: 4
   DecelerationFactor: 25
+  DashCooldown: 1
   MaxDoubleJumps: 1
 --- !u!61 &7819567898317729845
 BoxCollider2D:
@@ -239,8 +245,24 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 80bacb1a-ad93-4870-9c6d-4232fb4e4727
     m_ActionName: 'Player/Jump[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5382880631314197826}
+        m_TargetAssemblyTypeName: PlayerMovementScript, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 15d73891-bff0-471f-9a45-e80ab3a7050c
+    m_ActionName: 'Player/Dash[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
