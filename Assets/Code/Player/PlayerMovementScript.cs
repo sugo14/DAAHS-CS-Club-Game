@@ -16,12 +16,17 @@ public class PlayerMovementScript : MonoBehaviour
 
     // Movement
     public float MaxHorizontalSpeed = 8f;
+    public float maxFallingSpeed = 12f;
+    public float maxFastFallingSpeed = 24;
     public float deadZone = 15f;
     public float JumpForce = 18f;
-    public float DashForce = 20;
+    public float bufferedJumpLifeTime = 0.2f;
+    public float dashForce = 20;
     public bool dashTest = false;
-    public int dropThroughHoldTime = 20;
-    public float dropAheadSpeedModifier = 0.05f; 
+    public float bufferedDashLifeTime = 0.3f;
+    public int dropThroughHoldTime = 10;
+    public float dropAheadSpeedModifier = 0.05f;
+    public float coyoteTimeThreshold = 0.5f;
     // Accelerations
     public float AirAcceleration = 3f;
     public float GroundAcceleration = 4f;
@@ -32,15 +37,25 @@ public class PlayerMovementScript : MonoBehaviour
 
 
     // Movement
+    Vector2 currentMovement;
     float horizontalInput;
+    bool speedFalling = false;
     bool canDash = true;
     float dashCooldownCount = 0;
     bool dashTestLast = false;
+    bool dashQueued = false;
+    float queuedDashLife = 0;
     int currDoubleJumps;
-    Vector2 currentMovement;
+    bool jumpedLast = false;
+    bool jumpQueued = false;
+    float queuedJumpLife = 0;
     // Grounding
     float groundedBoxHeight = 0.5f;
     bool grounded;
+    bool groundedLast;
+    bool coyoteTime = false;
+    float coyoteTimeCountdown = 0;
+    // Drop Through
     bool dropThroughTriger = false;
     bool canDropThrough = false;
     int dropThroughCounter = 0;
@@ -126,7 +141,6 @@ public class PlayerMovementScript : MonoBehaviour
         return false;
     }
 
-
     void Update()
     {
         grounded = IsGrounded();
@@ -137,7 +151,18 @@ public class PlayerMovementScript : MonoBehaviour
                 currDoubleJumps = MaxDoubleJumps;
             }
         }
-        
+
+        // jump buffering life time timer
+        if (jumpQueued)
+        {
+            queuedJumpLife -= Time.deltaTime;
+            if (queuedJumpLife <= 0)
+            {
+                jumpQueued = false;
+                queuedJumpLife = 0;
+            }
+        }
+
         // dev dash test
         if (dashTest != dashTestLast)
         {
@@ -145,16 +170,49 @@ public class PlayerMovementScript : MonoBehaviour
             dashTestLast = dashTest;
         }
 
-        // Dash cooldown
+        // dash buffering
+        if (dashQueued)
+        {
+            queuedDashLife -= Time.deltaTime;
+            if (queuedDashLife <= 0)
+            {
+                dashQueued = false;
+                queuedDashLife = 0;
+            }
+        }
+
+        // dash cooldown
         if (!canDash)
         {
             dashCooldownCount -= Time.deltaTime;
+            if (dashCooldownCount <= 0)
+            {
+
+                if (dashQueued)
+                {
+                    dashQueued = false;
+                    queuedDashLife = 0;
+                    DoDash(currentMovement);
+                }
+                else
+                {
+                    dashCooldownCount = DashCooldown;
+                    canDash = true;
+                }
+            }
         }
-        if (dashCooldownCount <= 0)
+
+        //  coyote time countdown timer
+        if (coyoteTime)
         {
-            dashCooldownCount = DashCooldown;
-            canDash = true;
+            coyoteTimeCountdown -= Time.deltaTime;
+            if (coyoteTimeCountdown <= 0)
+            {
+                coyoteTime = false;
+                coyoteTimeCountdown = 0;
+            }
         }
+
 
     }
 
@@ -188,6 +246,45 @@ public class PlayerMovementScript : MonoBehaviour
         float angle = -1f * RB.velocityX * 1f;
         SRObject.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
+        // fast falling and max falling speed
+        if (speedFalling)
+        {
+            if (RB.velocityY > -maxFastFallingSpeed)
+            {
+                RB.AddForce(new Vector2(0, -maxFastFallingSpeed), ForceMode2D.Force);
+            }
+            else
+            {
+                RB.velocityY = -maxFastFallingSpeed;
+            }
+        }
+        else if (RB.velocityY < -maxFallingSpeed)
+        {
+            RB.velocityY = -maxFallingSpeed;
+        }
+
+        // jumping when on ground with a queued jump
+        if (jumpQueued && grounded)
+        {
+            RB.velocityY = JumpForce;
+            jumpedLast = true;
+            jumpQueued = false;
+            queuedJumpLife = 0;
+        }
+
+        // coyote jump countdown start
+        if (!grounded && grounded != groundedLast && !jumpedLast)
+        {
+            coyoteTime = true;
+            coyoteTimeCountdown = coyoteTimeThreshold;
+        }
+
+        // resetting the last jump when there can't have been a jump last frame
+        if (jumpedLast && !grounded)
+        {
+            jumpedLast = false;
+        }
+
         // incrementing and resetting drop counter when down is held or released
         if (dropThroughTriger)
         {
@@ -208,7 +305,7 @@ public class PlayerMovementScript : MonoBehaviour
         }
 
         // Triggering drop through 
-        if (canDropThrough && BoxCollider.enabled && dropThroughTriger && dropThroughCounter >= dropThroughHoldTime)
+        if (canDropThrough && BoxCollider.enabled && dropThroughTriger && !grounded && dropThroughCounter >= dropThroughHoldTime)
         {
             // Debug.Log("drop called");
             BoxCollider.enabled = false;
@@ -224,6 +321,10 @@ public class PlayerMovementScript : MonoBehaviour
                 canDropThrough = false;
             }
         }
+
+        // recording the last grounded
+        groundedLast = grounded;
+
         
     }
 
@@ -249,7 +350,7 @@ public class PlayerMovementScript : MonoBehaviour
     public void DoDash(Vector2 dir)
     {
         // Debug.Log("dash");
-        RB.AddForce(new Vector2(dir.x * DashForce, dir.y * DashForce), ForceMode2D.Impulse);
+        RB.AddForce(new Vector2(dir.x * dashForce, dir.y * dashForce), ForceMode2D.Impulse);
         canDash = false;
     }
 
@@ -272,8 +373,12 @@ public class PlayerMovementScript : MonoBehaviour
 
         // checking for "down" being pressed
         dropThroughTriger = false;
+        speedFalling = false;
+
         if (currentMovement.y < -decDeadZone)
         {
+            Debug.Log(speedFalling);
+            speedFalling = true;
             dropThroughTriger = true;
         }
     }
@@ -282,9 +387,18 @@ public class PlayerMovementScript : MonoBehaviour
     // called when dash input is registered
     public void Dash(InputAction.CallbackContext context)
     {
-        if (context.performed && canDash && currentMovement != Vector2.zero)
+        if (context.performed && currentMovement != Vector2.zero)
         {
-            DoDash(currentMovement);
+            if (canDash)
+            {
+                DoDash(currentMovement);
+            }
+            else
+            {
+                // queuing a dash
+                dashQueued = true;
+                queuedDashLife = bufferedDashLifeTime;
+            }
         }
     }
 
@@ -294,12 +408,31 @@ public class PlayerMovementScript : MonoBehaviour
         {
             if (IsGrounded() && !InPlatform())
             {
+                // jump
                 RB.velocityY = JumpForce;
+                jumpedLast = true;
+
             }
             else if (currDoubleJumps > 0)
             {
                 RB.velocityY = JumpForce;
-                currDoubleJumps--;
+                if (coyoteTime)
+                {
+                    // coyote jump
+                    coyoteTime = false;
+                    coyoteTimeCountdown = 0;
+                }
+                else
+                {
+                    // double jump
+                    currDoubleJumps--;
+                }
+            }
+            else if (!InPlatform())
+            {
+                // queuing a jump
+                jumpQueued = true;
+                queuedJumpLife = bufferedJumpLifeTime;
             }
         }
 
