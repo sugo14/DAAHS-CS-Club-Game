@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using NUnit.Framework.Internal;
+using System;
 
 public enum MenuState {
     MainMenu,
@@ -43,8 +43,7 @@ public class MenuManagerScript : MonoBehaviour
 
     void Start()
     {
-        stateStack.Push(MenuState.MainMenu);
-        OpenMenu();
+        PushState(MenuState.MainMenu);
     }
 
     void OpenMenu()
@@ -67,6 +66,7 @@ public class MenuManagerScript : MonoBehaviour
     {
         for (int i = 0; i < menus.Length; i++)
         {
+            Debug.Log(i);
             menus[i].GetComponent<SelectionScript>().AcceptInput((MenuState)i == stateStack.Peek());
         }
     }
