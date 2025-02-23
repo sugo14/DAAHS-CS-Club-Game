@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class ClassBaseScript : MonoBehaviour
 {
     //Side attack function
-    public abstract void AttackSide();
+    public abstract void AttackSide(bool InLeftRight);
     //Down attack function
     public abstract void AttackDown();
     //Up attack function
@@ -16,6 +16,15 @@ public abstract class ClassBaseScript : MonoBehaviour
     public Sprite PlayerSprite;
     //Stat of the total damage done, NOT used for anything currently
     public float TotalDamageDelt;
+
+    public bool IsChargingAttackSide;
+    public bool IsChargingAttackDown;
+    public bool IsChargingAttackUp;
+
+    public float SideAttackChargeTime = 1;
+    public float UpAttackChargeTime = 1;
+    public float DownAttackChargeTime = 1;
+    public float ChargeTime;
 
 
     // Start is called before the first frame update
@@ -36,6 +45,14 @@ public abstract class ClassBaseScript : MonoBehaviour
     public void AddTotalDamage(float DamageDone)
     {
         TotalDamageDelt += DamageDone;
+    }
+
+    public void ResetCharge()
+    {
+        IsChargingAttackSide = false;
+        IsChargingAttackDown = false;
+        IsChargingAttackUp = false;
+        ChargeTime = 0;
     }
 
 

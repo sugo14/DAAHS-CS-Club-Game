@@ -16,7 +16,7 @@ public class AresClass : ClassBaseScript
     {
         
     }
-     public override void AttackSide()
+     public override void AttackSide(bool InLeftRight)
     {
         UnityEngine.Debug.Log("DevMelee AttackSide");
     }

@@ -17,12 +17,14 @@ public class AttackPhysicsScript : MonoBehaviour
     public bool IsInvulnerable;
 
     private Rigidbody2D RB;
+    private ClassBaseScript ClassScript;
 
     void Start()
     {
         // Get a refrence to the charcters RigidBody
         RB = GetComponent<Rigidbody2D>();
-        
+        ClassScript = GetComponent<ClassBaseScript>();
+
     }
 
     void Update()
@@ -67,6 +69,11 @@ public class AttackPhysicsScript : MonoBehaviour
             float horizontalForce = dir.x * Damage * AttackStrength;
             // Vertical is the damage multiplied by attack strength but divide so the motion is primarily horizontal
             float verticalForce = (Damage * AttackStrength) / 4;
+
+            if(ClassScript != null)
+            {
+                ClassScript.ResetCharge();
+            }
 
             RB.AddForce(new Vector2(horizontalForce, verticalForce), ForceMode2D.Impulse);
             //Update Precent text
