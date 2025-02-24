@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public class AresClass : AttackScript
+public class AresClass : ClassBaseScript
 {
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class AresClass : AttackScript
     {
         
     }
-     public override void AttackSide()
+     public override void AttackSide(bool InLeftRight)
     {
         UnityEngine.Debug.Log("DevMelee AttackSide");
     }
