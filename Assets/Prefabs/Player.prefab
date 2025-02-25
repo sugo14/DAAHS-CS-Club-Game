@@ -57,14 +57,14 @@ MonoBehaviour:
     m_Bits: 8
   MaxHorizontalSpeed: 8
   maxFallingSpeed: 12
-  maxSpeedFallingSpeed: 24
+  maxFastFallingSpeed: 32
   deadZone: 15
   JumpForce: 22
   bufferedJumpLifeTime: 0.3
   dashForce: 20
   dashTest: 0
   bufferedDashLifeTime: 0.2
-  dropThroughHoldTime: 20
+  dropThroughHoldTime: 10
   dropAheadSpeedModifier: 0.05
   coyoteTimeThreshold: 0.2
   AirAcceleration: 3
