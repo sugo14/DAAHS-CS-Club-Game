@@ -17,7 +17,7 @@ public class PlayerMovementScript : MonoBehaviour
     // Movement
     public float MaxHorizontalSpeed = 8f;
     public float maxFallingSpeed = 12f;
-    public float maxFastFallingSpeed = 24;
+    public float maxFastFallingSpeed = 32;
     public float deadZone = 15f;
     public float JumpForce = 18f;
     public float bufferedJumpLifeTime = 0.2f;
@@ -305,7 +305,7 @@ public class PlayerMovementScript : MonoBehaviour
         }
 
         // Triggering drop through 
-        if (canDropThrough && BoxCollider.enabled && dropThroughTriger && !grounded && dropThroughCounter >= dropThroughHoldTime)
+        if (canDropThrough && BoxCollider.enabled && dropThroughTriger  && dropThroughCounter >= dropThroughHoldTime)
         {
             // Debug.Log("drop called");
             BoxCollider.enabled = false;
