@@ -9,9 +9,15 @@ public class HurtBoxScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        //if (collider.gameObject.tag == "Player")
+        //{
+        //    Debug.Log("Player hit!");
+        //    AttackPhysicsScript player = collider.gameObject.GetComponent<AttackPhysicsScript>();
+        //    player.OnHit(HitDamage, AttackStrength, this.transform.position);
+        //}
+        if (collider.gameObject.GetComponent<AttackPhysicsScript>() != null)
         {
-            Debug.Log("Player hit!");
+            Debug.Log("Attack Object hit!");
             AttackPhysicsScript player = collider.gameObject.GetComponent<AttackPhysicsScript>();
             player.OnHit(HitDamage, AttackStrength, this.transform.position);
         }
