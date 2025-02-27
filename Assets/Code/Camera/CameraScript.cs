@@ -2,32 +2,34 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Smash Bros-like camera that adjusts viewing position to
-// fit all focal points on screen with maximum zoom
+// Smash Bros-like camera that adjusts viewing position to fit all focal points on screen with maximum zoom
 public class CameraScript : MonoBehaviour
 {
     public List<GameObject> FocalPoints;
-    public float Padding = 3f;
+    public float TopPadding = 3, BottomPadding = 3, LeftPadding = 3, RightPadding = 3;
+    public float MinX = -15, MaxX = 15, MinY = -10, MaxY = 10;
     public float MinimumScreenHeight = 5f;
+    public float CameraMoveSpeed = 10f, CameraResizeSpeed = 10f;
 
     float aspectRatio;
 
-    void Start()
+    void Awake()
     {
         aspectRatio = (float)Screen.width / (float)Screen.height;
     }
 
-    void Update()
+    // Needs to be ran in the same update loop as the focal points' movement
+    void FixedUpdate()
     {
-        if (FocalPoints.Count == 0) {
+        if (FocalPoints.Count == 0)
+        {
             return;
         }
         
         float minX = FocalPoints[0].transform.position.x, minY = FocalPoints[0].transform.position.y;
         float maxX = FocalPoints[0].transform.position.x, maxY = FocalPoints[0].transform.position.y;
 
-        // find the maximum and minimum x and y coordinates
-        // of all focal points
+        // Find the maximum and minimum x and y coordinates of all focal points
         foreach (GameObject focalPoint in FocalPoints)
         {
             minX = Mathf.Min(minX, focalPoint.transform.position.x);
@@ -36,67 +38,60 @@ public class CameraScript : MonoBehaviour
             maxY = Mathf.Max(maxY, focalPoint.transform.position.y);
         }
 
-        // add Padding so that there's space around
-        // the focal points on the screen
-        minX -= Padding;
-        maxX += Padding;
-        minY -= Padding;
-        maxY += Padding;
+        minX = minX - LeftPadding;
+        maxX = maxX + RightPadding;
+        minY = minY - BottomPadding;
+        maxY = maxY + TopPadding;
 
-        // set size of camera to fit all focal points
-        float ySize = Math.Max((maxX - minX) * 0.5f / aspectRatio, (maxY - minY) * 0.5f);
-        ySize = Math.Max(ySize, MinimumScreenHeight);
-        Camera.main.orthographicSize = ySize;
+        // Set viewing size of camera to fit all focal points
+        float desiredXSize = (maxX - minX) * 0.5f;
+        float desiredYSize = Math.Max(MinimumScreenHeight, (maxY - minY) * 0.5f);
 
-        // camera is placed at the center of all of the focal points
+        // Adjust the viewing size to fit the aspect ratio
+        if (desiredXSize / aspectRatio > desiredYSize)
+        {
+            desiredYSize = desiredXSize / aspectRatio;
+            /* minY -= (desiredYSize - (maxY - minY) * 0.5f);
+            maxY += (desiredYSize - (maxY - minY) * 0.5f); */
+        }
+        else
+        {
+            desiredXSize = desiredYSize * aspectRatio;
+            /* minX -= (desiredXSize - (maxX - minX) * 0.5f);
+            maxX += (desiredXSize - (maxX - minX) * 0.5f); */
+        }
+        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, desiredYSize, CameraResizeSpeed * Time.deltaTime);
+
+        // Camera is placed at the center of all of the focal points
         float midX = (maxX + minX) * 0.5f, midY = (maxY + minY) * 0.5f;
-        Camera.main.transform.position = new Vector3(midX, midY, -10);
+        Vector3 desiredPosition = new Vector3(midX, midY, -10);
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, desiredPosition, CameraMoveSpeed * Time.deltaTime);
+
+        // Draw gizmos at (minX, minY) and (maxX, maxY)
+        Debug.DrawLine(new Vector3(minX, minY, 0), new Vector3(minX, maxY, 0), Color.red);
+        Debug.DrawLine(new Vector3(minX, minY, 0), new Vector3(maxX, minY, 0), Color.red);
+        Debug.DrawLine(new Vector3(maxX, maxY, 0), new Vector3(minX, maxY, 0), Color.red);
+        Debug.DrawLine(new Vector3(maxX, maxY, 0), new Vector3(maxX, minY, 0), Color.red);
     }
 
-    // draws a box around the correct borders of the screen
-    void OnDrawGizmos()
+    System.Collections.IEnumerator CameraShake(float startMagnitude, float duration)
     {
-        float minX = FocalPoints[0].transform.position.x, minY = FocalPoints[0].transform.position.y;
-        float maxX = FocalPoints[0].transform.position.x, maxY = FocalPoints[0].transform.position.y;
+        float elapsed = 0f;
 
-        foreach (GameObject focalPoint in FocalPoints)
+        while (elapsed < duration)
         {
-            minX = Mathf.Min(minX, focalPoint.transform.position.x);
-            maxX = Mathf.Max(maxX, focalPoint.transform.position.x);
-            minY = Mathf.Min(minY, focalPoint.transform.position.y);
-            maxY = Mathf.Max(maxY, focalPoint.transform.position.y);
+            float currentMagnitude = Mathf.Lerp(startMagnitude, 0f, elapsed / duration);
+            float x = UnityEngine.Random.Range(-currentMagnitude, currentMagnitude);
+            float y = UnityEngine.Random.Range(-currentMagnitude, currentMagnitude);
+            transform.localPosition = transform.localPosition + new Vector3(x, y, 0);
+
+            elapsed += Time.deltaTime;
+            yield return null;
         }
-        minX -= Padding;
-        maxX += Padding;
-        minY -= Padding;
-        maxY += Padding;
+    }
 
-        // slightly different math to achieve the same thing as in Update
-        // except for minimum screen height
-        float currAspectRatio = (maxX - minX) / (maxY - minY);
-        if (currAspectRatio > aspectRatio) {
-            float correctHeight = (maxX - minX) / aspectRatio;
-            float diff = (correctHeight - (maxY - minY)) * 0.5f;
-            minY -= diff;
-            maxY += diff;
-        }
-        else {
-            float correctWidth = (maxY - minY) * aspectRatio;
-            float diff = (correctWidth - (maxX - minX)) * 0.5f;
-            minX -= diff;
-            maxX += diff;
-        }
-
-        Vector3 topLeft = new Vector3(minX, maxY, 0);
-        Vector3 topRight = new Vector3(maxX, maxY, 0);
-        Vector3 bottomRight = new Vector3(maxX, minY, 0);
-        Vector3 bottomLeft = new Vector3(minX, minY, 0);
-
-        Gizmos.color = Color.green;
-
-        Gizmos.DrawLine(topLeft, topRight);
-        Gizmos.DrawLine(topRight, bottomRight);
-        Gizmos.DrawLine(bottomRight, bottomLeft);
-        Gizmos.DrawLine(bottomLeft, topLeft);
+    public void BeginShake(float duration, float magnitude)
+    {
+        StartCoroutine(CameraShake(duration, magnitude));
     }
 }

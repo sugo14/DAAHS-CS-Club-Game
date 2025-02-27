@@ -1,21 +1,9 @@
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelectionScript : MonoBehaviour
+public class LevelSelectionScript : SelectionScript
 {
-    public GameObject cellPrefab;
-
-    void Start()
-    {
-        UpdateLevels();
-    }
-
-    [ContextMenu("Update Levels")]
-    public void UpdateLevels()
+    public override void UpdateCells()
     {
         Level[] levels = MatchSetupManagerScript.Instance.levels.levels;
 
@@ -33,14 +21,9 @@ public class LevelSelectionScript : MonoBehaviour
         }
     }
 
-    void Select(int index)
+    public override void Select()
     {
-        MatchSetupManagerScript.Instance.SelectLevel(index);
+        MatchSetupManagerScript.Instance.SelectLevel(selected);
         MatchSetupManagerScript.Instance.BeginMatch();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

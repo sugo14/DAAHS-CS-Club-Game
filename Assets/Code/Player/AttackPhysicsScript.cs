@@ -4,7 +4,7 @@ using TMPro;
  
 public class AttackPhysicsScript : MonoBehaviour
 {
-    public TMP_Text percentText;
+    public PlayerSplashScript playerSplashScript;
 
     // The equivlent to your % in Smash Bros
     public float Damage;
@@ -77,9 +77,9 @@ public class AttackPhysicsScript : MonoBehaviour
 
             RB.AddForce(new Vector2(horizontalForce, verticalForce), ForceMode2D.Impulse);
             //Update Precent text
-            if(percentText != null) 
+            if(playerSplashScript != null) 
             {
-                percentText.text = ((int)Damage).ToString() + "%";
+                playerSplashScript.SetPercent((int)Damage);
             }  
         }
     }
