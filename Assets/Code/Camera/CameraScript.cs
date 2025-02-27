@@ -73,4 +73,25 @@ public class CameraScript : MonoBehaviour
         Debug.DrawLine(new Vector3(maxX, maxY, 0), new Vector3(minX, maxY, 0), Color.red);
         Debug.DrawLine(new Vector3(maxX, maxY, 0), new Vector3(maxX, minY, 0), Color.red);
     }
+
+    System.Collections.IEnumerator CameraShake(float startMagnitude, float duration)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float currentMagnitude = Mathf.Lerp(startMagnitude, 0f, elapsed / duration);
+            float x = UnityEngine.Random.Range(-currentMagnitude, currentMagnitude);
+            float y = UnityEngine.Random.Range(-currentMagnitude, currentMagnitude);
+            transform.localPosition = transform.localPosition + new Vector3(x, y, 0);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public void BeginShake(float duration, float magnitude)
+    {
+        StartCoroutine(CameraShake(duration, magnitude));
+    }
 }
