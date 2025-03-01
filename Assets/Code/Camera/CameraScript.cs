@@ -13,6 +13,9 @@ public class CameraScript : MonoBehaviour
 
     float aspectRatio;
 
+    List<float> freezeFactors = new List<float>{ 1 };
+    int frozenCount = 0;
+
     void Awake()
     {
         aspectRatio = (float)Screen.width / (float)Screen.height;
@@ -21,13 +24,25 @@ public class CameraScript : MonoBehaviour
     // Needs to be ran in the same update loop as the focal points' movement
     void FixedUpdate()
     {
-        if (FocalPoints.Count == 0)
+        if (FocalPoints.Count == 0 || frozenCount > 0)
         {
             return;
         }
         
         float minX = FocalPoints[0].transform.position.x, minY = FocalPoints[0].transform.position.y;
         float maxX = FocalPoints[0].transform.position.x, maxY = FocalPoints[0].transform.position.y;
+
+        // TODO: this might not work
+        for (int i = 0; i < FocalPoints.Count; i++)
+        {
+            if (FocalPoints[i] == null)
+            {
+                FocalPoints.RemoveAt(i);
+                i--;
+            }
+        }
+
+        Time.timeScale = Mathf.Min(freezeFactors.ToArray());
 
         // Find the maximum and minimum x and y coordinates of all focal points
         foreach (GameObject focalPoint in FocalPoints)
@@ -80,12 +95,13 @@ public class CameraScript : MonoBehaviour
 
         while (elapsed < duration)
         {
+            while (frozenCount > 0) { yield return null; }
             float currentMagnitude = Mathf.Lerp(startMagnitude, 0f, elapsed / duration);
             float x = UnityEngine.Random.Range(-currentMagnitude, currentMagnitude);
             float y = UnityEngine.Random.Range(-currentMagnitude, currentMagnitude);
             transform.localPosition = transform.localPosition + new Vector3(x, y, 0);
 
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
     }
@@ -93,5 +109,24 @@ public class CameraScript : MonoBehaviour
     public void BeginShake(float duration, float magnitude)
     {
         StartCoroutine(CameraShake(duration, magnitude));
+    }
+
+    System.Collections.IEnumerator FreezeFrameEffect(float factor, float duration, bool freeze)
+    {
+        if (freeze) { frozenCount++; }
+        freezeFactors.Add(factor);
+        yield return new WaitForSecondsRealtime(duration);
+        freezeFactors.Remove(freezeFactors.Find(fac => fac == factor));
+        if (freeze) { frozenCount--; }
+    }
+
+    public void BeginFreezeFrame(float duration)
+    {
+        StartCoroutine(FreezeFrameEffect(0f, duration, true));
+    }
+
+    public void BeginFreezeFrame(float factor, float duration, bool freeze = false)
+    {
+        StartCoroutine(FreezeFrameEffect(factor, duration, freeze));
     }
 }

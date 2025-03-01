@@ -13,9 +13,11 @@ public class PlayerSplashScript : MonoBehaviour
     public GameObject percentageTexts;
     public TMP_Text percentageText, percentageShadow;
     public List<GameObject> backdrops;
+    public GameObject stockPrefab;
+    public GameObject stocksObject;
 
     public float percentUpdateSpeed = 130;
-    public float freezeFactor = 0.1f, freezeDur = 0.1f;
+    public float freezeDur = 0.1f;
     public float cameraShakeMagMult = 0.05f, cameraShakeDurMult = 0.1f;
     public float onHitStrobeDuration = 0.35f, regularStrobeDuration = 0.25f;
 
@@ -31,18 +33,26 @@ public class PlayerSplashScript : MonoBehaviour
         originalPos = percentageTexts.transform.position;
     }
 
+    // Set the actual percentage of the character, applying effects based on the difference from the last percentage.
     public void SetPercent(int percentage)
     {
+        float lastPercent = this.percentage;
         this.percentage = percentage;
-        float dif = percentage - currPercent;
-        float curvedDif = (float)Math.Log(dif);
+        if (lastPercent >= percentage)
+        {
+            return;
+        }
 
+        float dif = percentage - lastPercent;
+        float curvedDif = (float)Math.Log(dif);
+        CameraScript cameraScript = Camera.main.GetComponent<CameraScript>();
         StartCoroutine(ShakeEffect(curvedDif / 6f, curvedDif * 16f));
         StartCoroutine(StrobeEffect(onHitStrobeDuration, onHitColor));
-        StartCoroutine(FreezeFrameEffect(freezeFactor * curvedDif, freezeDur));
-        Camera.main.GetComponent<CameraScript>().BeginShake(cameraShakeMagMult * curvedDif, cameraShakeDurMult * curvedDif);
+        cameraScript.BeginFreezeFrame(freezeDur * curvedDif);
+        cameraScript.BeginShake(cameraShakeMagMult * curvedDif, cameraShakeDurMult * curvedDif);
     }
 
+    // Smoothly increases displayed percentage until it matches the current percentage of the character.
     void UpdateCurrPercent()
     {
         float difference = Mathf.Abs(percentage - currPercent);
@@ -61,7 +71,7 @@ public class PlayerSplashScript : MonoBehaviour
         regularStrobeTimer += Time.deltaTime;
         float piece = regularStrobeTimer % (regularStrobeDuration * 2);
         float strobeIntensity = Math.Min(piece, regularStrobeDuration * 2 - piece) / regularStrobeDuration;
-        strobeIntensity = strobeIntensity * strobeIntensity; // Smoothen it
+        strobeIntensity *= strobeIntensity; // Smoothen it
         percentageText.color = Color.Lerp(baseColor, strobeColor, strobeIntensity);
     }
 
@@ -100,11 +110,24 @@ public class PlayerSplashScript : MonoBehaviour
         percentageText.color = baseColor;
     }
 
-    IEnumerator FreezeFrameEffect(float factor, float duration)
+    public void SetStocks(int stockCount)
     {
-        Time.timeScale = factor;
-        yield return new WaitForSecondsRealtime(duration);
-        Time.timeScale = 1f;
+        int currentCount = stocksObject.transform.childCount;
+        if (currentCount > stockCount)
+        {
+            for (int i = currentCount - 1; i >= stockCount; i--)
+            {
+                Destroy(stocksObject.transform.GetChild(i).gameObject);
+            }
+        }
+        else if (currentCount < stockCount)
+        {
+            int itemsToAdd = stockCount - currentCount;
+            for (int i = 0; i < itemsToAdd; i++)
+            {
+                Instantiate(stockPrefab, stocksObject.transform);
+            }
+        }
     }
 
     void Update()
@@ -112,6 +135,7 @@ public class PlayerSplashScript : MonoBehaviour
         UpdateCurrPercent();
         UpdateRegularStrobe(Color.white);
 
+        // TODO: this does not need to be done each frame
         foreach (GameObject backdrop in backdrops)
         {
             backdrop.GetComponent<UnityEngine.UI.Image>().color = backdropColor;
