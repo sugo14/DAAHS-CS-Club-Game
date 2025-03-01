@@ -33,10 +33,15 @@ public class PlayerSplashScript : MonoBehaviour
 
     public void SetPercent(int percentage)
     {
+        float lastPercent = this.percentage;
         this.percentage = percentage;
-        float dif = percentage - currPercent;
-        float curvedDif = (float)Math.Log(dif);
+        if (lastPercent >= percentage)
+        {
+            return;
+        }
 
+        float dif = percentage - lastPercent;
+        float curvedDif = (float)Math.Log(dif);
         CameraScript cameraScript = Camera.main.GetComponent<CameraScript>();
         StartCoroutine(ShakeEffect(curvedDif / 6f, curvedDif * 16f));
         StartCoroutine(StrobeEffect(onHitStrobeDuration, onHitColor));
