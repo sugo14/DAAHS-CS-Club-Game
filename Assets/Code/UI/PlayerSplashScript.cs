@@ -15,7 +15,7 @@ public class PlayerSplashScript : MonoBehaviour
     public List<GameObject> backdrops;
 
     public float percentUpdateSpeed = 130;
-    public float freezeFactor = 0.1f, freezeDur = 0.1f;
+    public float freezeDur = 0.1f;
     public float cameraShakeMagMult = 0.05f, cameraShakeDurMult = 0.1f;
     public float onHitStrobeDuration = 0.35f, regularStrobeDuration = 0.25f;
 
@@ -37,10 +37,11 @@ public class PlayerSplashScript : MonoBehaviour
         float dif = percentage - currPercent;
         float curvedDif = (float)Math.Log(dif);
 
+        CameraScript cameraScript = Camera.main.GetComponent<CameraScript>();
         StartCoroutine(ShakeEffect(curvedDif / 6f, curvedDif * 16f));
         StartCoroutine(StrobeEffect(onHitStrobeDuration, onHitColor));
-        StartCoroutine(FreezeFrameEffect(freezeFactor * curvedDif, freezeDur));
-        Camera.main.GetComponent<CameraScript>().BeginShake(cameraShakeMagMult * curvedDif, cameraShakeDurMult * curvedDif);
+        cameraScript.BeginFreezeFrame(freezeDur * curvedDif);
+        cameraScript.BeginShake(cameraShakeMagMult * curvedDif, cameraShakeDurMult * curvedDif);
     }
 
     void UpdateCurrPercent()
@@ -61,7 +62,7 @@ public class PlayerSplashScript : MonoBehaviour
         regularStrobeTimer += Time.deltaTime;
         float piece = regularStrobeTimer % (regularStrobeDuration * 2);
         float strobeIntensity = Math.Min(piece, regularStrobeDuration * 2 - piece) / regularStrobeDuration;
-        strobeIntensity = strobeIntensity * strobeIntensity; // Smoothen it
+        strobeIntensity *= strobeIntensity; // Smoothen it
         percentageText.color = Color.Lerp(baseColor, strobeColor, strobeIntensity);
     }
 
@@ -98,13 +99,6 @@ public class PlayerSplashScript : MonoBehaviour
         }
 
         percentageText.color = baseColor;
-    }
-
-    IEnumerator FreezeFrameEffect(float factor, float duration)
-    {
-        Time.timeScale = factor;
-        yield return new WaitForSecondsRealtime(duration);
-        Time.timeScale = 1f;
     }
 
     void Update()

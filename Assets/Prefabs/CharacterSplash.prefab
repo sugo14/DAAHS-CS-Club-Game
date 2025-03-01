@@ -485,9 +485,9 @@ MonoBehaviour:
   - {fileID: 962172359758645617}
   - {fileID: 1640287495777361980}
   percentUpdateSpeed: 130
-  freezeFactor: 0.1
-  freezeDur: 0.1
-  cameraShakeMagMult: 0.05
+  freezeFactor: 0.000000001
+  freezeDur: 0.04
+  cameraShakeMagMult: 0.1
   cameraShakeDurMult: 0.1
   onHitStrobeDuration: 0.5
   regularStrobeDuration: 0.2

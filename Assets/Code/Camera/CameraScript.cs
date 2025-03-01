@@ -12,6 +12,7 @@ public class CameraScript : MonoBehaviour
     public float CameraMoveSpeed = 10f, CameraResizeSpeed = 10f;
 
     float aspectRatio;
+    bool isFrozen = false;
 
     void Awake()
     {
@@ -21,7 +22,7 @@ public class CameraScript : MonoBehaviour
     // Needs to be ran in the same update loop as the focal points' movement
     void FixedUpdate()
     {
-        if (FocalPoints.Count == 0)
+        if (FocalPoints.Count == 0 || isFrozen)
         {
             return;
         }
@@ -80,6 +81,7 @@ public class CameraScript : MonoBehaviour
 
         while (elapsed < duration)
         {
+            while (isFrozen) { yield return null; }
             float currentMagnitude = Mathf.Lerp(startMagnitude, 0f, elapsed / duration);
             float x = UnityEngine.Random.Range(-currentMagnitude, currentMagnitude);
             float y = UnityEngine.Random.Range(-currentMagnitude, currentMagnitude);
@@ -93,5 +95,19 @@ public class CameraScript : MonoBehaviour
     public void BeginShake(float duration, float magnitude)
     {
         StartCoroutine(CameraShake(duration, magnitude));
+    }
+
+    System.Collections.IEnumerator FreezeFrameEffect(float factor, float duration)
+    {
+        isFrozen = true;
+        Time.timeScale = factor;
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1f;
+        isFrozen = false;
+    }
+
+    public void BeginFreezeFrame(float duration)
+    {
+        StartCoroutine(FreezeFrameEffect(0f, duration));
     }
 }
