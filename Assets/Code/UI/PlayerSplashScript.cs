@@ -13,6 +13,8 @@ public class PlayerSplashScript : MonoBehaviour
     public GameObject percentageTexts;
     public TMP_Text percentageText, percentageShadow;
     public List<GameObject> backdrops;
+    public GameObject stockPrefab;
+    public GameObject stocksObject;
 
     public float percentUpdateSpeed = 130;
     public float freezeDur = 0.1f;
@@ -31,6 +33,7 @@ public class PlayerSplashScript : MonoBehaviour
         originalPos = percentageTexts.transform.position;
     }
 
+    // Set the actual percentage of the character, applying effects based on the difference from the last percentage.
     public void SetPercent(int percentage)
     {
         float lastPercent = this.percentage;
@@ -49,6 +52,7 @@ public class PlayerSplashScript : MonoBehaviour
         cameraScript.BeginShake(cameraShakeMagMult * curvedDif, cameraShakeDurMult * curvedDif);
     }
 
+    // Smoothly increases displayed percentage until it matches the current percentage of the character.
     void UpdateCurrPercent()
     {
         float difference = Mathf.Abs(percentage - currPercent);
@@ -106,11 +110,32 @@ public class PlayerSplashScript : MonoBehaviour
         percentageText.color = baseColor;
     }
 
+    public void SetStocks(int stockCount)
+    {
+        int currentCount = stocksObject.transform.childCount;
+        if (currentCount > stockCount)
+        {
+            for (int i = currentCount - 1; i >= stockCount; i--)
+            {
+                Destroy(stocksObject.transform.GetChild(i).gameObject);
+            }
+        }
+        else if (currentCount < stockCount)
+        {
+            int itemsToAdd = stockCount - currentCount;
+            for (int i = 0; i < itemsToAdd; i++)
+            {
+                Instantiate(stockPrefab, stocksObject.transform);
+            }
+        }
+    }
+
     void Update()
     {
         UpdateCurrPercent();
         UpdateRegularStrobe(Color.white);
 
+        // TODO: this does not need to be done each frame
         foreach (GameObject backdrop in backdrops)
         {
             backdrop.GetComponent<UnityEngine.UI.Image>().color = backdropColor;

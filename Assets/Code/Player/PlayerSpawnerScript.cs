@@ -7,71 +7,33 @@ using UnityEngine;
 
 public class PlayerSpawnerScript : MonoBehaviour
 {
-    List<String> knockOutMessages = new List<String>
-    {
-        "KNOCK OUT!!!",
-        "BLASTED!!!",
-        "DESTROYED!!!",
-        "PULVERIZED!!!",
-        "SMASHED!!!",
-        "ANNIHILATED!!!",
-        "GG!!!",
-        "OUTTA HERE!!!",
-        "SENT FLYING!!!",
-        "KABOOM!!!",
-        "BAM!!!",
-        "POW!!!",
-        "CRUSHED!!!",
-        "OBLITERATED!!!",
-        "DEVASTATED!!!",
-        "TOASTED!!!",
-        "WASTED!!!",
-        "DELETED!!!",
-        "REKT!!!",
-        "TERMINATED!!!",
-        "VAPORIZED!!!",
-        "EXECUTED!!!",
-        "OBLITERATED!!!",
-        "HOME RUN!!!",
-        "ERASED!!!",
-        "SHATTERED!!!",
-        "FLATTENED!!!",
-        "SLAMMED!!!",
-        "CRATERED!!!",
-        "EXTERMINATED!!!",
-        "TOTALLED!!!",
-        "DEMOLISHED!!!",
-        "LAUNCHED!!!",
-        "SEE YA!!!",
-        "BOOM!!!",
-        "TORCHED!!!",
-        "FRIED!!!",
-        "BYE BYE!!!",
-        "D'OOOOOOOOH!!!",
-        "Well done.",
-        "TAKE THAT!!!",
-        "EJECTED!!!",
-        "GAME OVER!!!",
-        "NEVER GONNA GIVE YOU UP!!! " +
-        "NEVER GONNA LET YOU DOWN!!! " +
-        "NEVER GONNA RUN AROUND AND DESERT YOU!!! " +
-        "NEVER GONNA"
-    };
-
     public GameObject playerPrefab;
     public PlayerSplashScript splashScript;
     public GameObject killStripe;
+    public GameObject platform;
     GameObject currPlayer;
 
     public float killDur = 1, killPow = 1;
 
     public float leftBound = 25, rightBound = 25, bottomBound = 15, topBound = 100;
+    public float platformDur = 2;
+    public int startStocks = 3;
+
+    int currStocks = 0;
+
+    float platformTimer;
 
     void Respawn()
     {
+        // Initialize player
         currPlayer = Instantiate(playerPrefab, transform);
         Camera.main.GetComponent<CameraScript>().FocalPoints.Add(currPlayer);
         currPlayer.GetComponent<AttackPhysicsScript>().playerSplashScript = splashScript;
+
+        // Update platform and splash
+        platformTimer = platformDur;
+        splashScript.SetStocks(currStocks);
+        splashScript.SetPercent(0);
     }
 
     void Kill()
@@ -84,27 +46,45 @@ public class PlayerSpawnerScript : MonoBehaviour
         GameObject killStripeInstance = Instantiate(killStripe);
         killStripeInstance.GetComponent<KillStripeScript>().Place(currPlayer.transform.position);
         killStripeInstance.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
-        killStripeInstance.GetComponentInChildren<TMP_Text>().text = knockOutMessages[UnityEngine.Random.Range(0, knockOutMessages.Count - 1)];
-        MeshRenderer meshRenderer = killStripeInstance.GetComponentInChildren<MeshRenderer>();
-        meshRenderer.sortingLayerName = "Default"; // Or whatever layer your sprites use
-        meshRenderer.sortingOrder = 0; // Match your sprites' sorting order
-        killStripeInstance.GetComponentInChildren<TMP_Text>().fontMaterial.renderQueue = 3000; // Default render queue for opaque sprites
 
-        cameraScript.FocalPoints.Remove(cameraScript.FocalPoints.Find(fp => fp == currPlayer));
+        // Delete player
+        GameObject instance = cameraScript.FocalPoints.Find(fp => fp == currPlayer);
+        if (instance != null)
+        {
+            cameraScript.FocalPoints.Remove(instance);
+        }
         GameObject.Destroy(currPlayer);
-        Respawn();
 
-        splashScript.SetPercent(0);
+        currStocks = Math.Max(0, currStocks - 1);
+        Respawn();
     }
 
-    void Start() { Respawn(); }
+    void Reset()
+    {
+        currStocks = startStocks;
+        Respawn();
+    }
+
+    public bool IsDead() { return currStocks <= 0; }
+
+    void Start() { Reset(); }
 
     void Update()
     {
+        // Kill player if out of bounds
         Vector3 currPos = currPlayer.transform.position;
         if (currPos.x < -leftBound) { Kill(); }
         else if (currPos.x > rightBound) { Kill(); }
         else if (currPos.y < -bottomBound) { Kill(); }
         else if (currPos.y > topBound) { Kill(); }
+
+        // Enable platform if player recently respawned
+        if (platformTimer > 0)
+        {
+            platformTimer -= Time.deltaTime;
+            platform.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
+            platform.SetActive(true);
+        }
+        else { platform.SetActive(false); }
     }
 }
