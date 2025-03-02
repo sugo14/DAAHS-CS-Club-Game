@@ -21,6 +21,8 @@ public class CameraScript : MonoBehaviour
         aspectRatio = (float)Screen.width / (float)Screen.height;
     }
 
+    void Update() { Time.timeScale = Mathf.Min(freezeFactors.ToArray()); }
+
     // Needs to be ran in the same update loop as the focal points' movement
     void FixedUpdate()
     {
@@ -41,8 +43,6 @@ public class CameraScript : MonoBehaviour
                 i--;
             }
         }
-
-        Time.timeScale = Mathf.Min(freezeFactors.ToArray());
 
         // Find the maximum and minimum x and y coordinates of all focal points
         foreach (GameObject focalPoint in FocalPoints)
@@ -116,7 +116,7 @@ public class CameraScript : MonoBehaviour
         if (freeze) { frozenCount++; }
         freezeFactors.Add(factor);
         yield return new WaitForSecondsRealtime(duration);
-        freezeFactors.Remove(freezeFactors.Find(fac => fac == factor));
+        freezeFactors.Remove(factor);
         if (freeze) { frozenCount--; }
     }
 
