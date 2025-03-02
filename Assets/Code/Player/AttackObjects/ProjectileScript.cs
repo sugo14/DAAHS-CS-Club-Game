@@ -104,7 +104,7 @@ public class ProjectileScript : MonoBehaviour
     {
         //Get hit objects attack physics script
         AttackPhysicsScript attackScript = collider.gameObject.GetComponent<AttackPhysicsScript>();
-        if (collider.gameObject.GetComponent<AttackPhysicsScript>() != null)
+        if (attackScript != null)
         {
             //Hit the object it it colliding with doing damage and knockback
             attackScript.OnHit(DamageAmount, AttackStrength, this.transform.position);

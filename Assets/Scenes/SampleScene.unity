@@ -458,6 +458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5631593874464229575, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.151063
@@ -498,6 +502,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6420274362212393354, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420274362212393354, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: 3cb68c6a-70c1-47b6-8f2e-2d807dab556b
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420274362212393354, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: 'UI/Select[/Keyboard/space]'
+      objectReference: {fileID: 0}
     - target: {fileID: 7590458150183652798, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: percentText
       value: 
@@ -506,6 +522,14 @@ PrefabInstance:
       propertyPath: playerSplashScript
       value: 
       objectReference: {fileID: 5016228884155755088}
+    - target: {fileID: 9185677714094547162, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0162643
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185677714094547162, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -533,13 +557,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSprite: {fileID: 21300000, guid: d2935ab1eba3e7543884a046bf5f12dc, type: 3}
   TotalDamageDelt: 0
-  IsChargingAttackSide: 0
-  IsChargingAttackDown: 0
-  IsChargingAttackUp: 0
   SideAttackChargeTime: 1
   UpAttackChargeTime: 0.5
   DownAttackChargeTime: 0.5
-  ChargeTime: 0
   DevDoSideAttack: 0
   DevLeftRight: 0
   DevDoVerticalAttack: 0
@@ -721,8 +741,8 @@ Transform:
   m_GameObject: {fileID: 740755997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 2.5, z: 1}
+  m_LocalPosition: {x: 3, y: 3, z: 0}
+  m_LocalScale: {x: 0.625, y: 1.28125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

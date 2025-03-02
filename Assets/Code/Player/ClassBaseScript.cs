@@ -17,14 +17,14 @@ public abstract class ClassBaseScript : MonoBehaviour
     //Stat of the total damage done, NOT used for anything currently
     public float TotalDamageDelt;
 
-    public bool IsChargingAttackSide;
-    public bool IsChargingAttackDown;
-    public bool IsChargingAttackUp;
+    protected bool IsChargingAttackSide;
+    protected bool IsChargingAttackDown;
+    protected bool IsChargingAttackUp;
 
     public float SideAttackChargeTime = 1;
     public float UpAttackChargeTime = 1;
     public float DownAttackChargeTime = 1;
-    public float ChargeTime;
+    protected float ChargeTime;
 
 
     // Start is called before the first frame update
@@ -33,6 +33,8 @@ public abstract class ClassBaseScript : MonoBehaviour
         //Get sprite renderer child of player
         //TODO move sprite render and component on player instead of child, make sprite render not streched.
         this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = PlayerSprite;
+
+
     }
 
     // Update is called once per frame
