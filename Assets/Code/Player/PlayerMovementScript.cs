@@ -221,15 +221,29 @@ public class PlayerMovementScript : MonoBehaviour
     {
         float accel = grounded ? GroundAcceleration : AirAcceleration;
         // allow player to move when they are not already moving faster than the max speed
-        if (RB.velocityX < MaxHorizontalSpeed && horizontalInput > 0f)
+        if (RB.velocityX < MaxHorizontalSpeed * horizontalInput && horizontalInput > 0f)
         {
-            RB.AddForce(new Vector2(accel * horizontalInput, 0), ForceMode2D.Impulse);
+            if (RB.velocityX + (accel * horizontalInput) < MaxHorizontalSpeed)
+            {
+                RB.AddForce(new Vector2(accel * horizontalInput, 0), ForceMode2D.Impulse);
+            }
+            else
+            {
+                RB.velocityX = MaxHorizontalSpeed;
+            }
         }
-        else if (RB.velocityX > -MaxHorizontalSpeed && horizontalInput < 0f)
+        else if (RB.velocityX > -MaxHorizontalSpeed * -horizontalInput && horizontalInput < 0f)
         {
-            RB.AddForce(new Vector2(accel * horizontalInput, 0), ForceMode2D.Impulse);
-        }
+            if (RB.velocityX + (accel * horizontalInput) > -MaxHorizontalSpeed)
+            {
+                RB.AddForce(new Vector2(accel * horizontalInput, 0), ForceMode2D.Impulse);
+            }
+            else
+            {
+                RB.velocityX = -MaxHorizontalSpeed;
 
+            }
+        }
         // decelerate horizontally when no input in the same direction is registered
         // TODO: potentially make this an impulse based system, rather than directly modifying velocity?
         // not sure if that matters but something to consider
@@ -324,7 +338,6 @@ public class PlayerMovementScript : MonoBehaviour
 
         // recording the last grounded
         groundedLast = grounded;
-
         
     }
 
@@ -377,7 +390,6 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (currentMovement.y < -decDeadZone)
         {
-            Debug.Log(speedFalling);
             speedFalling = true;
             dropThroughTriger = true;
         }
