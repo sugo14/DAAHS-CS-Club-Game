@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6420274362212393354, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6420274362212393354, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_ActionId
@@ -67,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 7590458150183652798, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: percentText
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819567898317729845, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
