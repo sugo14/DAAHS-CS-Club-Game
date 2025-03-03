@@ -129,4 +129,17 @@ public class CameraScript : MonoBehaviour
     {
         StartCoroutine(FreezeFrameEffect(factor, duration, freeze));
     }
+
+    public void AddFocalPoint(GameObject focalPoint) { FocalPoints.Add(focalPoint); }
+
+    public void RemoveFocalPoint(GameObject focalPoint)
+    {
+        GameObject instance = FocalPoints.Find(fp => fp == focalPoint);
+        if (instance == null)
+        {
+            Debug.Log("Attempted to remove a focal point that does not exist.");
+            return;
+        }
+        FocalPoints.Remove(instance);
+    }
 }

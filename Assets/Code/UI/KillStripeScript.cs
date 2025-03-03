@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -92,7 +91,7 @@ public class KillStripeScript : MonoBehaviour
         // vertically flip the text if it would be upside down otherwise
         if (angle >= 90 && angle <= 270)
         {
-            text.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 180);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 180));
         }
     }
 

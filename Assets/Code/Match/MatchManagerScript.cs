@@ -41,7 +41,7 @@ public class MatchManagerScript : MonoBehaviour
             backdrop.color = player2Spawner.splashScript.backdropColor;
         }
 
-        float elapsed = 0f, duration = 1f;
+        float elapsed = 0f, duration = 2f;
         float startScale = 0f, endScale = 1f;
         
         while (elapsed < duration)
