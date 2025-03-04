@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HurtBoxScript : MonoBehaviour
 {
-    public int HitDamage = 10;
+    public int HitDamage = 5;
     public float AttackStrength = 1;
 
     void OnTriggerEnter2D(Collider2D collider)

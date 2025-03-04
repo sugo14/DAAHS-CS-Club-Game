@@ -13,6 +13,7 @@ public class PlayerMovementScript : MonoBehaviour
     public Rigidbody2D RB;
     public GameObject SRObject;
     public LayerMask GroundLayer;
+    public ClassBaseScript playerClass;
 
     // Movement
     public float MaxHorizontalSpeed = 8f;
@@ -65,6 +66,9 @@ public class PlayerMovementScript : MonoBehaviour
     void Start()
     {
         currDoubleJumps = MaxDoubleJumps;
+
+        //Get Refrence to the Class
+        playerClass = GetComponent<ClassBaseScript>();
     }
 
     // debugging function for collisions
