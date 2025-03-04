@@ -28,8 +28,9 @@ public class ZuesClass : ClassBaseScript
 
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         //Dev testing side attack
         if (DevDoSideAttack != DevDoSideAttackOld)
         {
@@ -50,10 +51,7 @@ public class ZuesClass : ClassBaseScript
             // Save the current state of the check box
             DevDoVerticalAttackOld = DevDoVerticalAttack;
         }
-        if (IsChargingAttackSide || IsChargingAttackDown || IsChargingAttackUp)
-        {
-            ChargeTime += Time.deltaTime;
-        }
+
         if (IsChargingAttackSide && (ChargeTime >= SideAttackChargeTime))
         {
             ShootSide();
@@ -95,33 +93,26 @@ public class ZuesClass : ClassBaseScript
 
     void ShootSide()
     {
-        //Creates a projectile and set all its releavent vars
-        GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
-        projectileObject.transform.position = this.transform.position;
-        ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
-
-        projectileScript.SetUp(this, 5, 1, HorizontalDistance, LeftRight, HorizontalSpeed);
+        CreateProjectile().SetUp(this, 5, 1, HorizontalDistance, LeftRight, HorizontalSpeed);
         ResetCharge();
     }
     void ShootUp()
     {
-        //Creates a projectile and set all its releavent vars
-        GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
-        projectileObject.transform.position = this.transform.position;
-        ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
-
-        projectileScript.SetUp(this, 3, 1, VerticalDistance, false, 0, true, UpProjectileSpeed);
+        CreateProjectile().SetUp(this, 3, 1, VerticalDistance, false, 0, true, UpProjectileSpeed);
         ResetCharge();
         //TODO Vertical Boost
     }
     void ShootDown()
     {
+        CreateProjectile().SetUp(this, 10, 1, VerticalDistance, false, 0, false, DownProjectileSpeed);
+        ResetCharge();
+    }
+    ProjectileScript CreateProjectile() {
         //Creates a projectile and set all its releavent vars
         GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
         projectileObject.transform.position = this.transform.position;
         ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
 
-        projectileScript.SetUp(this, 10, 1, VerticalDistance, false, 0, false, DownProjectileSpeed);
-        ResetCharge();
+        return projectileScript;
     }
 }
