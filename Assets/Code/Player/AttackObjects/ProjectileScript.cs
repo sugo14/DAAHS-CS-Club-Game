@@ -87,13 +87,13 @@ public class ProjectileScript : MonoBehaviour
     void MoveProjectile()
     {
         //Create vector of how to move
-        Vector3 MoveOffset = new Vector3(HorizontalMovmentAmount, VerticalMovmentAmount, 0);
+        Vector3 MoveOffset = new Vector3(HorizontalMovmentAmount, VerticalMovmentAmount, 0) * Time.deltaTime;
+        
         //update the position
         this.transform.position = this.transform.position + MoveOffset;
         //UnityEngine.Debug.Log(this.transform.position.x - startPositionX);
         //Destory the projectile if the location diffrence is more than the max distance it can travel. 
-        if (this.transform.position.x - startPositionX >= MaxDistance || this.transform.position.x - startPositionX <= MaxDistance * -1
-            || this.transform.position.y - startPositionY >= MaxDistance || this.transform.position.y - startPositionY <= MaxDistance * -1)
+        if (Mathf.Abs(transform.position.x - startPositionX) >= MaxDistance || Mathf.Abs(transform.position.y - startPositionY) >= MaxDistance)
         {
             Destroy(this.gameObject);
         }
@@ -113,5 +113,6 @@ public class ProjectileScript : MonoBehaviour
             //Destory the Projectile
             Destroy(this.gameObject);
         }
+        
     }
 }

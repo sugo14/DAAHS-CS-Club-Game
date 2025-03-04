@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
- 
+using System.Diagnostics;
+
 public class AttackPhysicsScript : MonoBehaviour
 {
     public PlayerSplashScript playerSplashScript;
@@ -62,14 +63,17 @@ public class AttackPhysicsScript : MonoBehaviour
             //{
             //    dir.x = 1;
             //}
-
-            dir.x = (this.transform.position.x+20)  - (AttackedFromPos.x+20);
-            Debug.Log(dir.x);
-            dir.y = this.transform.position.y - AttackedFromPos.y + 0.5f;
-            Debug.Log(dir.y);
+            
+            dir.x = this.transform.position.x - AttackedFromPos.x;
+            
+            dir.y = this.transform.position.y - AttackedFromPos.y;
+            UnityEngine.Debug.Log(this.transform.position.x);
+            UnityEngine.Debug.Log(AttackedFromPos.x);
             // Increase the Damage
             Damage = Damage + HitDamage;
-
+            UnityEngine.Debug.Log(dir);
+            dir.Normalize();
+            UnityEngine.Debug.Log(dir);
             // Set the knockback values
             // Horizontal is either positive or negative dpending on Dir and the damage multiplied by attack strength
             float horizontalForce = dir.x * Damage * AttackStrength;
@@ -81,9 +85,9 @@ public class AttackPhysicsScript : MonoBehaviour
                 ClassScript.ResetCharge();
             }
 
-            RB.AddForce(new Vector2(horizontalForce, verticalForce), ForceMode2D.Impulse);
+            RB.AddForce(new Vector2(horizontalForce, verticalForce + .25f), ForceMode2D.Impulse);
             //Update Precent text
-            if(playerSplashScript != null) 
+            if (playerSplashScript != null) 
             {
                 playerSplashScript.SetPercent((int)Damage - 10);
             }  

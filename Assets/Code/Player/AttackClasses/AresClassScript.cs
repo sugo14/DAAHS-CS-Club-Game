@@ -14,15 +14,15 @@ public class AresClass : ClassBaseScript
     public bool DevDoVerticalAttack;
     bool DevDoVerticalAttackOld;
     public bool DevDownUp;
+
+    public GameObject swordClass;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         //Dev testing side attack
         if (DevDoSideAttack != DevDoSideAttackOld)
         {
@@ -47,31 +47,87 @@ public class AresClass : ClassBaseScript
         if (IsChargingAttackSide && (ChargeTime >= SideAttackChargeTime))
         {
             SideSword();
+        }
+        if (IsChargingAttackUp && (ChargeTime >= UpAttackChargeTime))
+        {
+            UpSword();
+
+        }
+        if (IsChargingAttackDown && (ChargeTime >= DownAttackChargeTime))
+        {
+            DownSword();
 
         }
     }
-     public override void AttackSide(bool InLeftRight)
+    public override void AttackSide(bool InLeftRight)
     {
-        UnityEngine.Debug.Log("DevMelee AttackSide");
         if (!IsChargingAttackSide || !IsChargingAttackDown || !IsChargingAttackUp)
         {
             IsChargingAttackSide = true;
             LeftRight = InLeftRight;
-            UnityEngine.Debug.Log("Charging AttackSide");
 
         }
     }
     public override void AttackUp()
     {
-        UnityEngine.Debug.Log("DevMelee AttackUp");
+        if (!IsChargingAttackSide || !IsChargingAttackDown || !IsChargingAttackUp)
+        {
+            IsChargingAttackUp = true;
+
+
+        };
     }
     public override void AttackDown()
     {
-        UnityEngine.Debug.Log("DevMelee AttackDown");
+        if (!IsChargingAttackSide || !IsChargingAttackDown || !IsChargingAttackUp)
+        {
+            IsChargingAttackDown = true;
+
+        }
     }
 
-    private void SideSword()
+    void SideSword()
     {
-        UnityEngine.Debug.Log("Side Sword");
+
+        GameObject swordObject = Instantiate(swordClass, this.transform.position, Quaternion.identity);
+        swordObject.transform.SetParent(this.transform);
+        SwordScript swordScript = swordObject.GetComponent<SwordScript>();
+        if (!LeftRight)
+        {
+            swordObject.transform.localPosition = new Vector2(0f, 0f);
+            swordObject.transform.rotation = Quaternion.Euler(0, 0, -90);
+            swordScript.SetUp(this, new Vector2(2f, 0f), 8, 10, 1);
+        }
+        else
+        {
+            swordObject.transform.localPosition = new Vector2(0f, 0f);
+            swordObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+            swordScript.SetUp(this, new Vector2(-2f, 0f), 8, 10, 1);
+        }
+
+
+
+        ResetCharge();
+    }
+    void UpSword()
+    {
+        GameObject swordObject = Instantiate(swordClass, this.transform.position, Quaternion.identity);
+        swordObject.transform.SetParent(this.transform);
+        SwordScript swordScript = swordObject.GetComponent<SwordScript>();
+        swordObject.transform.localPosition = new Vector2(0, 0);
+        swordScript.SetUp(this, new Vector2(0, 3), 10, 15, 1);
+
+        ResetCharge();
+    }
+    void DownSword()
+    {
+        GameObject swordObject = Instantiate(swordClass, this.transform.position, Quaternion.identity);
+        swordObject.transform.SetParent(this.transform);
+        SwordScript swordScript = swordObject.GetComponent<SwordScript>();
+        swordObject.transform.localPosition = new Vector2(.5f, -1);
+        swordObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+        swordScript.SetUp(this, new Vector2(-.5f, -1), 10, 5, 1.5f);
+
+        ResetCharge();
     }
 }

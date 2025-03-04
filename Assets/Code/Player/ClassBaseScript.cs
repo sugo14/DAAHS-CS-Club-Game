@@ -38,9 +38,12 @@ public abstract class ClassBaseScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        if (IsChargingAttackSide || IsChargingAttackDown || IsChargingAttackUp)
+        {
+            ChargeTime += Time.deltaTime;
+        }
     }
 
     //Add to the total Damage Stat
