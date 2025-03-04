@@ -25,10 +25,6 @@ public GameObject swordClass;
 
     bool LeftRight;
     public bool MeleeOrRanged;
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     protected override void Update()

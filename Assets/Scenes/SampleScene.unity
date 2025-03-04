@@ -943,7 +943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1337171941140626235, guid: 385554ba87351b4488f27126ef1925f5, type: 3}
       propertyPath: m_text
-      value: Player 2
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 1502583378205761441, guid: 385554ba87351b4488f27126ef1925f5, type: 3}
       propertyPath: m_AnchorMax.y

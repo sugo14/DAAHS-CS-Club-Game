@@ -14,6 +14,7 @@ public class PlayerMovementScript : MonoBehaviour
     public GameObject SRObject;
     public LayerMask GroundLayer;
     public ClassBaseScript playerClass;
+    public DemoClassScript attackScript;
 
     // Movement
     public float MaxHorizontalSpeed = 8f;
@@ -415,6 +416,27 @@ public class PlayerMovementScript : MonoBehaviour
                 dashQueued = true;
                 queuedDashLife = bufferedDashLifeTime;
             }
+        }
+    }
+
+
+    public void MeleeAttack(InputAction.CallbackContext context)
+    {
+        if (currentMovement.y > 0.1)
+        {
+            attackScript.DemoUp(true);
+        }
+        else if (currentMovement.y < -0.1)
+        {
+            attackScript.DemoDown(true);
+        }
+        else if (currentMovement.x > 0.1)
+        {
+            attackScript.DemoSide(false, true);
+        }
+        else if (currentMovement.x < -0.1)
+        {
+            attackScript.DemoSide(true, true);
         }
     }
 

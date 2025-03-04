@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_DemoVarient
       objectReference: {fileID: 0}
+    - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: attackScript
+      value: 
+      objectReference: {fileID: 3489949547193202183}
     - target: {fileID: 5631593874464229575, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -75,6 +79,18 @@ PrefabInstance:
     - target: {fileID: 6420274362212393354, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_ActionName
       value: 'UI/Select[/Keyboard/space]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420274362212393354, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420274362212393354, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420274362212393354, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7590458150183652798, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: percentText
