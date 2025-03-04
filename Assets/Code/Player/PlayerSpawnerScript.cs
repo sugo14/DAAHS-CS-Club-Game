@@ -54,7 +54,9 @@ public class PlayerSpawnerScript : MonoBehaviour
         Destroy(currPlayer);
 
         currStocks = Math.Max(0, currStocks - 1);
+        splashScript.SetStocks(currStocks);
         spawnCircle.SetActive(true);
+        AudioManager.PlaySound("Death1");
 
         yield return new WaitForSecondsRealtime(respawnTime);
         Respawn();

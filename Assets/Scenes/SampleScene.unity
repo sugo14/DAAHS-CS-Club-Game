@@ -365,13 +365,25 @@ MonoBehaviour:
   - name: Step1
     clip: {fileID: 8300000, guid: 68f2a5a935deb2840ae58e1aa3402a8f, type: 3}
     loop: 0
-    volume: 0.5
+    volume: 0.4
     pitch: 1
     source: {fileID: 0}
   - name: Jump1
     clip: {fileID: 8300000, guid: b77e71c19d5ed844f9b62c17ec2aad55, type: 3}
     loop: 0
     volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Death1
+    clip: {fileID: 8300000, guid: 85afabb4a6a150c4e977830d3edc7efc, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Dash1
+    clip: {fileID: 8300000, guid: 7b10f1efc2580c642b7dddf6bcf36c57, type: 3}
+    loop: 0
+    volume: 0.5
     pitch: 1
     source: {fileID: 0}
 --- !u!4 &322969619
@@ -383,7 +395,7 @@ Transform:
   m_GameObject: {fileID: 322969617}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 978.78845, y: 636.9968, z: -7.881703}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

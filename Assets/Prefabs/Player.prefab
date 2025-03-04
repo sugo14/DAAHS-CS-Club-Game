@@ -328,7 +328,7 @@ MonoBehaviour:
     soundProfile:
       soundName: Step1
       repeats: 1
-      repeatTime: 0.3
+      repeatTime: 0.18
   - state: 0
     soundProfile:
       soundName: Step1

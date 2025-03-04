@@ -15,14 +15,14 @@ public class SoundProfile
         wasLastActive = false;
     }
 
-    void Initialize()
+    public void Initialize()
     {
         Reset();
     }
 
     void Play()
     {
-        Object.FindAnyObjectByType<AudioManager>().PlaySound(soundName);
+        AudioManager.PlaySound(soundName);
     }
 
     public void Update(bool isActive)

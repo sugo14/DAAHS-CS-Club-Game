@@ -265,6 +265,7 @@ public class PlayerMovementScript : MonoBehaviour
         // jumping when on ground with a queued jump
         if (jumpQueued && grounded)
         {
+            AudioManager.PlaySound("Jump1");
             RB.velocityY = JumpForce;
             jumpedLast = true;
             jumpQueued = false;
@@ -349,6 +350,7 @@ public class PlayerMovementScript : MonoBehaviour
     public void DoDash(Vector2 dir)
     {
         // Debug.Log("dash");
+        AudioManager.PlaySound("Dash1");
         RB.AddForce(new Vector2(dir.x * dashForce, dir.y * dashForce), ForceMode2D.Impulse);
         canDash = false;
     }
@@ -408,12 +410,14 @@ public class PlayerMovementScript : MonoBehaviour
             if (IsGrounded() && !InPlatform())
             {
                 // jump
+                AudioManager.PlaySound("Jump1");
                 RB.velocityY = JumpForce;
                 jumpedLast = true;
 
             }
             else if (currDoubleJumps > 0)
             {
+                AudioManager.PlaySound("Jump1");
                 RB.velocityY = JumpForce;
                 if (coyoteTime)
                 {

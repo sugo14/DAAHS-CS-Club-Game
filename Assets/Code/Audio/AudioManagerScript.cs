@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Audio system by Brackeys
@@ -9,9 +10,19 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
+    static AudioManager instance;
+
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
 
         foreach (Sound sound in sounds)
         {
@@ -23,9 +34,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(string name)
+    public static void PlaySound(string name)
     {
-        Sound sound = Array.Find(sounds, sound => sound.name == name);
+        Sound sound = Array.Find(instance.sounds, sound => sound.name == name);
         if (sound == null)
         {
             Debug.LogWarning($"Attempted to play sound \"{name}\" that does not exist.");
