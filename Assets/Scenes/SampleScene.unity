@@ -1158,7 +1158,7 @@ PrefabInstance:
     - target: {fileID: 939868575066891139, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 4923109677055240254, guid: 052bac9904ec61449b615ef686ba936b, type: 3}
+      objectReference: {fileID: 4923109677055240254, guid: 345185c3c52657e46912dbb8e7ffa492, type: 3}
     - target: {fileID: 939868575066891139, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: splashScript
       value: 
@@ -2013,7 +2013,7 @@ PrefabInstance:
     - target: {fileID: 939868575066891139, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 4923109677055240254, guid: 690cf903a3cf07645ae26acabc440c4d, type: 3}
+      objectReference: {fileID: 4923109677055240254, guid: 345185c3c52657e46912dbb8e7ffa492, type: 3}
     - target: {fileID: 939868575066891139, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: splashScript
       value: 
