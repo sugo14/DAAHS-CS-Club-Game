@@ -57,7 +57,9 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  MaxHorizontalSpeed: 8
+  playerClass: {fileID: 0}
+  attackScript: {fileID: 0}
+  MaxHorizontalSpeed: 12
   maxFallingSpeed: 12
   maxFastFallingSpeed: 32
   deadZone: 15
@@ -90,7 +92,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -272,8 +274,12 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3cb68c6a-70c1-47b6-8f2e-2d807dab556b
     m_ActionName: 'UI/Select[/Keyboard/space]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9e025fe4-483b-4759-81c3-421bb8582717
+    m_ActionName: 'Player/Special[/Keyboard/q]'
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
