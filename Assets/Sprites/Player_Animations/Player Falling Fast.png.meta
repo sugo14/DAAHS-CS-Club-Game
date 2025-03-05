@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 5e1f8f49cd5bbe84187c5f0c54b28487
+guid: 0757b2a84a7ed0942bf6c80b994ee493
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8119931697947367210
-    second: CannonBall_0
+      213: -4662836644246803950
+    second: Player Falling Fast_0
+  - first:
+      213: -4450702562083327298
+    second: Player Falling Fast_1
+  - first:
+      213: 499811786430565351
+    second: Player Falling Fast_2
+  - first:
+      213: -7553845374016331959
+    second: Player Falling Fast_3
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 6
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CannonBall_0
+      name: Player Falling Fast_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 192
-        height: 192
+        x: 9
+        y: 31
+        width: 14
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +133,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6d8a9675425305f80800000000000000
-      internalID: -8119931697947367210
+      spriteID: 21aaefdd6c64a4fb0800000000000000
+      internalID: -4662836644246803950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Falling Fast_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 31
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb23a12c99deb32c0800000000000000
+      internalID: -4450702562083327298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Falling Fast_2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eb4fb0fb20bfe600800000000000000
+      internalID: 499811786430565351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Falling Fast_3
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94f578187a95b2790800000000000000
+      internalID: -7553845374016331959
       vertices: []
       indices: 
       edges: []
@@ -141,7 +213,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CannonBall_0: -8119931697947367210
+      Player Falling Fast_0: -4662836644246803950
+      Player Falling Fast_1: -4450702562083327298
+      Player Falling Fast_2: 499811786430565351
+      Player Falling Fast_3: -7553845374016331959
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
