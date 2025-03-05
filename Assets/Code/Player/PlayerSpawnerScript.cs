@@ -13,6 +13,8 @@ public class PlayerSpawnerScript : MonoBehaviour
     public GameObject platform;
     GameObject currPlayer;
 
+    public Color playerTint;
+
     public float killDur = 1, killPow = 1;
 
     public float leftBound = 25, rightBound = 25, bottomBound = 15, topBound = 100;
@@ -29,6 +31,10 @@ public class PlayerSpawnerScript : MonoBehaviour
         currPlayer = Instantiate(playerPrefab, transform);
         Camera.main.GetComponent<CameraScript>().FocalPoints.Add(currPlayer);
         currPlayer.GetComponent<AttackPhysicsScript>().playerSplashScript = splashScript;
+        currPlayer.layer = LayerMask.NameToLayer("Players");
+        currPlayer.GetComponentInChildren<SpriteRenderer>().color = playerTint;
+        
+
 
         // Update platform and splash
         platformTimer = platformDur;

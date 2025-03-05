@@ -14,12 +14,13 @@ public class PlayerMovementScript : MonoBehaviour
     public GameObject SRObject;
     public LayerMask GroundLayer;
     public ClassBaseScript playerClass;
+    public DemoClassScript attackScript;
 
     // Movement
     public float MaxHorizontalSpeed = 8f;
     public float maxFallingSpeed = 12f;
     public float maxFastFallingSpeed = 32;
-    public float deadZone = 15f;
+    public float deadZone = 25f;
     public float JumpForce = 18f;
     public float bufferedJumpLifeTime = 0.2f;
     public float dashForce = 20;
@@ -39,6 +40,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     // Movement
     Vector2 currentMovement;
+    Vector2 lastMovement = new Vector2(0, 0);
     float horizontalInput;
     bool speedFalling = false;
     bool canDash = true;
@@ -61,6 +63,10 @@ public class PlayerMovementScript : MonoBehaviour
     bool canDropThrough = false;
     int dropThroughCounter = 0;
     float dropAheadOverhead = 0.3f;
+    // Attack
+    bool isAttack = false;
+    float afterAttackWait = 0.8f;
+    float attackTimer = 0;
 
 
     void Start()
@@ -206,7 +212,7 @@ public class PlayerMovementScript : MonoBehaviour
             }
         }
 
-        //  coyote time countdown timer
+        // coyote time countdown timer
         if (coyoteTime)
         {
             coyoteTimeCountdown -= Time.deltaTime;
@@ -217,7 +223,16 @@ public class PlayerMovementScript : MonoBehaviour
             }
         }
 
-
+        // adding a delay from fall-through and down attacks
+        if (isAttack && attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0)
+            {
+                isAttack = false;
+                attackTimer = 0;
+            }
+        }
     }
 
     // is called at same rate as Unity physics so rigidbody physics should be done here
@@ -225,15 +240,29 @@ public class PlayerMovementScript : MonoBehaviour
     {
         float accel = grounded ? GroundAcceleration : AirAcceleration;
         // allow player to move when they are not already moving faster than the max speed
-        if (RB.velocityX < MaxHorizontalSpeed && horizontalInput > 0f)
+        if (RB.velocityX < MaxHorizontalSpeed * horizontalInput && horizontalInput > 0f)
         {
-            RB.AddForce(new Vector2(accel * horizontalInput, 0), ForceMode2D.Impulse);
+            if (RB.velocityX + (accel * horizontalInput) < MaxHorizontalSpeed)
+            {
+                RB.AddForce(new Vector2(accel * horizontalInput, 0), ForceMode2D.Impulse);
+            }
+            else
+            {
+                RB.velocityX = MaxHorizontalSpeed;
+            }
         }
-        else if (RB.velocityX > -MaxHorizontalSpeed && horizontalInput < 0f)
+        else if (RB.velocityX > -MaxHorizontalSpeed * -horizontalInput && horizontalInput < 0f)
         {
-            RB.AddForce(new Vector2(accel * horizontalInput, 0), ForceMode2D.Impulse);
-        }
+            if (RB.velocityX + (accel * horizontalInput) > -MaxHorizontalSpeed)
+            {
+                RB.AddForce(new Vector2(accel * horizontalInput, 0), ForceMode2D.Impulse);
+            }
+            else
+            {
+                RB.velocityX = -MaxHorizontalSpeed;
 
+            }
+        }
         // decelerate horizontally when no input in the same direction is registered
         // TODO: potentially make this an impulse based system, rather than directly modifying velocity?
         // not sure if that matters but something to consider
@@ -309,7 +338,7 @@ public class PlayerMovementScript : MonoBehaviour
         }
 
         // Triggering drop through 
-        if (canDropThrough && BoxCollider.enabled && dropThroughTriger  && dropThroughCounter >= dropThroughHoldTime)
+        if (canDropThrough && BoxCollider.enabled && dropThroughTriger && !isAttack && dropThroughCounter >= dropThroughHoldTime)
         {
             // Debug.Log("drop called");
             BoxCollider.enabled = false;
@@ -328,7 +357,6 @@ public class PlayerMovementScript : MonoBehaviour
 
         // recording the last grounded
         groundedLast = grounded;
-
         
     }
 
@@ -373,6 +401,11 @@ public class PlayerMovementScript : MonoBehaviour
             currentMovement.y = 0;
         }
 
+        if (Math.Abs(lastMovement.x) < Math.Abs(currentMovement.x) || Math.Abs(lastMovement.y) < Math.Abs(currentMovement.y))
+        {
+            lastMovement = currentMovement;
+        }
+
         horizontalInput = currentMovement.x;
 
         // checking for "down" being pressed
@@ -381,7 +414,6 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (currentMovement.y < -decDeadZone)
         {
-            Debug.Log(speedFalling);
             speedFalling = true;
             dropThroughTriger = true;
         }
@@ -403,6 +435,77 @@ public class PlayerMovementScript : MonoBehaviour
                 dashQueued = true;
                 queuedDashLife = bufferedDashLifeTime;
             }
+        }
+    }
+
+
+    public void MeleeAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isAttack = true;
+
+            if (Math.Abs(lastMovement.x) >= Math.Abs(lastMovement.y))
+            {
+                if (lastMovement.x >= 0)
+                {
+                    attackScript.DemoSide(false, false);
+                }
+                else if (lastMovement.x < 0)
+                {
+                    attackScript.DemoSide(true, false);
+                }
+            }
+            else
+            {
+                if (lastMovement.y >= 0)
+                {
+                    attackScript.DemoUp(false);
+                }
+                else if (lastMovement.y < 0)
+                {
+                    attackScript.DemoDown(false);
+                }
+            }
+        }
+        else if (context.canceled)
+        {
+            attackTimer = afterAttackWait;
+        }
+    }
+
+    public void RangedAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isAttack = true;
+
+            if (Math.Abs(lastMovement.x) >= Math.Abs(lastMovement.y))
+            {
+                if (lastMovement.x >= 0)
+                {
+                    attackScript.DemoSide(false, true);
+                }
+                else if (lastMovement.x < 0)
+                {
+                    attackScript.DemoSide(true, true);
+                }
+            }
+            else
+            {
+                if (lastMovement.y >= 0)
+                {
+                    attackScript.DemoUp(true);
+                }
+                else if (lastMovement.y < 0)
+                {
+                    attackScript.DemoDown(true);
+                }
+            }
+        }
+        else if (context.canceled)
+        {
+            attackTimer = afterAttackWait;
         }
     }
 

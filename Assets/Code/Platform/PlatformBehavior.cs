@@ -19,7 +19,7 @@ public class NewBehaviourScript : MonoBehaviour
         // setting proproties
         if (isPassthrough)
         {
-            SR.color = new Color(0.2f, 0.4f, 0.2f);
+            SR.color = Color.black;
             BoxCollider.usedByEffector = true;
             transform.gameObject.tag = "Passthrough";
         }
