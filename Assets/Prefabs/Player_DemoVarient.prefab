@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 6218999260334242972, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7b3e6426e5a0f1e4e93f3e80d8748471, type: 3}
+      objectReference: {fileID: -2049996745, guid: 254f96dc38236164f8312a9c232568ab, type: 3}
     - target: {fileID: 6218999260334242972, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -156,6 +156,18 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.85
       objectReference: {fileID: 0}
+    - target: {fileID: 9185677714094547162, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185677714094547162, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185677714094547162, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -192,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b172fa8561bd464aa7997dbfd459c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSprite: {fileID: 21300000, guid: 7b3e6426e5a0f1e4e93f3e80d8748471, type: 3}
+  PlayerSprite: {fileID: -2049996745, guid: 254f96dc38236164f8312a9c232568ab, type: 3}
   TotalDamageDelt: 0
   SideAttackChargeTime: 0.3
   UpAttackChargeTime: 0.2

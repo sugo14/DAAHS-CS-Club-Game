@@ -68,7 +68,7 @@ MonoBehaviour:
   dashForce: 20
   dashTest: 0
   bufferedDashLifeTime: 0.2
-  dropThroughHoldTime: 10
+  dropThroughHoldTime: 4
   dropAheadSpeedModifier: 0.05
   coyoteTimeThreshold: 0.2
   AirAcceleration: 3

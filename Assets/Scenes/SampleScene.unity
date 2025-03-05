@@ -386,6 +386,24 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
+  - name: Hit1
+    clip: {fileID: 8300000, guid: 42a2e6ee1d292b44e885bf409cb4d960, type: 3}
+    loop: 0
+    volume: 0.9
+    pitch: 1
+    source: {fileID: 0}
+  - name: Victory1
+    clip: {fileID: 8300000, guid: a665a9d0d1d30c2449d07b3f2eff2926, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Respawn1
+    clip: {fileID: 8300000, guid: 7e9ebc0c11c5dd4428c94053d21a7f6e, type: 3}
+    loop: 0
+    volume: 0.5
+    pitch: 0.3
+    source: {fileID: 0}
 --- !u!4 &322969619
 Transform:
   m_ObjectHideFlags: 0
@@ -483,7 +501,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1151,8 +1169,8 @@ MonoBehaviour:
   moveFactor: 1
   baseWidth: 50
   baseHeight: 28.125
-  nearColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
-  farColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+  nearColor: {r: 0, g: 0, b: 0, a: 1}
+  farColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
   squarePrefab: {fileID: 3489796077691894569, guid: ad48c7b9c1c12b64f97f3bdec5e3980b, type: 3}
 --- !u!4 &1404853725
 Transform:
@@ -1353,7 +1371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1009554526105754090, guid: 385554ba87351b4488f27126ef1925f5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 45
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 1009554526105754090, guid: 385554ba87351b4488f27126ef1925f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1525,7 +1543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1747936322
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1833,7 +1851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1009554526105754090, guid: 385554ba87351b4488f27126ef1925f5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 45
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 1009554526105754090, guid: 385554ba87351b4488f27126ef1925f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2055,3 +2073,4 @@ SceneRoots:
   - {fileID: 8295407819540216341}
   - {fileID: 1080499447}
   - {fileID: 799653083}
+  - {fileID: 322969619}

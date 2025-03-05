@@ -35,8 +35,6 @@ public class PlayerSpawnerScript : MonoBehaviour
         currPlayer.layer = LayerMask.NameToLayer("Players");
         currPlayer.GetComponentInChildren<SpriteRenderer>().color = playerTint;
         
-
-
         // Update platform and splash
         platformTimer = platformDur;
         splashScript.SetStocks(currStocks);
@@ -56,18 +54,28 @@ public class PlayerSpawnerScript : MonoBehaviour
 
         // Delete player
         cameraScript.RemoveFocalPoint(currPlayer);
-        cameraScript.AddFocalPoint(gameObject);
         Destroy(currPlayer);
 
         currStocks = Math.Max(0, currStocks - 1);
         splashScript.SetStocks(currStocks);
-        spawnCircle.SetActive(true);
         AudioManager.PlaySound("Death1");
+        splashScript.SetPercent(0);
+
+        if (currStocks > 0)
+        {
+            AudioManager.PlaySound("Respawn1");
+            cameraScript.AddFocalPoint(gameObject);
+            spawnCircle.SetActive(true);
+        }
 
         yield return new WaitForSecondsRealtime(respawnTime);
-        Respawn();
-        cameraScript.RemoveFocalPoint(gameObject);
-        spawnCircle.SetActive(false);
+
+        if (currStocks > 0)
+        {
+            Respawn();
+            cameraScript.RemoveFocalPoint(gameObject);
+            spawnCircle.SetActive(false);
+        }
     }
 
     void Kill() { StartCoroutine(OnKill()); }
@@ -85,8 +93,8 @@ public class PlayerSpawnerScript : MonoBehaviour
     void Update()
     {
         // Animate the spawn circle
-        float scale = 1.75f + Mathf.Sin(Time.time * 8) * 0.75f;
-        spawnCircle.transform.localScale = new Vector3(scale, scale, scale);
+        /* float scale = 1.75f + Mathf.Sin(Time.time * 8) * 0.75f;
+        spawnCircle.transform.localScale = new Vector3(scale, scale, scale); */
 
         if (currPlayer == null) { return; }
 

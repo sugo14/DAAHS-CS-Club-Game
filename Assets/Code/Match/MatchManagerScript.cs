@@ -24,6 +24,7 @@ public class MatchManagerScript : MonoBehaviour
     // this is incredibly hacky
     IEnumerator OnGameEnd(int winner)
     {
+        AudioManager.PlaySound("Victory1");
         if (winner == 1)
         {
             foreach (TMP_Text txt in text.GetComponentsInChildren<TMP_Text>())

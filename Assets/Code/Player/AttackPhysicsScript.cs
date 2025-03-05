@@ -49,6 +49,8 @@ public class AttackPhysicsScript : MonoBehaviour
     {
         if (RB != null && IsInvulnerable == false)
         {
+            AudioManager.PlaySound("Hit1");
+            
             // Create variable to store which way the character is pushed
             Vector2 dir = new Vector2(0,0);
 
