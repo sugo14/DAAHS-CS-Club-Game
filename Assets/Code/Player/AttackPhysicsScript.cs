@@ -71,9 +71,9 @@ public class AttackPhysicsScript : MonoBehaviour
             UnityEngine.Debug.Log(AttackedFromPos.x);
             // Increase the Damage
             Damage = Damage + HitDamage;
-            UnityEngine.Debug.Log(dir);
+            //UnityEngine.Debug.Log(dir);
             dir.Normalize();
-            UnityEngine.Debug.Log(dir);
+            //UnityEngine.Debug.Log(dir);
             // Set the knockback values
             // Horizontal is either positive or negative dpending on Dir and the damage multiplied by attack strength
             float horizontalForce = dir.x * Damage * AttackStrength;
