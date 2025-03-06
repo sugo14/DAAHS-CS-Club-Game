@@ -50,7 +50,7 @@ public class AttackPhysicsScript : MonoBehaviour
         if (RB != null && IsInvulnerable == false)
         {
             AudioManager.PlaySound("Hit1");
-            
+
             // Create variable to store which way the character is pushed
             Vector2 dir = new Vector2(0,0);
 
@@ -78,9 +78,9 @@ public class AttackPhysicsScript : MonoBehaviour
             //UnityEngine.Debug.Log(dir);
             // Set the knockback values
             // Horizontal is either positive or negative dpending on Dir and the damage multiplied by attack strength
-            float horizontalForce = dir.x * Damage * AttackStrength;
+            float horizontalForce = dir.x * Damage * AttackStrength * 0.625f;
             // Vertical is the damage multiplied by attack strength
-            float verticalForce = (dir.y * Damage * AttackStrength);
+            float verticalForce = dir.y * Damage * AttackStrength * 0.625f;
 
             if(ClassScript != null)
             {

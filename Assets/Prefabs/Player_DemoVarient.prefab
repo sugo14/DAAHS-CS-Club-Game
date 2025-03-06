@@ -156,9 +156,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 840081584374820810}
     - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: JumpForce
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: dashForce
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: attackScript
       value: 
       objectReference: {fileID: 3489949547193202183}
+    - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: maxFallingSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: MaxHorizontalSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: maxFastFallingSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5631593874464229575, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1

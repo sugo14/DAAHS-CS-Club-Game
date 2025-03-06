@@ -578,7 +578,7 @@ MonoBehaviour:
   MaxX: 15
   MinY: -10
   MaxY: 10
-  MinimumScreenHeight: 4
+  MinimumScreenHeight: 3
   CameraMoveSpeed: 5
   CameraResizeSpeed: 3
 --- !u!1 &619394800
@@ -1017,11 +1017,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2054847473734822132, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2054847473734822132, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2054847473734822132, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1722,11 +1722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6205608858311417243, guid: adf368d665ab4f2489eab78d14f756e4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 12
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 6205608858311417243, guid: adf368d665ab4f2489eab78d14f756e4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.625
       objectReference: {fileID: 0}
     - target: {fileID: 6205608858311417243, guid: adf368d665ab4f2489eab78d14f756e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2012,11 +2012,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2054847473734822132, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2054847473734822132, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2054847473734822132, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: m_LocalPosition.z
