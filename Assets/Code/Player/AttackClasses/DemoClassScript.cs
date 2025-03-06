@@ -115,6 +115,7 @@ public GameObject swordClass;
     {
         //Creates a projectile and set all its releavent vars
         GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
+        projectileObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         projectileObject.transform.position = this.transform.position;
         ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
 
@@ -125,6 +126,7 @@ public GameObject swordClass;
     {
         //Creates a projectile and set all its releavent vars
         GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
+        projectileObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         projectileObject.transform.position = this.transform.position;
         ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
 
@@ -136,6 +138,7 @@ public GameObject swordClass;
     {
         //Creates a projectile and set all its releavent vars
         GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
+        projectileObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         projectileObject.transform.position = this.transform.position;
         ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
 
@@ -146,6 +149,7 @@ public GameObject swordClass;
     {
 
         GameObject swordObject = Instantiate(swordClass, this.transform.position, Quaternion.identity);
+        swordObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         swordObject.transform.SetParent(this.transform);
         SwordScript swordScript = swordObject.GetComponent<SwordScript>();
         if (!LeftRight)
@@ -168,6 +172,7 @@ public GameObject swordClass;
     void UpSword()
     {
         GameObject swordObject = Instantiate(swordClass, this.transform.position, Quaternion.identity);
+        swordObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         swordObject.transform.SetParent(this.transform);
         SwordScript swordScript = swordObject.GetComponent<SwordScript>();
         swordObject.transform.localPosition = new Vector2(0, 0);
@@ -178,6 +183,7 @@ public GameObject swordClass;
     void DownSword()
     {
         GameObject swordObject = Instantiate(swordClass, this.transform.position, Quaternion.identity);
+        swordObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         swordObject.transform.SetParent(this.transform);
         SwordScript swordScript = swordObject.GetComponent<SwordScript>();
         swordObject.transform.localPosition = new Vector2(.5f, -1);

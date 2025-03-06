@@ -36,6 +36,7 @@ public class PlayerMovementScript : MonoBehaviour
     public float DashCooldown = 1;
     public int MaxDoubleJumps = 1;
 
+    public bool facingRight;
 
     // Movement
     Vector2 currentMovement;
@@ -274,9 +275,9 @@ public class PlayerMovementScript : MonoBehaviour
             RB.velocityX -= -1 * Math.Min(-RB.velocityX, accel * Time.deltaTime * DecelerationFactor);
         }
 
-        // rotate sprite when moving horizontally
+        /* // rotate sprite when moving horizontally
         float angle = -1f * RB.velocityX * 1f;
-        SRObject.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        SRObject.transform.rotation = Quaternion.Euler(0f, 0f, angle); */
 
         // fast falling and max falling speed
         if (speedFalling)
@@ -392,6 +393,8 @@ public class PlayerMovementScript : MonoBehaviour
     {
         float decDeadZone = deadZone * (1f / 100f);
         currentMovement = context.ReadValue<Vector2>();
+
+        if (currentMovement.x != 0) { facingRight = currentMovement.x > 0; }
 
         if (currentMovement.x >= -decDeadZone && currentMovement.x <= decDeadZone)
         {
