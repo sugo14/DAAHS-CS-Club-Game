@@ -56,30 +56,36 @@ public GameObject swordClass;
         }
         if (IsChargingAttackSide && (ChargeTime >= SideAttackChargeTime))
         {
-            if(MeleeOrRanged){
+            if (MeleeOrRanged)
+            {
                 ShootSide();
             }
-            else{
+            else
+            {
                 SideSword();
             }
 
         }
         if (IsChargingAttackUp && (ChargeTime >= UpAttackChargeTime))
         {
-            if(MeleeOrRanged){
+            if (MeleeOrRanged)
+            {
                 ShootUp();
             }
-            else{
+            else
+            {
                 UpSword();
             }
 
         }
         if (IsChargingAttackDown && (ChargeTime >= DownAttackChargeTime))
         {
-                        if(MeleeOrRanged){
+            if (MeleeOrRanged)
+            {
                 ShootDown();
             }
-            else{
+            else
+            {
                 DownSword();
             }
 
@@ -94,7 +100,7 @@ public GameObject swordClass;
             MeleeOrRanged = MeleeOrRangedIn;
         }
     }
-        public  void DemoUp(bool MeleeOrRangedIn)
+    public void DemoUp(bool MeleeOrRangedIn)
     {
         if (!IsChargingAttackSide || !IsChargingAttackDown || !IsChargingAttackUp)
         {
@@ -102,7 +108,7 @@ public GameObject swordClass;
             MeleeOrRanged = MeleeOrRangedIn;
         }
     }
-        public  void DemoDown(bool MeleeOrRangedIn)
+    public void DemoDown(bool MeleeOrRangedIn)
     {
         if (!IsChargingAttackSide || !IsChargingAttackDown || !IsChargingAttackUp)
         {
@@ -111,8 +117,9 @@ public GameObject swordClass;
         }
     }
 
-        void ShootSide()
+    void ShootSide()
     {
+        AudioManager.PlaySound("Gun1");
         //Creates a projectile and set all its releavent vars
         GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
         projectileObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
@@ -124,30 +131,32 @@ public GameObject swordClass;
     }
     void ShootUp()
     {
+        AudioManager.PlaySound("Gun1");
         //Creates a projectile and set all its releavent vars
         GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
         projectileObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         projectileObject.transform.position = this.transform.position;
         ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
 
-        projectileScript.SetUp(this, 3, 1, VerticalDistance, false, 0, true, UpProjectileSpeed);
+        projectileScript.SetUp(this, 5, 1, VerticalDistance, false, 0, true, UpProjectileSpeed);
         ResetCharge();
         //TODO Vertical Boost
     }
     void ShootDown()
     {
+        AudioManager.PlaySound("Gun1");
         //Creates a projectile and set all its releavent vars
         GameObject projectileObject = Instantiate(ProjectileClass, this.transform.position, Quaternion.identity);
         projectileObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         projectileObject.transform.position = this.transform.position;
         ProjectileScript projectileScript = projectileObject.GetComponent<ProjectileScript>();
 
-        projectileScript.SetUp(this, 10, 1, VerticalDistance, false, 0, false, DownProjectileSpeed);
+        projectileScript.SetUp(this, 8, 1, VerticalDistance, false, 0, false, DownProjectileSpeed);
         ResetCharge();
     }
-        void SideSword()
+    void SideSword()
     {
-
+        AudioManager.PlaySound("Sword1");
         GameObject swordObject = Instantiate(swordClass, this.transform.position, Quaternion.identity);
         swordObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         swordObject.transform.SetParent(this.transform);
@@ -165,30 +174,30 @@ public GameObject swordClass;
             swordScript.SetUp(this, new Vector2(-2f, 0f), 8, 10, 1);
         }
 
-
-
         ResetCharge();
     }
     void UpSword()
     {
+        AudioManager.PlaySound("Sword1");
         GameObject swordObject = Instantiate(swordClass, this.transform.position, Quaternion.identity);
         swordObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         swordObject.transform.SetParent(this.transform);
         SwordScript swordScript = swordObject.GetComponent<SwordScript>();
         swordObject.transform.localPosition = new Vector2(0, 0);
-        swordScript.SetUp(this, new Vector2(0, 3), 10, 15, 1);
+        swordScript.SetUp(this, new Vector2(0, 3), 10, 10, 1);
 
         ResetCharge();
     }
     void DownSword()
     {
+        AudioManager.PlaySound("Sword1");
         GameObject swordObject = Instantiate(swordClass, this.transform.position, Quaternion.identity);
         swordObject.GetComponent<SpriteRenderer>().color = GetComponent<AttackPhysicsScript>().playerSplashScript.backdropColor;
         swordObject.transform.SetParent(this.transform);
         SwordScript swordScript = swordObject.GetComponent<SwordScript>();
         swordObject.transform.localPosition = new Vector2(.5f, -1);
         swordObject.transform.rotation = Quaternion.Euler(0, 0, 180);
-        swordScript.SetUp(this, new Vector2(-.5f, -1), 10, 5, 1.5f);
+        swordScript.SetUp(this, new Vector2(-.5f, -1), 10, 15, 1.5f);
 
         ResetCharge();
     }

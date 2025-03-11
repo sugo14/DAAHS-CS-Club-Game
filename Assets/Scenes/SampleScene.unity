@@ -404,6 +404,18 @@ MonoBehaviour:
     volume: 0.5
     pitch: 0.5
     source: {fileID: 0}
+  - name: Sword1
+    clip: {fileID: 8300000, guid: d2120a2afe1b3bf4b9f94c23d5c9855a, type: 3}
+    loop: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Gun1
+    clip: {fileID: 8300000, guid: d2120a2afe1b3bf4b9f94c23d5c9855a, type: 3}
+    loop: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &322969619
 Transform:
   m_ObjectHideFlags: 0

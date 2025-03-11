@@ -68,7 +68,6 @@ public class PlayerMovementScript : MonoBehaviour
     float afterAttackWait = 0.8f;
     float attackTimer = 0;
 
-
     void Start()
     {
         currDoubleJumps = MaxDoubleJumps;
@@ -153,7 +152,6 @@ public class PlayerMovementScript : MonoBehaviour
 
     void Update()
     {
-        grounded = IsGrounded();
         if (grounded)
         {
             if (!InPlatform())
@@ -238,6 +236,8 @@ public class PlayerMovementScript : MonoBehaviour
     // is called at same rate as Unity physics so rigidbody physics should be done here
     void FixedUpdate()
     {
+        grounded = IsGrounded();
+
         float accel = grounded ? GroundAcceleration : AirAcceleration;
         // allow player to move when they are not already moving faster than the max speed
         if (RB.velocityX < MaxHorizontalSpeed * horizontalInput && horizontalInput > 0f)
@@ -423,7 +423,6 @@ public class PlayerMovementScript : MonoBehaviour
         }
     }
 
-
     // called when dash input is registered
     public void Dash(InputAction.CallbackContext context)
     {
@@ -441,7 +440,6 @@ public class PlayerMovementScript : MonoBehaviour
             }
         }
     }
-
 
     public void MeleeAttack(InputAction.CallbackContext context)
     {
@@ -517,7 +515,7 @@ public class PlayerMovementScript : MonoBehaviour
     public void Jump(InputAction.CallbackContext context) {
         if (context.performed && RB.velocityY < JumpForce)
         {
-            if (IsGrounded() && !InPlatform())
+            if (IsGrounded() /* && !InPlatform() */)
             {
                 // jump
                 AudioManager.PlaySound("Jump1");
@@ -565,6 +563,7 @@ public class PlayerMovementScript : MonoBehaviour
             transform.position - new Vector3(0f, BoxCollider.size.y * 0.5f - groundedBoxHeight * 0.25f),
             new Vector2(BoxCollider.size.x * 0.65f, groundedBoxHeight * 0.5f)
         );
+        Gizmos.color = Color.red;
         // InPlatform box
         Gizmos.DrawWireCube
         (

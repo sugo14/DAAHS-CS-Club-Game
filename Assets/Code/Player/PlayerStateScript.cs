@@ -53,8 +53,6 @@ public class PlayerStateScript : MonoBehaviour
             playerState = PlayerState.Idle;
         }
 
-        Debug.Log(playerState.ToString());
-
         srObject.GetComponent<SpriteRenderer>().flipX = !facingRight;
     }
 
@@ -92,8 +90,7 @@ public class PlayerStateScript : MonoBehaviour
         }
     }
 
-
-    void Update()
+    void FixedUpdate()
     {
         UpdateState();
         UpdateAnimator();

@@ -157,11 +157,11 @@ PrefabInstance:
       objectReference: {fileID: 840081584374820810}
     - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: JumpForce
-      value: 22
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: dashForce
-      value: 16
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: attackScript
@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 3489949547193202183}
     - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: maxFallingSpeed
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: MaxHorizontalSpeed
@@ -332,7 +332,8 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3318355754271634752, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5631593874464229575, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       insertIndex: -1
@@ -400,6 +401,6 @@ MonoBehaviour:
   VerticalDistance: 25
   HorizontalSpeed: 15
   UpProjectileSpeed: 13
-  DownProjectileSpeed: 10
+  DownProjectileSpeed: 25
   swordClass: {fileID: 3518269795962775154, guid: 2be576b990c02dc4bad083168454f0ec, type: 3}
   MeleeOrRanged: 0

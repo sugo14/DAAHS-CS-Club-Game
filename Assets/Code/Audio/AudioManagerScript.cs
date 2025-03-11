@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-// Audio system by Brackeys
+// Audio system partially by Brackeys
 
 public class AudioManager : MonoBehaviour
 {
@@ -23,24 +21,30 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(this);
         }
-
-        foreach (Sound sound in sounds)
-        {
-            sound.source = gameObject.AddComponent<AudioSource>();
-            sound.source.clip = sound.clip;
-            sound.source.loop = sound.loop;
-            sound.source.volume = sound.volume;
-            sound.source.pitch = sound.pitch;
-        }
     }
 
-    public static void PlaySound(string name)
+    public static void PlaySound(string name, float volumeMod = 1f, float pitchMod = 1f)
     {
         Sound sound = Array.Find(instance.sounds, sound => sound.name == name);
         if (sound == null)
         {
             Debug.LogWarning($"Attempted to play sound \"{name}\" that does not exist.");
         }
-        sound.source.Play();
+
+        // this gives us full control over all attributes of the sound
+        AudioSource source = instance.gameObject.AddComponent<AudioSource>();
+        source.clip = sound.clip;
+        source.loop = sound.loop;
+        source.volume = sound.volume * volumeMod;
+        source.pitch = sound.pitch * pitchMod;
+
+        source.Play();
+        instance.StartCoroutine(DestroyAfterPlay(source));
+    }
+
+    private static IEnumerator DestroyAfterPlay(AudioSource source)
+    {
+        yield return new WaitForSeconds(source.clip.length);
+        Destroy(source);
     }
 }
