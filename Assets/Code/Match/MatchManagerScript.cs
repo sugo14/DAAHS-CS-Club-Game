@@ -24,6 +24,7 @@ public class MatchManagerScript : MonoBehaviour
     // this is incredibly hacky
     IEnumerator OnGameEnd(int winner)
     {
+        AudioManager.PlaySound("Victory1");
         if (winner == 1)
         {
             foreach (TMP_Text txt in text.GetComponentsInChildren<TMP_Text>())
@@ -41,7 +42,7 @@ public class MatchManagerScript : MonoBehaviour
             backdrop.color = player2Spawner.splashScript.backdropColor;
         }
 
-        float elapsed = 0f, duration = 1f;
+        float elapsed = 0f, duration = 2f;
         float startScale = 0f, endScale = 1f;
         
         while (elapsed < duration)

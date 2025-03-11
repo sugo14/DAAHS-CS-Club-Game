@@ -6,16 +6,16 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
-    //Set to true after all other vars are set to make sure it can collide before it fully set up
+    // Set to true after all other vars are set to make sure it can collide before it fully set up
     public bool IsMoving;
-    //Movment amount negative to go opposite dir
-    public float HorizontalMovmentAmount = 1;
-    public float VerticalMovmentAmount = 0;
-    //Owning class, script, and collider
+    // Movement amount negative to go opposite dir
+    public float HorizontalMovementAmount = 1;
+    public float VerticalMovementAmount = 0;
+    // Owning class, script, and collider
     public ClassBaseScript OwningClassScript;
     private BoxCollider2D projectileCollider;
     private BoxCollider2D ownerCollider;
-    //Damage stats for when it hits
+    // Damage stats for when it hits
     private float DamageAmount = 5;
     private float AttackStrength = 1;
 
@@ -27,7 +27,7 @@ public class ProjectileScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Get players collider and disable its collsion
+        // Get players collider and disable its collsion
         ownerCollider = OwningClassScript.GetComponent<BoxCollider2D>();
         if (OwningClassScript != null)
         {
@@ -46,35 +46,31 @@ public class ProjectileScript : MonoBehaviour
         startPositionY = this.transform.position.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         if (IsMoving == true)
         {
             MoveProjectile();
         }
-
     }
 
-    public void SetUp(ClassBaseScript InOwningClassScript, float InDamageAmount, float InAttackStrength, float InMaxDistance,
-        bool LeftRight = false, float InHorizontalMovmentAmount = 0, bool UpDown = true, float InVerticalMovmentAmount = 0)
+    public void SetUp(ClassBaseScript InOwningClassScript, float InDamageAmount, float InAttackStrength, float InMaxDistance, bool LeftRight = false, float InHorizontalMovementAmount = 0, bool UpDown = true, float InVerticalMovementAmount = 0)
     {
         if (LeftRight)
         {
-            HorizontalMovmentAmount = -InHorizontalMovmentAmount;
+            HorizontalMovementAmount = -InHorizontalMovementAmount;
         }
         else
         {
-            HorizontalMovmentAmount = InHorizontalMovmentAmount;
+            HorizontalMovementAmount = InHorizontalMovementAmount;
         }
         if (UpDown)
         {
-            VerticalMovmentAmount = InVerticalMovmentAmount;
+            VerticalMovementAmount = InVerticalMovementAmount;
         }
         else
         {
-            VerticalMovmentAmount = -InVerticalMovmentAmount;
+            VerticalMovementAmount = -InVerticalMovementAmount;
         }
         OwningClassScript = InOwningClassScript;
         DamageAmount = InDamageAmount;
@@ -83,36 +79,35 @@ public class ProjectileScript : MonoBehaviour
 
         IsMoving = true;
     }
-    //Update projectiles position
+
+    // Update projectiles position
     void MoveProjectile()
     {
-        //Create vector of how to move
-        Vector3 MoveOffset = new Vector3(HorizontalMovmentAmount, VerticalMovmentAmount, 0) * Time.deltaTime;
+        // Create vector of how to move
+        Vector3 MoveOffset = new Vector3(HorizontalMovementAmount, VerticalMovementAmount, 0) * Time.deltaTime;
         
-        //update the position
-        this.transform.position = this.transform.position + MoveOffset;
-        //UnityEngine.Debug.Log(this.transform.position.x - startPositionX);
+        // update the position
+        transform.position = transform.position + MoveOffset;
         //Destory the projectile if the location diffrence is more than the max distance it can travel. 
         if (Mathf.Abs(transform.position.x - startPositionX) >= MaxDistance || Mathf.Abs(transform.position.y - startPositionY) >= MaxDistance)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
     }
-    //Called on collison with another object
+    // Called on collison with another object
     void OnTriggerEnter2D(Collider2D collider)
     {
-        //Get hit objects attack physics script
+        // Get hit objects attack physics script
         AttackPhysicsScript attackScript = collider.gameObject.GetComponent<AttackPhysicsScript>();
         if (attackScript != null)
         {
-            //Hit the object it it colliding with doing damage and knockback
+            // Hit the object it it colliding with doing damage and knockback
             attackScript.OnHit(DamageAmount, AttackStrength, this.transform.position);
-            //Update total damge stat on player that made projectile
+            // Update total damge stat on player that made projectile
             OwningClassScript.AddTotalDamage(DamageAmount * AttackStrength);
-            //Destory the Projectile
+            // Destory the Projectile
             Destroy(this.gameObject);
         }
-        
     }
 }

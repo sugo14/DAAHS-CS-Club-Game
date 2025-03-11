@@ -9,8 +9,9 @@ public class PlayerSpawnerScript : MonoBehaviour
 {
     public GameObject playerPrefab;
     public PlayerSplashScript splashScript;
-    public GameObject killStripe;
+    public GameObject killStripePrefab;
     public GameObject platform;
+    public GameObject spawnCircle;
     GameObject currPlayer;
 
     public Color playerTint;
@@ -18,7 +19,7 @@ public class PlayerSpawnerScript : MonoBehaviour
     public float killDur = 1, killPow = 1;
 
     public float leftBound = 25, rightBound = 25, bottomBound = 15, topBound = 100;
-    public float platformDur = 2;
+    public float platformDur = 2, respawnTime = 2f;
     public int startStocks = 3;
 
     int currStocks = 0;
@@ -29,41 +30,55 @@ public class PlayerSpawnerScript : MonoBehaviour
     {
         // Initialize player
         currPlayer = Instantiate(playerPrefab, transform);
-        Camera.main.GetComponent<CameraScript>().FocalPoints.Add(currPlayer);
+        Camera.main.GetComponent<CameraScript>().AddFocalPoint(currPlayer);
         currPlayer.GetComponent<AttackPhysicsScript>().playerSplashScript = splashScript;
         currPlayer.layer = LayerMask.NameToLayer("Players");
         currPlayer.GetComponentInChildren<SpriteRenderer>().color = playerTint;
         
-
-
         // Update platform and splash
         platformTimer = platformDur;
         splashScript.SetStocks(currStocks);
         splashScript.SetPercent(0);
     }
 
-    void Kill()
+    IEnumerator OnKill()
     {
         CameraScript cameraScript = Camera.main.GetComponent<CameraScript>();
 
         // Kill effects
         cameraScript.BeginShake(killDur, killPow);
         cameraScript.BeginFreezeFrame(0.1f);
-        GameObject killStripeInstance = Instantiate(killStripe);
+        GameObject killStripeInstance = Instantiate(killStripePrefab);
         killStripeInstance.GetComponent<KillStripeScript>().Place(currPlayer.transform.position);
         killStripeInstance.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
 
         // Delete player
-        GameObject instance = cameraScript.FocalPoints.Find(fp => fp == currPlayer);
-        if (instance != null)
-        {
-            cameraScript.FocalPoints.Remove(instance);
-        }
-        GameObject.Destroy(currPlayer);
+        cameraScript.RemoveFocalPoint(currPlayer);
+        Destroy(currPlayer);
 
         currStocks = Math.Max(0, currStocks - 1);
-        Respawn();
+        splashScript.SetStocks(currStocks);
+        AudioManager.PlaySound("Death1");
+        splashScript.SetPercent(0);
+
+        if (currStocks > 0)
+        {
+            AudioManager.PlaySound("Respawn1");
+            cameraScript.AddFocalPoint(gameObject);
+            spawnCircle.SetActive(true);
+        }
+
+        yield return new WaitForSecondsRealtime(respawnTime);
+
+        if (currStocks > 0)
+        {
+            Respawn();
+            cameraScript.RemoveFocalPoint(gameObject);
+            spawnCircle.SetActive(false);
+        }
     }
+
+    void Kill() { StartCoroutine(OnKill()); }
 
     void Reset()
     {
@@ -77,6 +92,12 @@ public class PlayerSpawnerScript : MonoBehaviour
 
     void Update()
     {
+        // Animate the spawn circle
+        /* float scale = 1.75f + Mathf.Sin(Time.time * 8) * 0.75f;
+        spawnCircle.transform.localScale = new Vector3(scale, scale, scale); */
+
+        if (currPlayer == null) { return; }
+
         // Kill player if out of bounds
         Vector3 currPos = currPlayer.transform.position;
         if (currPos.x < -leftBound) { Kill(); }
@@ -92,5 +113,9 @@ public class PlayerSpawnerScript : MonoBehaviour
             platform.SetActive(true);
         }
         else { platform.SetActive(false); }
+
+        // TODO: don't need to do this every frame
+        currPlayer.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
+        spawnCircle.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
     }
 }

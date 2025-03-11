@@ -2,7 +2,6 @@
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine;
-using Unity.PlasticSCM.Editor.WebApi;
 using System.Collections;
 using Unity.VisualScripting;
 
@@ -37,6 +36,7 @@ public class PlayerMovementScript : MonoBehaviour
     public float DashCooldown = 1;
     public int MaxDoubleJumps = 1;
 
+    public bool facingRight;
 
     // Movement
     Vector2 currentMovement;
@@ -67,7 +67,6 @@ public class PlayerMovementScript : MonoBehaviour
     bool isAttack = false;
     float afterAttackWait = 0.8f;
     float attackTimer = 0;
-
 
     void Start()
     {
@@ -153,7 +152,6 @@ public class PlayerMovementScript : MonoBehaviour
 
     void Update()
     {
-        grounded = IsGrounded();
         if (grounded)
         {
             if (!InPlatform())
@@ -238,6 +236,8 @@ public class PlayerMovementScript : MonoBehaviour
     // is called at same rate as Unity physics so rigidbody physics should be done here
     void FixedUpdate()
     {
+        grounded = IsGrounded();
+
         float accel = grounded ? GroundAcceleration : AirAcceleration;
         // allow player to move when they are not already moving faster than the max speed
         if (RB.velocityX < MaxHorizontalSpeed * horizontalInput && horizontalInput > 0f)
@@ -275,9 +275,9 @@ public class PlayerMovementScript : MonoBehaviour
             RB.velocityX -= -1 * Math.Min(-RB.velocityX, accel * Time.deltaTime * DecelerationFactor);
         }
 
-        // rotate sprite when moving horizontally
+        /* // rotate sprite when moving horizontally
         float angle = -1f * RB.velocityX * 1f;
-        SRObject.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        SRObject.transform.rotation = Quaternion.Euler(0f, 0f, angle); */
 
         // fast falling and max falling speed
         if (speedFalling)
@@ -299,6 +299,7 @@ public class PlayerMovementScript : MonoBehaviour
         // jumping when on ground with a queued jump
         if (jumpQueued && grounded)
         {
+            AudioManager.PlaySound("Jump1");
             RB.velocityY = JumpForce;
             jumpedLast = true;
             jumpQueued = false;
@@ -382,6 +383,7 @@ public class PlayerMovementScript : MonoBehaviour
     public void DoDash(Vector2 dir)
     {
         // Debug.Log("dash");
+        AudioManager.PlaySound("Dash1");
         RB.AddForce(new Vector2(dir.x * dashForce, dir.y * dashForce), ForceMode2D.Impulse);
         canDash = false;
     }
@@ -391,6 +393,8 @@ public class PlayerMovementScript : MonoBehaviour
     {
         float decDeadZone = deadZone * (1f / 100f);
         currentMovement = context.ReadValue<Vector2>();
+
+        if (currentMovement.x != 0) { facingRight = currentMovement.x > 0; }
 
         if (currentMovement.x >= -decDeadZone && currentMovement.x <= decDeadZone)
         {
@@ -419,7 +423,6 @@ public class PlayerMovementScript : MonoBehaviour
         }
     }
 
-
     // called when dash input is registered
     public void Dash(InputAction.CallbackContext context)
     {
@@ -437,7 +440,6 @@ public class PlayerMovementScript : MonoBehaviour
             }
         }
     }
-
 
     public void MeleeAttack(InputAction.CallbackContext context)
     {
@@ -513,15 +515,17 @@ public class PlayerMovementScript : MonoBehaviour
     public void Jump(InputAction.CallbackContext context) {
         if (context.performed && RB.velocityY < JumpForce)
         {
-            if (IsGrounded() && !InPlatform())
+            if (IsGrounded() /* && !InPlatform() */)
             {
                 // jump
+                AudioManager.PlaySound("Jump1");
                 RB.velocityY = JumpForce;
                 jumpedLast = true;
 
             }
             else if (currDoubleJumps > 0)
             {
+                AudioManager.PlaySound("Jump1");
                 RB.velocityY = JumpForce;
                 if (coyoteTime)
                 {
@@ -559,6 +563,7 @@ public class PlayerMovementScript : MonoBehaviour
             transform.position - new Vector3(0f, BoxCollider.size.y * 0.5f - groundedBoxHeight * 0.25f),
             new Vector2(BoxCollider.size.x * 0.65f, groundedBoxHeight * 0.5f)
         );
+        Gizmos.color = Color.red;
         // InPlatform box
         Gizmos.DrawWireCube
         (

@@ -1,0 +1,399 @@
+fileFormatVersion: 2
+guid: d55e7c39db2c0df4ba3c5c481c9049ad
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8987261651641237412
+    second: Shrinking-Circle-Spritesheet_0
+  - first:
+      213: 2416340073723138773
+    second: Shrinking-Circle-Spritesheet_1
+  - first:
+      213: 2849900630417810938
+    second: Shrinking-Circle-Spritesheet_2
+  - first:
+      213: 2391075939057811326
+    second: Shrinking-Circle-Spritesheet_3
+  - first:
+      213: 5070800913213366936
+    second: Shrinking-Circle-Spritesheet_4
+  - first:
+      213: -2189619253316414112
+    second: Shrinking-Circle-Spritesheet_5
+  - first:
+      213: 7699177613910595047
+    second: Shrinking-Circle-Spritesheet_6
+  - first:
+      213: -7187525050760577537
+    second: Shrinking-Circle-Spritesheet_7
+  - first:
+      213: 2032079163134172383
+    second: Shrinking-Circle-Spritesheet_8
+  - first:
+      213: -1334323590220995096
+    second: Shrinking-Circle-Spritesheet_9
+  - first:
+      213: 3118993749098778142
+    second: Shrinking-Circle-Spritesheet_10
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1800
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e48a4af1f50fd804f8a7ed84fb44f68f
+      internalID: -1965126035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 1800
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f120b7af9e59039488c10155e32baec8
+      internalID: -1915835956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 1800
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 879146564269c654cbbba25683118bb5
+      internalID: 818746568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 3375
+        y: 1800
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a81182dc01398904eb1c2f425e771127
+      internalID: 1549026209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 1800
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8d16b398dc22fa4b8cbf19312ae92a9
+      internalID: 1988182209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e99cdf691f51f4d4b8a0ff67380596d4
+      internalID: -2079896061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 900
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51784bdebc5aa3f42ac1601882c7f531
+      internalID: -1238872232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 900
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9d42fc10f0159541849b35ef8bb228f
+      internalID: -1765167354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 3375
+        y: 900
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e4c085013e3c8446a6714aad84cd671
+      internalID: 2069656562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 900
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 348e71b126c1a3b4db6326faab6d0df1
+      internalID: -976852106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrinking-Circle-Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1125
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9bf1d49f570b2b4086993617a25748c
+      internalID: 271840050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: adcd645faa673f345b6460ba1d0376b9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Shrinking-Circle-Spritesheet_0: -1965126035
+      Shrinking-Circle-Spritesheet_1: -1915835956
+      Shrinking-Circle-Spritesheet_10: 271840050
+      Shrinking-Circle-Spritesheet_2: 818746568
+      Shrinking-Circle-Spritesheet_3: 1549026209
+      Shrinking-Circle-Spritesheet_4: 1988182209
+      Shrinking-Circle-Spritesheet_5: -2079896061
+      Shrinking-Circle-Spritesheet_6: -1238872232
+      Shrinking-Circle-Spritesheet_7: -1765167354
+      Shrinking-Circle-Spritesheet_8: 2069656562
+      Shrinking-Circle-Spritesheet_9: -976852106
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

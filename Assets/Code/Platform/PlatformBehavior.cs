@@ -1,6 +1,3 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
@@ -12,28 +9,18 @@ public class NewBehaviourScript : MonoBehaviour
     // Preferences 
     public bool isPassthrough = false;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // setting proproties
         if (isPassthrough)
         {
-            SR.color = Color.black;
             BoxCollider.usedByEffector = true;
             transform.gameObject.tag = "Passthrough";
         }
         else
         {
-            SR.color = Color.black;
             BoxCollider.usedByEffector = false;
             transform.gameObject.tag = "Untagged";
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

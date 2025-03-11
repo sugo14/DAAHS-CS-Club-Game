@@ -1,0 +1,899 @@
+fileFormatVersion: 2
+guid: dfa9c471294eb1d42a445d2425e7d940
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 178722995920874540
+    second: StickmanWW-Jump-Fall_0
+  - first:
+      213: -3487658661818132089
+    second: StickmanWW-Jump-Fall_1
+  - first:
+      213: 5491523908100978088
+    second: StickmanWW-Jump-Fall_2
+  - first:
+      213: 5304050144543570725
+    second: StickmanWW-Jump-Fall_3
+  - first:
+      213: -7626605268993231492
+    second: StickmanWW-Jump-Fall_4
+  - first:
+      213: -2750229522192075298
+    second: StickmanWW-Jump-Fall_5
+  - first:
+      213: 5292136154284135282
+    second: StickmanWW-Jump-Fall_6
+  - first:
+      213: 8672132434112101292
+    second: StickmanWW-Jump-Fall_7
+  - first:
+      213: -1341369877833751698
+    second: StickmanWW-Jump-Fall_8
+  - first:
+      213: 8936720416122747126
+    second: StickmanWW-Jump-Fall_9
+  - first:
+      213: -4487449079683715484
+    second: StickmanWW-Jump-Fall_10
+  - first:
+      213: 6164460328564332419
+    second: StickmanWW-Jump-Fall_11
+  - first:
+      213: 1096045459203988237
+    second: StickmanWW-Jump-Fall_12
+  - first:
+      213: -1611436318656522905
+    second: StickmanWW-Jump-Fall_13
+  - first:
+      213: -5203657232610571112
+    second: StickmanWW-Jump-Fall_14
+  - first:
+      213: -8676270555905953668
+    second: StickmanWW-Jump-Fall_15
+  - first:
+      213: -6473753176817070338
+    second: StickmanWW-Jump-Fall_16
+  - first:
+      213: -539821796158163673
+    second: StickmanWW-Jump-Fall_17
+  - first:
+      213: 2328017307004182349
+    second: StickmanWW-Jump-Fall_18
+  - first:
+      213: 5639131522911261255
+    second: StickmanWW-Jump-Fall_19
+  - first:
+      213: -7147090568413864928
+    second: StickmanWW-Jump-Fall_20
+  - first:
+      213: 8883933546761856244
+    second: StickmanWW-Jump-Fall_21
+  - first:
+      213: -6108680043185114106
+    second: StickmanWW-Jump-Fall_22
+  - first:
+      213: -5312021265907646608
+    second: StickmanWW-Jump-Fall_23
+  - first:
+      213: 5193120798169978075
+    second: StickmanWW-Jump-Fall_24
+  - first:
+      213: 82556555143543009
+    second: StickmanWW-Jump-Fall_25
+  - first:
+      213: -7920171181665711458
+    second: StickmanWW-Jump-Fall_26
+  - first:
+      213: 4805210904862635684
+    second: StickmanWW-Jump-Fall_27
+  - first:
+      213: -2243801583846350055
+    second: StickmanWW-Jump-Fall_28
+  - first:
+      213: 5126071903919413994
+    second: StickmanWW-Jump-Fall_29
+  - first:
+      213: 4629682374240273675
+    second: StickmanWW-Jump-Fall_30
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_0
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 5119
+        width: 322
+        height: 866
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2cae0d2e93fa7200800000000000000
+      internalID: 178722995920874540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_1
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 5119
+        width: 322
+        height: 866
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 789148cece8599fc0800000000000000
+      internalID: -3487658661818132089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_2
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 5119
+        width: 322
+        height: 866
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a57ce926efc53c40800000000000000
+      internalID: 5491523908100978088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_3
+      rect:
+        serializedVersion: 2
+        x: 3423
+        y: 5119
+        width: 322
+        height: 834
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52bf0602185cb9940800000000000000
+      internalID: 5304050144543570725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_4
+      rect:
+        serializedVersion: 2
+        x: 4447
+        y: 5119
+        width: 322
+        height: 834
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7539835aead82690800000000000000
+      internalID: -7626605268993231492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_5
+      rect:
+        serializedVersion: 2
+        x: 5503
+        y: 5119
+        width: 322
+        height: 802
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed5f2f622d835d9d0800000000000000
+      internalID: -2750229522192075298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_6
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 4095
+        width: 386
+        height: 802
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2739b1b1bc1717940800000000000000
+      internalID: 5292136154284135282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_7
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 4095
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab356c708a995870800000000000000
+      internalID: 8672132434112101292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_8
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 4095
+        width: 322
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e636f47f33f726de0800000000000000
+      internalID: -1341369877833751698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_9
+      rect:
+        serializedVersion: 2
+        x: 3423
+        y: 4095
+        width: 322
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f83af3aedb950c70800000000000000
+      internalID: 8936720416122747126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_10
+      rect:
+        serializedVersion: 2
+        x: 4447
+        y: 4095
+        width: 322
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46e6cc966d069b1c0800000000000000
+      internalID: -4487449079683715484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_11
+      rect:
+        serializedVersion: 2
+        x: 5471
+        y: 4127
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 387901412009c8550800000000000000
+      internalID: 6164460328564332419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_12
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 3071
+        width: 322
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0b988db98fe53f00800000000000000
+      internalID: 1096045459203988237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_13
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 3167
+        width: 418
+        height: 834
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7659058b43703a9e0800000000000000
+      internalID: -1611436318656522905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_14
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 3135
+        width: 386
+        height: 866
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89cca5d2155e8c7b0800000000000000
+      internalID: -5203657232610571112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_15
+      rect:
+        serializedVersion: 2
+        x: 3423
+        y: 3071
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c707b04f5e1b79780800000000000000
+      internalID: -8676270555905953668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_16
+      rect:
+        serializedVersion: 2
+        x: 4447
+        y: 3071
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efe034cf8cb9826a0800000000000000
+      internalID: -6473753176817070338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_17
+      rect:
+        serializedVersion: 2
+        x: 5503
+        y: 3071
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 725bafdbfea2288f0800000000000000
+      internalID: -539821796158163673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_18
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 2047
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4f12f60867ce4020800000000000000
+      internalID: 2328017307004182349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_19
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 2047
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74255d02e38324e40800000000000000
+      internalID: 5639131522911261255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_20
+      rect:
+        serializedVersion: 2
+        x: 2431
+        y: 2047
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02c9524befe60dc90800000000000000
+      internalID: -7147090568413864928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_21
+      rect:
+        serializedVersion: 2
+        x: 3455
+        y: 2047
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f4aaeedd721a4b70800000000000000
+      internalID: 8883933546761856244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_22
+      rect:
+        serializedVersion: 2
+        x: 4479
+        y: 2047
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 604fe6baddb993ba0800000000000000
+      internalID: -6108680043185114106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_23
+      rect:
+        serializedVersion: 2
+        x: 5503
+        y: 2047
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07ff04e8dc8e746b0800000000000000
+      internalID: -5312021265907646608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_24
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 1023
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd45d920adba11840800000000000000
+      internalID: 5193120798169978075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_25
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 1023
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e8f53fdfbc452100800000000000000
+      internalID: 82556555143543009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_26
+      rect:
+        serializedVersion: 2
+        x: 2431
+        y: 1023
+        width: 322
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9a878ce546e51290800000000000000
+      internalID: -7920171181665711458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_27
+      rect:
+        serializedVersion: 2
+        x: 3487
+        y: 1023
+        width: 322
+        height: 802
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a6bb2fdbd98fa240800000000000000
+      internalID: 4805210904862635684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_28
+      rect:
+        serializedVersion: 2
+        x: 4511
+        y: 1023
+        width: 322
+        height: 770
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9132160095a6cd0e0800000000000000
+      internalID: -2243801583846350055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_29
+      rect:
+        serializedVersion: 2
+        x: 5503
+        y: 1023
+        width: 354
+        height: 770
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea1a3ecc37732740800000000000000
+      internalID: 5126071903919413994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanWW-Jump-Fall_30
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 0
+        width: 322
+        height: 801
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b058a7b179fef3040800000000000000
+      internalID: 4629682374240273675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      StickmanWW-Jump-Fall_0: 178722995920874540
+      StickmanWW-Jump-Fall_1: -3487658661818132089
+      StickmanWW-Jump-Fall_10: -4487449079683715484
+      StickmanWW-Jump-Fall_11: 6164460328564332419
+      StickmanWW-Jump-Fall_12: 1096045459203988237
+      StickmanWW-Jump-Fall_13: -1611436318656522905
+      StickmanWW-Jump-Fall_14: -5203657232610571112
+      StickmanWW-Jump-Fall_15: -8676270555905953668
+      StickmanWW-Jump-Fall_16: -6473753176817070338
+      StickmanWW-Jump-Fall_17: -539821796158163673
+      StickmanWW-Jump-Fall_18: 2328017307004182349
+      StickmanWW-Jump-Fall_19: 5639131522911261255
+      StickmanWW-Jump-Fall_2: 5491523908100978088
+      StickmanWW-Jump-Fall_20: -7147090568413864928
+      StickmanWW-Jump-Fall_21: 8883933546761856244
+      StickmanWW-Jump-Fall_22: -6108680043185114106
+      StickmanWW-Jump-Fall_23: -5312021265907646608
+      StickmanWW-Jump-Fall_24: 5193120798169978075
+      StickmanWW-Jump-Fall_25: 82556555143543009
+      StickmanWW-Jump-Fall_26: -7920171181665711458
+      StickmanWW-Jump-Fall_27: 4805210904862635684
+      StickmanWW-Jump-Fall_28: -2243801583846350055
+      StickmanWW-Jump-Fall_29: 5126071903919413994
+      StickmanWW-Jump-Fall_3: 5304050144543570725
+      StickmanWW-Jump-Fall_30: 4629682374240273675
+      StickmanWW-Jump-Fall_4: -7626605268993231492
+      StickmanWW-Jump-Fall_5: -2750229522192075298
+      StickmanWW-Jump-Fall_6: 5292136154284135282
+      StickmanWW-Jump-Fall_7: 8672132434112101292
+      StickmanWW-Jump-Fall_8: -1341369877833751698
+      StickmanWW-Jump-Fall_9: 8936720416122747126
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

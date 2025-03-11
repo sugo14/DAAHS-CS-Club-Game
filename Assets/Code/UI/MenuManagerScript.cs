@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 
-public enum MenuState {
+public enum MenuState
+{
     MainMenu,
     LevelSelection,
     CharacterSelection,

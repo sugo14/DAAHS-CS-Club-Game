@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 579335228156846124}
   - component: {fileID: 6420274362212393354}
   - component: {fileID: 7590458150183652798}
+  - component: {fileID: 1234548225372563155}
+  - component: {fileID: 355613809676184011}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -66,7 +68,7 @@ MonoBehaviour:
   dashForce: 20
   dashTest: 0
   bufferedDashLifeTime: 0.2
-  dropThroughHoldTime: 10
+  dropThroughHoldTime: 4
   dropAheadSpeedModifier: 0.05
   coyoteTimeThreshold: 0.2
   AirAcceleration: 3
@@ -298,6 +300,46 @@ MonoBehaviour:
   DevDoImpulse: 0
   DevDamagePerHitAmount: 0
   IsInvulnerable: 0
+--- !u!114 &1234548225372563155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953122851969902895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8356bb88bda1b458c694fc6cdb0729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingRight: 0
+  playerMovement: {fileID: 0}
+  attackPhysics: {fileID: 0}
+  playerState: 0
+--- !u!114 &355613809676184011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953122851969902895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af02b8d83c6de934f8034e7c1bc279e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateScript: {fileID: 1234548225372563155}
+  stateSounds:
+  - state: 1
+    soundProfile:
+      soundName: Step1
+      repeats: 1
+      repeatTime: 0.18
+  - state: 0
+    soundProfile:
+      soundName: Step1
+      repeats: 0
+      repeatTime: 0
 --- !u!1 &3318355754271634752
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,43 +16,38 @@ public class SwordScript : MonoBehaviour
     public Vector2 targetPosition;
     public float speed = 5f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         // Move the object a little closer to the target each frame
         transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPosition, speed * Time.deltaTime);
-        if ((Vector2)transform.localPosition == targetPosition){
-            Destroy(this.gameObject);
+        if ((Vector2)transform.localPosition == targetPosition)
+        {
+            Destroy(gameObject);
         }
     }
 
-    public void SetUp(ClassBaseScript OwningClassScriptIn, Vector2 trargetPositionIn, float speedIn, float damage, float attackStrengthIn )
+    public void SetUp(ClassBaseScript OwningClassScriptIn, Vector2 targetPositionIn, float speedIn, float damage, float attackStrengthIn)
     {
         OwningClassScript = OwningClassScriptIn;
-        targetPosition = trargetPositionIn;
+        targetPosition = targetPositionIn;
         speed = speedIn;
         damageAmount = damage;
         attackStrength = attackStrengthIn;
     }
-    //Called on collison with another object
+
+    // Called on collison with another object
     void OnTriggerEnter2D(Collider2D collider)
     {
-        //Get hit objects attack physics script
+        // Get hit objects attack physics script
         AttackPhysicsScript attackScript = collider.gameObject.GetComponent<AttackPhysicsScript>();
         if (attackScript != null)
         {
-            //Hit the object it it colliding with doing damage and knockback
-            attackScript.OnHit(damageAmount, attackStrength, this.transform.position);
-            //Update total damge stat on player that made projectile
+            // Hit the object it it colliding with doing damage and knockback
+            attackScript.OnHit(damageAmount, attackStrength, transform.position);
+            // Update total damge stat on player that made projectile
             OwningClassScript.AddTotalDamage(damageAmount * attackStrength);
-            //Destory the Projectile
-            Destroy(this.gameObject);
+            // Destory the Projectile
+            Destroy(gameObject);
         }
     }
 }

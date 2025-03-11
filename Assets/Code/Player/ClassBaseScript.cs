@@ -32,7 +32,7 @@ public abstract class ClassBaseScript : MonoBehaviour
     {
         //Get sprite renderer child of player
         //TODO move sprite render and component on player instead of child, make sprite render not streched.
-        this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = PlayerSprite;
+        /* this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = PlayerSprite; */
 
 
     }
