@@ -11,7 +11,7 @@ public class PlayerStateSound
 
 public class PlayerAudioManager : MonoBehaviour
 {
-    public PlayerStateScript stateScript;
+    public PlayerStateManager stateScript;
     public List<PlayerStateSound> stateSounds;
 
     void Awake()

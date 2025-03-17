@@ -367,55 +367,46 @@ MonoBehaviour:
     loop: 0
     volume: 0.4
     pitch: 1
-    source: {fileID: 0}
   - name: Jump1
     clip: {fileID: 8300000, guid: b77e71c19d5ed844f9b62c17ec2aad55, type: 3}
     loop: 0
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - name: Death1
     clip: {fileID: 8300000, guid: 85afabb4a6a150c4e977830d3edc7efc, type: 3}
     loop: 0
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - name: Dash1
     clip: {fileID: 8300000, guid: 7b10f1efc2580c642b7dddf6bcf36c57, type: 3}
     loop: 0
     volume: 0.5
     pitch: 1
-    source: {fileID: 0}
   - name: Hit1
     clip: {fileID: 8300000, guid: 42a2e6ee1d292b44e885bf409cb4d960, type: 3}
     loop: 0
     volume: 0.9
     pitch: 1
-    source: {fileID: 0}
   - name: Victory1
     clip: {fileID: 8300000, guid: a665a9d0d1d30c2449d07b3f2eff2926, type: 3}
     loop: 0
     volume: 1
     pitch: 1
-    source: {fileID: 0}
   - name: Respawn1
     clip: {fileID: 8300000, guid: 7e9ebc0c11c5dd4428c94053d21a7f6e, type: 3}
     loop: 0
     volume: 0.5
     pitch: 0.5
-    source: {fileID: 0}
   - name: Sword1
     clip: {fileID: 8300000, guid: d2120a2afe1b3bf4b9f94c23d5c9855a, type: 3}
     loop: 0
     volume: 0.5
     pitch: 1
-    source: {fileID: 0}
   - name: Gun1
     clip: {fileID: 8300000, guid: d2120a2afe1b3bf4b9f94c23d5c9855a, type: 3}
     loop: 0
     volume: 0.5
     pitch: 1
-    source: {fileID: 0}
 --- !u!4 &322969619
 Transform:
   m_ObjectHideFlags: 0

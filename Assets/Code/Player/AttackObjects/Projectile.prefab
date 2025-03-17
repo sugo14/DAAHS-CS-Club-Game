@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMoving: 0
-  HorizontalMovmentAmount: 1
-  VerticalMovmentAmount: 0
+  HorizontalMovementAmount: 1
+  VerticalMovementAmount: 0
   OwningClassScript: {fileID: 0}
   MaxDistance: 10
 --- !u!61 &5540282329528340147
