@@ -1,8 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using System.Diagnostics;
 
+/// <summary>
+/// Manages the player's response to being hit by an attack.
+/// </summary>
 public class AttackPhysics : MonoBehaviour
 {
     public PlayerSplash playerSplash;

@@ -5,11 +5,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages the match phyases, primarily the game ending.
+/// </summary>
 public class MatchManager : MonoBehaviour
 {
-    public PlayerSpawner player1Spawner, player2Spawner;
-    public GameObject text;
-    public Image backdrop;
+    [SerializeField] PlayerSpawner player1Spawner, player2Spawner;
+    [SerializeField] GameObject text;
+    [SerializeField] Image backdrop;
 
     bool ending;
     

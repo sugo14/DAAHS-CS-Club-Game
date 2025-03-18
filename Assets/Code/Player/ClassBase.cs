@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
+/// <summary>
+/// Base class for all player classes, managing attack charge times.
+/// </summary>
 public abstract class ClassBase : MonoBehaviour
 {
     // Side attack function

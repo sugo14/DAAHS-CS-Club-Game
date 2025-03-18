@@ -1,4 +1,4 @@
-**Please note the [style guide](STYLE_GUIDE.md) when creating pull requests.**
+**Please refer to the [style guide](STYLE_GUIDE.md) when creating pull requests.**
 
 This is the Unity game being created by the Dr. Anne Anderson High School Coding Club.
 

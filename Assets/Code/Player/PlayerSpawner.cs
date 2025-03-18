@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Spawns and kills a player character in a match.
+/// </summary>
 public class PlayerSpawner : MonoBehaviour
 {
     public PlayerSplash splashScript;
@@ -38,15 +41,15 @@ public class PlayerSpawner : MonoBehaviour
         if (platformTimer > 0)
         {
             platformTimer -= Time.deltaTime;
-            platform.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
+            platform.GetComponent<PlatformBehavior>().SetColor(splashScript.backdropColor);
+            currPlayer.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
+            spawnCircle.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
             platform.SetActive(true);
         }
         else { platform.SetActive(false); }
-
-        // TODO: don't need to do this every frame
-        currPlayer.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
-        spawnCircle.GetComponentInChildren<SpriteRenderer>().color = splashScript.backdropColor;
     }
+
+    public bool IsDead() { return currStocks <= 0; }
 
     void Respawn()
     {
@@ -62,8 +65,6 @@ public class PlayerSpawner : MonoBehaviour
         splashScript.SetStocks(currStocks);
         splashScript.SetPercent(0);
     }
-
-    public bool IsDead() { return currStocks <= 0; }
 
     void Kill() { StartCoroutine(OnKill()); }
 

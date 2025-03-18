@@ -1,6 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// States that the player can be in.
+/// </summary>
 public enum PlayerState
 {
     Idle,
@@ -16,6 +18,9 @@ public enum PlayerState
     DownSpecial
 }
 
+/// <summary>
+/// Manages the state of the player character for animations and sounds.
+/// </summary>
 public class PlayerStateManager : MonoBehaviour
 {
     public bool facingRight;
@@ -25,6 +30,12 @@ public class PlayerStateManager : MonoBehaviour
     public Animator animator;
     public Sprite idleSprite, fallingSprite, jumpSprite;
     public PlayerState playerState;
+
+    void FixedUpdate()
+    {
+        UpdateState();
+        UpdateAnimator();
+    }
 
     void UpdateState()
     {
@@ -64,7 +75,8 @@ public class PlayerStateManager : MonoBehaviour
 
         if (useStaticSprite)
         {
-            animator.enabled = false; // Disable Animator for static sprites
+            // Disable Animator for static sprites
+            animator.enabled = false;
 
             if (playerState == PlayerState.Idle)
             {
@@ -81,18 +93,13 @@ public class PlayerStateManager : MonoBehaviour
         }
         else
         {
-            if (!animator.enabled) animator.enabled = true; // Re-enable when needed
+            // Re-enable when needed
+            if (!animator.enabled) animator.enabled = true;
 
             animator.SetBool("isRunning", playerState == PlayerState.Run);
             animator.SetBool("isJumping", playerState == PlayerState.Jump);
             animator.SetBool("isFalling", playerState == PlayerState.Fall);
             animator.SetBool("isDashing", playerState == PlayerState.Dash);
         }
-    }
-
-    void FixedUpdate()
-    {
-        UpdateState();
-        UpdateAnimator();
     }
 }

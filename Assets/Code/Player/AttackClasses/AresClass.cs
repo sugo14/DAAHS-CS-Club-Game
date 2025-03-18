@@ -16,14 +16,12 @@ public class AresClass : ClassBase
     public bool DevDownUp;
 
     public GameObject swordClass;
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
+    
     protected override void Update()
     {
         base.Update();
-        //Dev testing side attack
+
+        // Dev testing side attack
         if (DevDoSideAttack != DevDoSideAttackOld)
         {
             AttackSide(DevLeftRight);

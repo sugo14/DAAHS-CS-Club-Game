@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Manages the setup of a match. Currently not used.
+/// </summary>
 public class MatchSetupManager : MonoBehaviour
 {
     public static MatchSetupManager Instance { get; private set; }
-    public GameObject playerPrefab;
 
     public LevelList levels;
     public CharacterList characters;
 
-    public int levelIndex;
-    public List<int> characterIndices;
+    [SerializeField] GameObject playerPrefab;
+    
+    int levelIndex;
+    List<int> characterIndices;
 
     // Singleton
     void Awake()

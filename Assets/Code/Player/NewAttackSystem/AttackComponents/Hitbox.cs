@@ -1,21 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Manages a hitbox of an attack.
+/// </summary>
 [System.Serializable]
 public class HitboxProfile : MonoBehaviour
 {
-    public Collider2D hitbox;
-    public float DamageAmount = 10;
-    public float AttackStrength = 1;
-    public int StartFrame = 0;
-    public int Duration = 5;
-    public bool DestroyOnHit = true;
+    [SerializeField] Collider2D hitbox;
+    [SerializeField] float DamageAmount = 10;
+    [SerializeField] float AttackStrength = 1;
+    [SerializeField] int StartFrame = 0;
+    [SerializeField] int Duration = 5;
+    [SerializeField] bool DestroyAttackOnHit = false;
+    [SerializeField] bool DestroyHitboxOnHit = true;
 
     Attack owningAttack;
+    SpriteRenderer[] sprites;
 
     public void Initialize(Attack attack)
     {
         owningAttack = attack;
+        if (hitbox == null) { hitbox = GetComponent<Collider2D>(); }
+        sprites = GetComponentsInChildren<SpriteRenderer>();
+
+        Physics2D.IgnoreCollision(hitbox, attack.OwningPlayer.GetComponent<Collider2D>());
         StartCoroutine(OnAttackBegin());
     }
 
@@ -29,16 +38,23 @@ public class HitboxProfile : MonoBehaviour
             
             // Update total damge stat on player that made projectile
             owningAttack.OwningPlayer.AddTotalDamage(DamageAmount * AttackStrength);
-            if (DestroyOnHit) { Destroy(gameObject); }
+
+            if (DestroyAttackOnHit) { Destroy(owningAttack.gameObject); }
+            if (DestroyHitboxOnHit) { Destroy(gameObject); }
         }
     }
 
     IEnumerator OnAttackBegin()
     {
         hitbox.enabled = false;
+        foreach (SpriteRenderer sprite in sprites) { sprite.enabled = false; }
+
         for (int i = 0; i < StartFrame; i++) { yield return null; }
         hitbox.enabled = true;
+        foreach (SpriteRenderer sprite in sprites) { sprite.enabled = true; }
+
         for (int i = 0; i < Duration; i++) { yield return null; }
         hitbox.enabled = false;
+        foreach (SpriteRenderer sprite in sprites) { sprite.enabled = false; }
     }
 }

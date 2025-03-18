@@ -1,9 +1,12 @@
 using UnityEngine;
 
+/// <summary>
+/// A debugging box that damages the player when they collide with it.
+/// </summary>
 public class HurtBox : MonoBehaviour
 {
-    public int HitDamage = 5;
-    public float AttackStrength = 1;
+    [SerializeField] int HitDamage = 5;
+    [SerializeField] float AttackStrength = 1;
 
     void OnTriggerEnter2D(Collider2D collider)
     {

@@ -1,25 +1,33 @@
 using UnityEngine;
 
+/// <summary>
+/// Controls the behavior of platforms, including color and passthrough properties.
+/// </summary>
 public class PlatformBehavior : MonoBehaviour
 {
-    // References
-    public SpriteRenderer SR;
-    public BoxCollider2D BoxCollider;
+    [SerializeField] SpriteRenderer[] spriteRenderers;
+    [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] bool isPassthrough = false;
 
-    // Preferences 
-    public bool isPassthrough = false;
+    public void SetColor(Color color)
+    {
+        foreach (SpriteRenderer sr in spriteRenderers)
+        {
+            sr.color = color;
+        }
+    }
 
     void Awake()
     {
         // Setting properties
         if (isPassthrough)
         {
-            BoxCollider.usedByEffector = true;
+            boxCollider.usedByEffector = true;
             transform.gameObject.tag = "Passthrough";
         }
         else
         {
-            BoxCollider.usedByEffector = false;
+            boxCollider.usedByEffector = false;
             transform.gameObject.tag = "Untagged";
         }
     }

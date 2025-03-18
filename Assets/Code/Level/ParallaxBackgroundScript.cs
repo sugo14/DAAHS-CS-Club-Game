@@ -1,16 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// An unused script for creating a parallax background effect.
+/// </summary>
 public class ParallaxBackground : MonoBehaviour
 {
-    public int layerCount = 9;
-    public float depthFactor = 0.7f, moveFactor = 1f;
-    public float baseWidth = 10f, baseHeight = 5f;
-    public Color nearColor = Color.white;
-    public Color farColor = Color.black;
-    public GameObject squarePrefab;
+    [SerializeField] int layerCount = 9;
+    [SerializeField] float depthFactor = 0.7f, moveFactor = 1f;
+    [SerializeField] float baseWidth = 10f, baseHeight = 5f;
+    [SerializeField] Color nearColor = Color.white;
+    [SerializeField] Color farColor = Color.black;
+    [SerializeField] GameObject squarePrefab;
 
     List<GameObject> layers = new List<GameObject>();
+
+    void Start()
+    {
+        DeleteLayers();
+        GenerateLayers();
+    }
+
+    void Update()
+    {
+        UpdateLayers();
+    }
 
     void DeleteLayers()
     {
@@ -38,17 +52,6 @@ public class ParallaxBackground : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        DeleteLayers();
-        GenerateLayers();
-    }
-
-    void Update()
-    {
-        UpdateLayers();
-    }
-
     void UpdateLayers()
     {
         Vector3 cameraPos = Camera.main.transform.position;
@@ -60,14 +63,6 @@ public class ParallaxBackground : MonoBehaviour
             Vector3 parallaxPosition = cameraPos * moveFactor * (1 - depth);
 
             layers[i].transform.position = parallaxPosition;
-
-            /* float scaleFactor = cameraSize / 5f;
-            layers[i].transform.localScale = new Vector3(
-                baseWidth * depth * scaleFactor, 
-                baseHeight * depth * scaleFactor, 
-                1
-            ); */
         }
     }
-
 }

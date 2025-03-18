@@ -168,6 +168,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3489949547193202183}
     - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: attackScriptNew
+      value: 
+      objectReference: {fileID: 3457772723164326274}
+    - target: {fileID: 5382880631314197826, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: maxFallingSpeed
       value: 9
       objectReference: {fileID: 0}
@@ -342,6 +346,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 953122851969902895, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3489949547193202183}
+    - targetCorrespondingSourceObject: {fileID: 953122851969902895, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3457772723164326274}
   m_SourcePrefab: {fileID: 100100000, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
 --- !u!114 &277991104861924435 stripped
 MonoBehaviour:
@@ -404,3 +411,22 @@ MonoBehaviour:
   DownProjectileSpeed: 25
   swordClass: {fileID: 3518269795962775154, guid: 2be576b990c02dc4bad083168454f0ec, type: 3}
   MeleeOrRanged: 0
+--- !u!114 &3457772723164326274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923109677055240254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de53e0b2826f32945b0e3fe9167fc311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks:
+  - {fileID: 6615429168200379790, guid: 0e6f05462a0c50041a3e009d7212ce7b, type: 3}
+  - {fileID: 6615429168200379790, guid: 31704bb55f4c6504ca6bcad30ff63616, type: 3}
+  - {fileID: 6615429168200379790, guid: fa8703e582fabb548ada72da18bcbcfe, type: 3}
+  - {fileID: 358757531539358471, guid: f3536f5914021da4e8f48879c35b6d33, type: 3}
+  - {fileID: 358757531539358471, guid: f1d2ac75ddd206944bbb4dfb35bd4694, type: 3}
+  - {fileID: 358757531539358471, guid: fe977db3fbe7bb04db4259d412c921c3, type: 3}

@@ -1,7 +1,8 @@
 using UnityEngine;
 
-// An attack component that modifies the movement of the projectile
-// To ensure multiple movements work together as intended, this class is the only one that should modify the position of the projectile
+/// <summary>
+/// An attack component that modifies the movement of the projectile to ensure multiple movements work together as intended.
+/// </summary>
 public class MovementComponent : AttackComponent
 {
     Vector2 lastDisplacement = new Vector2(0, 0);

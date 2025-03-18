@@ -2,9 +2,10 @@
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine;
-using System.Collections;
-using Unity.VisualScripting;
 
+/// <summary>
+/// Controls the movement of the player character, including jumping, dashing, and attacking.
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     // References 
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask GroundLayer;
     public ClassBase playerClass;
     public DemoClass attackScript;
+    public AttackingCharacter attackScriptNew;
 
     // Movement
     public float MaxHorizontalSpeed = 8f;
@@ -74,80 +76,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Get Refrence to the Class
         playerClass = GetComponent<ClassBase>();
-    }
-
-    // debugging function for collisions
-    void Db(Collider2D collider)
-    {
-        Debug.Log("Collided with: " + collider.gameObject.name);
-        Debug.Log("Collider Type: " + collider.GetType());
-        Debug.Log("Is Trigger: " + collider.isTrigger);
-        Debug.Log("Bounds: " + collider.bounds);
-        Debug.Log("Offset: " + collider.offset);
-        Debug.Log("Size: " + collider.bounds.size);
-    }
-
-    // check if the player is on the ground using a boxcast from the player's feet
-    bool IsGrounded()
-    {
-        RaycastHit2D hit = Physics2D.BoxCast
-        (
-            transform.position - new Vector3(0f, BoxCollider.size.y * 0.5f - groundedBoxHeight * 0.25f),
-            new Vector2(BoxCollider.size.x * 0.65f, groundedBoxHeight * 0.5f),
-            0f,
-            Vector2.down,
-            0.1f,
-            GroundLayer
-        );
-        return hit.collider != null;
-    }
-
-    [ContextMenu("Write IsGrounded")]
-    void WriteIsGrounded()
-    {
-        Debug.Log(IsGrounded());
-    }
-
-    // check if player is in a platform tag with "Passthrough"
-    bool InPlatform()
-    {
-        RaycastHit2D hit = Physics2D.BoxCast
-        (
-           transform.position, 
-           new Vector2(BoxCollider.size.x - 0.26f, BoxCollider.size.y - 0.01f),
-           0f,
-           Vector2.zero,
-           0.1f,
-           GroundLayer
-        );
-
-        if (hit.collider != null)
-        {
-            return hit.collider.gameObject.CompareTag("Passthrough");
-        }
-
-        return false;
-    }
-
-    // checking if a platform tag with "Passthrough" is under player 
-    bool CanDropAhead()
-    {
-        RaycastHit2D hit = Physics2D.BoxCast
-        (
-           transform.position - new Vector3(0, (BoxCollider.size.y + (dropAheadOverhead + (-RB.velocityY * dropAheadSpeedModifier)) / 2) - 0.5f),
-           new Vector2(BoxCollider.size.x - 0.25f, dropAheadOverhead + (-RB.velocityY * dropAheadSpeedModifier)),
-           0f,
-           Vector2.down,
-           0.1f,
-           GroundLayer
-        );
-
-        if (hit.collider != null)
-        {
-            return hit.collider.gameObject.CompareTag("Passthrough");
-        }
-
-        return false;
     }
 
     void Update()
@@ -358,10 +286,83 @@ public class PlayerMovement : MonoBehaviour
 
         // recording the last grounded
         groundedLast = grounded;
-        
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    [ContextMenu("Write IsGrounded")]
+    void WriteIsGrounded()
+    {
+        Debug.Log(IsGrounded());
+    }
+
+    // debugging function for collisions
+    void Db(Collider2D collider)
+    {
+        Debug.Log("Collided with: " + collider.gameObject.name);
+        Debug.Log("Collider Type: " + collider.GetType());
+        Debug.Log("Is Trigger: " + collider.isTrigger);
+        Debug.Log("Bounds: " + collider.bounds);
+        Debug.Log("Offset: " + collider.offset);
+        Debug.Log("Size: " + collider.bounds.size);
+    }
+
+    // check if the player is on the ground using a boxcast from the player's feet
+    bool IsGrounded()
+    {
+        RaycastHit2D hit = Physics2D.BoxCast
+        (
+            transform.position - new Vector3(0f, BoxCollider.size.y * 0.5f - groundedBoxHeight * 0.25f),
+            new Vector2(BoxCollider.size.x * 0.65f, groundedBoxHeight * 0.5f),
+            0f,
+            Vector2.down,
+            0.1f,
+            GroundLayer
+        );
+        return hit.collider != null;
+    }
+
+    // check if player is in a platform tag with "Passthrough"
+    bool InPlatform()
+    {
+        RaycastHit2D hit = Physics2D.BoxCast
+        (
+           transform.position, 
+           new Vector2(BoxCollider.size.x - 0.26f, BoxCollider.size.y - 0.01f),
+           0f,
+           Vector2.zero,
+           0.1f,
+           GroundLayer
+        );
+
+        if (hit.collider != null)
+        {
+            return hit.collider.gameObject.CompareTag("Passthrough");
+        }
+
+        return false;
+    }
+
+    // checking if a platform tag with "Passthrough" is under player 
+    bool CanDropAhead()
+    {
+        RaycastHit2D hit = Physics2D.BoxCast
+        (
+           transform.position - new Vector3(0, (BoxCollider.size.y + (dropAheadOverhead + (-RB.velocityY * dropAheadSpeedModifier)) / 2) - 0.5f),
+           new Vector2(BoxCollider.size.x - 0.25f, dropAheadOverhead + (-RB.velocityY * dropAheadSpeedModifier)),
+           0f,
+           Vector2.down,
+           0.1f,
+           GroundLayer
+        );
+
+        if (hit.collider != null)
+        {
+            return hit.collider.gameObject.CompareTag("Passthrough");
+        }
+
+        return false;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
     {
         // checking if player is on a platform with  the "Passthrough" tag
         if (collision.gameObject.CompareTag("Passthrough"))
@@ -370,7 +371,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         // checking if player has left a platform with  the "Passthrough" tag
         if (collision.gameObject.CompareTag("Passthrough"))
@@ -379,16 +380,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // does a dash
-    public void DoDash(Vector2 dir)
+    void DoDash(Vector2 dir)
     {
-        // Debug.Log("dash");
         AudioManager.PlaySound("Dash1");
         RB.AddForce(new Vector2(dir.x * dashForce, dir.y * dashForce), ForceMode2D.Impulse);
         canDash = false;
     }
 
-    // called when moving input is registered
+    // Called when moving input is registered
     public void Move(InputAction.CallbackContext context)
     {
         float decDeadZone = deadZone * (1f / 100f);
@@ -423,7 +422,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // called when dash input is registered
+    // Called when dash input is registered
     public void Dash(InputAction.CallbackContext context)
     {
         if (context.performed && currentMovement != Vector2.zero)
@@ -451,22 +450,26 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (lastMovement.x >= 0)
                 {
-                    attackScript.DemoSide(false, false);
+                    /* attackScript.DemoSide(false, false); */
+                    attackScriptNew.Attack(AttackType.SideNormal, Facing.Left);
                 }
                 else if (lastMovement.x < 0)
                 {
-                    attackScript.DemoSide(true, false);
+                    /* attackScript.DemoSide(true, false); */
+                    attackScriptNew.Attack(AttackType.SideNormal, Facing.Right);
                 }
             }
             else
             {
                 if (lastMovement.y >= 0)
                 {
-                    attackScript.DemoUp(false);
+                    /* attackScript.DemoUp(false); */
+                    attackScriptNew.Attack(AttackType.UpNormal, Facing.Right);
                 }
                 else if (lastMovement.y < 0)
                 {
-                    attackScript.DemoDown(false);
+                    /* attackScript.DemoDown(false); */
+                    attackScriptNew.Attack(AttackType.DownNormal, Facing.Right);
                 }
             }
         }
@@ -484,25 +487,19 @@ public class PlayerMovement : MonoBehaviour
 
             if (Math.Abs(lastMovement.x) >= Math.Abs(lastMovement.y))
             {
-                if (lastMovement.x >= 0)
-                {
-                    attackScript.DemoSide(false, true);
-                }
-                else if (lastMovement.x < 0)
-                {
-                    attackScript.DemoSide(true, true);
-                }
+                attackScriptNew.Attack
+                (
+                    AttackType.SideSpecial,
+                    (lastMovement.x >= 0) ? Facing.Left : Facing.Right
+                );
             }
             else
             {
-                if (lastMovement.y >= 0)
-                {
-                    attackScript.DemoUp(true);
-                }
-                else if (lastMovement.y < 0)
-                {
-                    attackScript.DemoDown(true);
-                }
+                attackScriptNew.Attack
+                (
+                    (lastMovement.y >= 0) ? AttackType.UpSpecial : AttackType.DownSpecial,
+                    (lastMovement.x >= 0) ? Facing.Left : Facing.Right
+                );
             }
         }
         else if (context.canceled)
@@ -511,13 +508,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // called when jump input is registered
+    // Called when jump input is registered
     public void Jump(InputAction.CallbackContext context) {
         if (context.performed && RB.velocityY < JumpForce)
         {
-            if (IsGrounded() /* && !InPlatform() */)
+            if (IsGrounded())
             {
-                // jump
+                // Grounded jump
                 AudioManager.PlaySound("Jump1");
                 RB.velocityY = JumpForce;
                 jumpedLast = true;
@@ -529,19 +526,19 @@ public class PlayerMovement : MonoBehaviour
                 RB.velocityY = JumpForce;
                 if (coyoteTime)
                 {
-                    // coyote jump
+                    // Coyote jump
                     coyoteTime = false;
                     coyoteTimeCountdown = 0;
                 }
                 else
                 {
-                    // double jump
+                    // Double jump
                     currDoubleJumps--;
                 }
             }
             else if (!InPlatform())
             {
-                // queuing a jump
+                // Queuing a jump
                 jumpQueued = true;
                 queuedJumpLife = bufferedJumpLifeTime;
             }
@@ -553,7 +550,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // debugging function, shows jump boxcast
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

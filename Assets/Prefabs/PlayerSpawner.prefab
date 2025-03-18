@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 485784a7a6e72454db444354dcb5adf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4923109677055240254, guid: 052bac9904ec61449b615ef686ba936b, type: 3}
   splashScript: {fileID: 0}
+  playerPrefab: {fileID: 4923109677055240254, guid: 052bac9904ec61449b615ef686ba936b, type: 3}
   killStripePrefab: {fileID: 3969949513377146531, guid: 6b8ffa38e641ee847a42ca1ead286a02, type: 3}
   platform: {fileID: 5368151687306925145}
   spawnCircle: {fileID: 5878840783953611122}
@@ -72,6 +72,10 @@ PrefabInstance:
     - target: {fileID: 645228474705323256, guid: 407bb2ccd1cbce648bae2ee266805595, type: 3}
       propertyPath: isPassthrough
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 645228474705323256, guid: 407bb2ccd1cbce648bae2ee266805595, type: 3}
+      propertyPath: spriteRenderers.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3223468219375959034, guid: 407bb2ccd1cbce648bae2ee266805595, type: 3}
       propertyPath: m_LocalScale.x

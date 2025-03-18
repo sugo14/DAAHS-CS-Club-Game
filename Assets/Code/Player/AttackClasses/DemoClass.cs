@@ -5,7 +5,7 @@ using UnityEngine;
 public class DemoClass : ClassBase
 {
     // Start is called before the first frame update
-    public bool DevDoSideAttack;
+    [SerializeField] bool DevDoSideAttack;
     bool DevDoSideAttackOld;
     public bool DevLeftRight;
     public bool DevDoVerticalAttack;
@@ -21,7 +21,7 @@ public class DemoClass : ClassBase
     public float UpProjectileSpeed = 0.25f;
     public float DownProjectileSpeed = 0.2f;
 
-public GameObject swordClass;
+    public GameObject swordClass;
 
     bool LeftRight;
     public bool MeleeOrRanged;
