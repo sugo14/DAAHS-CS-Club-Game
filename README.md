@@ -5,3 +5,5 @@ This is the Unity game being created by the Dr. Anne Anderson High School Coding
 It's a platform fighter drawing inspiration from many other games, primarily including Super Smash Bros. It's in extremely early stages of development.
 
 We meet (almost) every Tuesday after school to work on it and discuss our progress. If you're interested, come by and say hi!
+
+![Gameplay Preview](GameClips/Game-Clip-March-19-2025.gif)
