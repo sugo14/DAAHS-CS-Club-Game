@@ -17,7 +17,7 @@ public struct LagProfile
 /// </summary>
 public class Attack : MonoBehaviour
 {
-    public ClassBase OwningPlayer { get; private set; }
+    public GameObject OwningPlayer { get; private set; }
     public Facing FacingDirection { get; private set; }
     public Vector2 AttackOrigin { get; private set; }
 
@@ -54,7 +54,7 @@ public class Attack : MonoBehaviour
 
     public void Initialize(GameObject player, Facing facing)
     {
-        OwningPlayer = player.GetComponent<ClassBase>();
+        OwningPlayer = player;
         FacingDirection = facing;
 
         // Set up attack components and hitboxes

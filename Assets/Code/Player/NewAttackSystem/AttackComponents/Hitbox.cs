@@ -52,7 +52,7 @@ public class HitboxProfile : MonoBehaviour
             attackScript.OnHit(damageAmount, knockbackDetails);
             
             // Update total damge stat on player that made attack
-            owningAttack.OwningPlayer.AddTotalDamage(damageAmount * attackStrength);
+            /* owningAttack.OwningPlayer.AddTotalDamage(damageAmount * attackStrength); */
         }
     }
 
