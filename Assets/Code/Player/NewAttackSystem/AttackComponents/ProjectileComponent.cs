@@ -21,12 +21,12 @@ public class ProjectileComponent : MovementComponent
         }
     }
 
-    public override void Initialize(Attack owningAttack, Facing facing)
+    public override void Initialize(Attack owningAttack)
     {
-        base.Initialize(owningAttack, facing);
+        base.Initialize(owningAttack);
 
         currentVelocity = InitialVelocity;
-        if (facing == Facing.Right)
+        if (owningAttack.FacingDirection == Facing.Left)
         {
             currentVelocity.x = -currentVelocity.x;
             Acceleration.x = -Acceleration.x;
@@ -38,7 +38,7 @@ public class ProjectileComponent : MovementComponent
     // Does Time.timeScale work as intended here?
     void MoveProjectile()
     {
-        AddMovement(currentVelocity * Time.timeScale);
-        currentVelocity += Acceleration * Time.timeScale;
+        AddMovement(currentVelocity * Time.timeScale / 60);
+        currentVelocity += Acceleration * Time.timeScale / 60;
     }
 }

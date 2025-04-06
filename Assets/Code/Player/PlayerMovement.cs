@@ -440,37 +440,28 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void MeleeAttack(InputAction.CallbackContext context)
+    public void NormalAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             isAttack = true;
+            Facing facing = (lastMovement.x >= 0) ? Facing.Right : Facing.Left;
 
             if (Math.Abs(lastMovement.x) >= Math.Abs(lastMovement.y))
             {
-                if (lastMovement.x >= 0)
-                {
-                    /* attackScript.DemoSide(false, false); */
-                    attackScriptNew.Attack(AttackType.SideNormal, Facing.Left);
-                }
-                else if (lastMovement.x < 0)
-                {
-                    /* attackScript.DemoSide(true, false); */
-                    attackScriptNew.Attack(AttackType.SideNormal, Facing.Right);
-                }
+                attackScriptNew.Attack
+                (
+                    AttackType.SideNormal,
+                    facing
+                );
             }
             else
             {
-                if (lastMovement.y >= 0)
-                {
-                    /* attackScript.DemoUp(false); */
-                    attackScriptNew.Attack(AttackType.UpNormal, Facing.Right);
-                }
-                else if (lastMovement.y < 0)
-                {
-                    /* attackScript.DemoDown(false); */
-                    attackScriptNew.Attack(AttackType.DownNormal, Facing.Right);
-                }
+                attackScriptNew.Attack
+                (
+                    (lastMovement.y >= 0) ? AttackType.UpNormal : AttackType.DownNormal,
+                    facing
+                );
             }
         }
         else if (context.canceled)
@@ -479,18 +470,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void RangedAttack(InputAction.CallbackContext context)
+    public void SpecialAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             isAttack = true;
+            Facing facing = (lastMovement.x >= 0) ? Facing.Right : Facing.Left;
 
             if (Math.Abs(lastMovement.x) >= Math.Abs(lastMovement.y))
             {
                 attackScriptNew.Attack
                 (
                     AttackType.SideSpecial,
-                    (lastMovement.x >= 0) ? Facing.Left : Facing.Right
+                    facing
                 );
             }
             else
@@ -498,7 +490,7 @@ public class PlayerMovement : MonoBehaviour
                 attackScriptNew.Attack
                 (
                     (lastMovement.y >= 0) ? AttackType.UpSpecial : AttackType.DownSpecial,
-                    (lastMovement.x >= 0) ? Facing.Left : Facing.Right
+                    facing
                 );
             }
         }

@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7035351418170f438d73c36f79b2df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialVelocity: {x: 0, y: -0.05}
-  Acceleration: {x: 0, y: -0.04}
+  InitialVelocity: {x: 0, y: -10}
+  Acceleration: {x: 0, y: -50}
 --- !u!1 &3603722510993566563
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,13 +108,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64273fc6d28c4f46801eb6cfaa2472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 4
+  attackStrength: 1
   hitbox: {fileID: 3632846103677428211}
-  DamageAmount: 8
-  AttackStrength: 1
-  StartFrame: 0
-  Duration: 90
-  DestroyHitboxOnHit: 1
-  DestroyAttackOnHit: 1
+  startFrame: 0
+  duration: 90
+  hitboxPriority: 0
+  onHitEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &3632846103677428211
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public struct LagProfile
 public class Attack : MonoBehaviour
 {
     public ClassBase OwningPlayer { get; private set; }
+    public Facing FacingDirection { get; private set; }
     public Vector2 AttackOrigin { get; private set; }
 
     [SerializeField] float StalingFactor = 0.75f;
@@ -28,21 +29,38 @@ public class Attack : MonoBehaviour
     List<HitboxProfile> hitboxes;
     int lifetimeTimer;
 
+    /// <summary>
+    /// Initializes all attack components and hitboxes. Used within the Attack class, and also by AttackComponents that initialize other AttackComponents.
+    /// </summary>
+    public static void InitializeComponents(List<AttackComponent> attackComponents, List<HitboxProfile> hitboxes, Attack owningAttack, bool onAttackBegin = false)
+    {
+        foreach (AttackComponent attackComponent in attackComponents)
+        {
+            if (!(!attackComponent.initializeOnAttackBegin && onAttackBegin))
+            {
+                attackComponent.gameObject.SetActive(true);
+                attackComponent.Initialize(owningAttack);
+            }
+        }
+        foreach (HitboxProfile hitbox in hitboxes)
+        {
+            if (!(!hitbox.initializeOnAttackBegin && onAttackBegin))
+            {
+                hitbox.gameObject.SetActive(true);
+                hitbox.Initialize(owningAttack);
+            }
+        }
+    }
+
     public void Initialize(GameObject player, Facing facing)
     {
         OwningPlayer = player.GetComponent<ClassBase>();
+        FacingDirection = facing;
 
         // Set up attack components and hitboxes
         attackComponents = new List<AttackComponent>(GetComponentsInChildren<AttackComponent>());
         hitboxes = new List<HitboxProfile>(GetComponentsInChildren<HitboxProfile>());
-        foreach (AttackComponent attackComponent in attackComponents)
-        {
-            attackComponent.Initialize(this, facing);
-        }
-        foreach (HitboxProfile hitbox in hitboxes)
-        {
-            hitbox.Initialize(this);
-        }
+        InitializeComponents(attackComponents, hitboxes, this, true);
 
         // Set the color of the sprites
         foreach (SpriteRenderer sprite in GetComponentsInChildren<SpriteRenderer>())

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6436767945121426294}
   - component: {fileID: 6551830106338453984}
   - component: {fileID: 6184420829540403001}
+  - component: {fileID: 1024582580760723584}
   m_Layer: 0
-  m_Name: LRProjectile
+  m_Name: LRHadesSpecial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6374456547510527658}
@@ -48,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StalingFactor: 0.75
-  Lifetime: 90
+  Lifetime: 180
 --- !u!114 &6184420829540403001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,9 +62,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7035351418170f438d73c36f79b2df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializeOnAttackBegin: 1
-  InitialVelocity: {x: 0.1, y: 0}
-  Acceleration: {x: 0.02, y: 0}
+  InitialVelocity: {x: 3, y: 0}
+  Acceleration: {x: 2, y: 0}
+--- !u!114 &1024582580760723584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358757531539358471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a770f09308d7a34c85010eb19d61272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: {x: -0.7, y: 1}
+  frequency: {x: 4, y: 10}
+  addend: {x: 0, y: 0}
 --- !u!1 &3603722510993566563
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,16 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64273fc6d28c4f46801eb6cfaa2472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 4
+  damageAmount: 12
   attackStrength: 1
-  initializeOnAttackBegin: 1
-  knockbackDetails:
-    baseKnockback: 10
-    perPercentIncrease: 0.3
-    angle: 45
   hitbox: {fileID: 3632846103677428211}
   startFrame: 0
-  duration: 90
+  duration: 180
   hitboxPriority: 0
   onHitEvents:
     m_PersistentCalls:

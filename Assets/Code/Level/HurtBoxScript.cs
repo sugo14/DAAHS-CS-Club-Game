@@ -14,7 +14,7 @@ public class HurtBox : MonoBehaviour
         {
             Debug.Log("Attack Object hit!");
             AttackPhysics player = collider.gameObject.GetComponent<AttackPhysics>();
-            player.OnHit(HitDamage, AttackStrength, this.transform.position);
+            player.OnHit(HitDamage, new KnockbackDetails());
         }
     }
 }

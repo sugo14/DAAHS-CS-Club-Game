@@ -7,9 +7,9 @@ public class StickToPlayerComponent : MovementComponent
 {
     Vector3 originalPosition;
 
-    public override void Initialize(Attack owning, Facing facing)
+    public override void Initialize(Attack owning)
     {
-        base.Initialize(owning, facing);
+        base.Initialize(owning);
         originalPosition = transform.position;
     }
 

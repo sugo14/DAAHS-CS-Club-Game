@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33707b597e43ca438eb4f535e9bf20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volume: 0.5
   sounds:
   - name: Step1
     clip: {fileID: 8300000, guid: 68f2a5a935deb2840ae58e1aa3402a8f, type: 3}
@@ -993,7 +994,7 @@ PrefabInstance:
     - target: {fileID: 939868575066891139, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 4923109677055240254, guid: 345185c3c52657e46912dbb8e7ffa492, type: 3}
+      objectReference: {fileID: 4923109677055240254, guid: 9ac8e62432806a145a5cea9b255a908a, type: 3}
     - target: {fileID: 939868575066891139, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: playerTint.a
       value: 1
@@ -1936,7 +1937,7 @@ PrefabInstance:
     - target: {fileID: 939868575066891139, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 4923109677055240254, guid: 345185c3c52657e46912dbb8e7ffa492, type: 3}
+      objectReference: {fileID: 4923109677055240254, guid: 9ac8e62432806a145a5cea9b255a908a, type: 3}
     - target: {fileID: 939868575066891139, guid: 9b26323d678e7c6489279f427b51e875, type: 3}
       propertyPath: playerTint.a
       value: 1

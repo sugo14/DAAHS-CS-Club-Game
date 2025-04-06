@@ -1,19 +1,26 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
-/// Manages a hitbox of an attack.
+/// Manages hitbox collisions and damage dealing of an attack.
 /// </summary>
 [System.Serializable]
 public class HitboxProfile : MonoBehaviour
 {
+    public float damageAmount = 10;
+    public float attackStrength = 1;
+    public bool initializeOnAttackBegin = true;
+    public KnockbackDetails knockbackDetails = new KnockbackDetails();
+
+    // I don't know why this was added
+    /* public Collider2D LastCollision { get; private set; } */
+
     [SerializeField] Collider2D hitbox;
-    [SerializeField] float DamageAmount = 10;
-    [SerializeField] float AttackStrength = 1;
-    [SerializeField] int StartFrame = 0;
-    [SerializeField] int Duration = 5;
-    [SerializeField] bool DestroyAttackOnHit = false;
-    [SerializeField] bool DestroyHitboxOnHit = true;
+    [SerializeField] int startFrame = 0;
+    [SerializeField] int duration = 5;
+    [SerializeField] int hitboxPriority = 0;
+    [SerializeField] UnityEvent<Collider2D> onHitEvents;
 
     Attack owningAttack;
     SpriteRenderer[] sprites;
@@ -24,23 +31,28 @@ public class HitboxProfile : MonoBehaviour
         if (hitbox == null) { hitbox = GetComponent<Collider2D>(); }
         sprites = GetComponentsInChildren<SpriteRenderer>();
 
+        if (attack.FacingDirection == Facing.Left)
+        {
+            // Flip the knockback angle horizontally
+            knockbackDetails.angle = 180 - knockbackDetails.angle;
+        }
+
         Physics2D.IgnoreCollision(hitbox, attack.OwningPlayer.GetComponent<Collider2D>());
         StartCoroutine(OnAttackBegin());
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        onHitEvents.Invoke(collider);
+
         AttackPhysics attackScript = collider.gameObject.GetComponent<AttackPhysics>();
         if (attackScript != null)
         {
             // Hit the object it collides with doing damage and knockback
-            attackScript.OnHit(DamageAmount, AttackStrength, transform.position);
+            attackScript.OnHit(damageAmount, knockbackDetails);
             
-            // Update total damge stat on player that made projectile
-            owningAttack.OwningPlayer.AddTotalDamage(DamageAmount * AttackStrength);
-
-            if (DestroyAttackOnHit) { Destroy(owningAttack.gameObject); }
-            if (DestroyHitboxOnHit) { Destroy(gameObject); }
+            // Update total damge stat on player that made attack
+            owningAttack.OwningPlayer.AddTotalDamage(damageAmount * attackStrength);
         }
     }
 
@@ -49,11 +61,11 @@ public class HitboxProfile : MonoBehaviour
         hitbox.enabled = false;
         foreach (SpriteRenderer sprite in sprites) { sprite.enabled = false; }
 
-        for (int i = 0; i < StartFrame; i++) { yield return null; }
+        for (int i = 0; i < startFrame; i++) { yield return null; }
         hitbox.enabled = true;
         foreach (SpriteRenderer sprite in sprites) { sprite.enabled = true; }
 
-        for (int i = 0; i < Duration; i++) { yield return null; }
+        for (int i = 0; i < duration; i++) { yield return null; }
         hitbox.enabled = false;
         foreach (SpriteRenderer sprite in sprites) { sprite.enabled = false; }
     }

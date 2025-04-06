@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6507389784068929224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -98,13 +98,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64273fc6d28c4f46801eb6cfaa2472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitbox: {fileID: 0}
-  DamageAmount: 7
-  AttackStrength: 1
-  StartFrame: 11
-  Duration: 2
-  DestroyAttackOnHit: 1
-  DestroyHitboxOnHit: 1
+  damageAmount: 3
+  attackStrength: 1
+  initializeOnAttackBegin: 1
+  knockbackDetails:
+    baseKnockback: 10
+    perPercentIncrease: 0.3
+    angle: 45
+  hitbox: {fileID: 2749345556470683412}
+  startFrame: 10
+  duration: 3
+  hitboxPriority: 0
+  onHitEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &2749345556470683412
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -213,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cafd623ff2b20144b202629fe978eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initializeOnAttackBegin: 1
 --- !u!1 &8194236518492339325
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +249,7 @@ Transform:
   m_GameObject: {fileID: 8194236518492339325}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -311,13 +319,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64273fc6d28c4f46801eb6cfaa2472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitbox: {fileID: 0}
-  DamageAmount: 7
-  AttackStrength: 1
-  StartFrame: 0
-  Duration: 2
-  DestroyAttackOnHit: 1
-  DestroyHitboxOnHit: 1
+  damageAmount: 3
+  attackStrength: 1
+  initializeOnAttackBegin: 1
+  knockbackDetails:
+    baseKnockback: 10
+    perPercentIncrease: 0.3
+    angle: 45
+  hitbox: {fileID: 4567524802250840143}
+  startFrame: 0
+  duration: 3
+  hitboxPriority: 0
+  onHitEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &4567524802250840143
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -392,7 +407,7 @@ Transform:
   m_GameObject: {fileID: 8719980259651889502}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 0, z: 0}
+  m_LocalPosition: {x: 0.8, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -462,13 +477,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64273fc6d28c4f46801eb6cfaa2472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitbox: {fileID: 0}
-  DamageAmount: 10
-  AttackStrength: 1
-  StartFrame: 2
-  Duration: 9
-  DestroyAttackOnHit: 1
-  DestroyHitboxOnHit: 1
+  damageAmount: 7
+  attackStrength: 1
+  initializeOnAttackBegin: 1
+  knockbackDetails:
+    baseKnockback: 10
+    perPercentIncrease: 0.3
+    angle: 45
+  hitbox: {fileID: 1288325186627152468}
+  startFrame: 3
+  duration: 7
+  hitboxPriority: 0
+  onHitEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1288325186627152468
 BoxCollider2D:
   m_ObjectHideFlags: 0
