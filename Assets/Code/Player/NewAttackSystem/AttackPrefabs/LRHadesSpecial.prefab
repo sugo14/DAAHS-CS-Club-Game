@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StalingFactor: 0.75
-  Lifetime: 180
+  Lifetime: 240
 --- !u!114 &6184420829540403001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7035351418170f438d73c36f79b2df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initializeOnAttackBegin: 1
   InitialVelocity: {x: 3, y: 0}
   Acceleration: {x: 2, y: 0}
 --- !u!114 &1024582580760723584
@@ -76,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a770f09308d7a34c85010eb19d61272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initializeOnAttackBegin: 1
   amplitude: {x: -0.7, y: 1}
   frequency: {x: 4, y: 10}
   addend: {x: 0, y: 0}
@@ -126,9 +128,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 12
   attackStrength: 1
+  initializeOnAttackBegin: 1
+  knockbackDetails:
+    baseKnockback: 25
+    perPercentIncrease: 0.1
+    angle: 20
   hitbox: {fileID: 3632846103677428211}
   startFrame: 0
-  duration: 180
+  duration: 240
   hitboxPriority: 0
   onHitEvents:
     m_PersistentCalls:
