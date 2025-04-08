@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -6,55 +7,83 @@ using UnityEngine;
 public class AttackPhysics : MonoBehaviour
 {
     public PlayerSplash playerSplash;
+    public LagManager lagManager;
 
     // The equivlent to your % in Smash Bros
     public float Damage;
-
     public bool IsInvulnerable;
 
-    private Rigidbody2D RB;
-    private ClassBase ClassScript;
+    Rigidbody2D RB;
+    List<HitData> hitDataThisFrame;
+
+    /// <summary>
+    /// Adds an attack to the player for processing, dealing damage and applying knockback if successful.
+    /// This function is called by attack components when the player is hit.
+    /// The HitData with the highest priority this frame will be used.
+    /// </summary>
+    /// <param name="hitData">The hit data to add for processing.</param>
+    public void OnHit(HitData hitData) { hitDataThisFrame.Add(hitData); }
 
     void Start()
     {
         Damage = 0;
         // Initialize components
         RB = GetComponent<Rigidbody2D>();
-        ClassScript = GetComponent<ClassBase>();
+        hitDataThisFrame = new List<HitData>();
+    }
+
+    void Update()
+    {
+        ProcessHitDataThisFrame();
     }
 
     /// <summary>
-    /// Performs an attack on the player, dealing damage and applying knockback.
-    /// This function is called by attack components when the player is hit.
+    /// Processes the hit data for this frame, applying the only the single highest priority hit data to the player.
+    /// In the case of ties, the earlier hit data will be used.
     /// </summary>
-    /// <param name="hitDamage">The amount of damage to be dealt to the player.</param>
-    /// <param name="knockbackDetails">The knockback to be performed.</param>
-    public void OnHit(float hitDamage, KnockbackDetails knockbackDetails)
+    void ProcessHitDataThisFrame()
+    {
+        if (hitDataThisFrame.Count == 0) { return; }
+
+        HitData highestPriorityHitData = hitDataThisFrame[0];
+        for (int i = 1; i < hitDataThisFrame.Count; i++)
+        {
+            if (hitDataThisFrame[i].priority > highestPriorityHitData.priority)
+            {
+                highestPriorityHitData = hitDataThisFrame[i];
+            }
+        }
+
+        ApplyHitData(highestPriorityHitData);
+        hitDataThisFrame.Clear();
+    }
+
+    void ApplyHitData(HitData hitData)
     {
         if (RB != null && IsInvulnerable == false)
         {
             AudioManager.PlaySound("Hit1");
 
-            // Deal damage
-            Damage += hitDamage;
+            Damage += hitData.damageAmount;
 
-            NewKnockbackFormula(knockbackDetails);
+            NewKnockbackFormula(hitData.knockbackDetails);
 
-            if (ClassScript != null) { ClassScript.ResetCharge(); }
+            // Apply lag to the player
+            lagManager.AddLag(hitData.lagProfiles);
+
             if (playerSplash != null)  { playerSplash.SetPercent((int)Damage); }  
         }
     }
 
     void NewKnockbackFormula(KnockbackDetails knockbackDetails)
     {
-        Debug.Log("Knockback Angle: " + knockbackDetails.angle);
         // Pseudo-smash bros knockback formula
         float force = knockbackDetails.baseKnockback + (Damage * knockbackDetails.perPercentIncrease);
         float x = force * Mathf.Cos(knockbackDetails.angle * Mathf.Deg2Rad);
         float y = force * Mathf.Sin(knockbackDetails.angle * Mathf.Deg2Rad);
 
-        // Apply force
-        Vector2 knockbackForce = new Vector2(x, y);
-        RB.AddForce(knockbackForce, ForceMode2D.Impulse);
+        // We do not apply a force here because stacked knockback is very sketchy
+        Vector2 newVelocity = new Vector2(x, y);
+        RB.velocity = newVelocity;
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,35 +7,37 @@ using UnityEngine.Events;
 /// Manages hitbox collisions and damage dealing of an attack.
 /// </summary>
 [System.Serializable]
-public class HitboxProfile : MonoBehaviour
+public class HitboxProfile : AttackComponent
 {
-    public float damageAmount = 10;
-    public float attackStrength = 1;
-    public bool initializeOnAttackBegin = true;
-    public KnockbackDetails knockbackDetails = new KnockbackDetails();
-
-    // I don't know why this was added
-    /* public Collider2D LastCollision { get; private set; } */
-
+    [SerializeField] bool hitMultipleTimes = false;
+    [SerializeField] HitData hitData;
     [SerializeField] Collider2D hitbox;
-    [SerializeField] int startFrame = 0;
+    [SerializeField] int startFrame = 5;
     [SerializeField] int duration = 5;
-    [SerializeField] int hitboxPriority = 0;
     [SerializeField] UnityEvent<Collider2D> onHitEvents;
 
-    Attack owningAttack;
     SpriteRenderer[] sprites;
 
-    public void Initialize(Attack attack)
+    public override void Initialize(Attack attack)
     {
+        base.Initialize(attack);
+
         owningAttack = attack;
-        if (hitbox == null) { hitbox = GetComponent<Collider2D>(); }
+        if (hitbox == null)
+        {
+            hitbox = GetComponent<Collider2D>();
+            if (hitbox == null)
+            {
+                Debug.LogError("Warning: hitbox not found on attack.");
+            }
+        }
+
         sprites = GetComponentsInChildren<SpriteRenderer>();
 
         if (attack.FacingDirection == Facing.Left)
         {
             // Flip the knockback angle horizontally
-            knockbackDetails.angle = 180 - knockbackDetails.angle;
+            hitData.knockbackDetails.angle = 180 - hitData.knockbackDetails.angle;
         }
 
         Physics2D.IgnoreCollision(hitbox, attack.OwningPlayer.GetComponent<Collider2D>());
@@ -46,10 +49,11 @@ public class HitboxProfile : MonoBehaviour
         onHitEvents.Invoke(collider);
 
         AttackPhysics attackScript = collider.gameObject.GetComponent<AttackPhysics>();
-        if (attackScript != null)
+        if (attackScript != null && (hitMultipleTimes || !owningAttack.HasHitObject(collider.gameObject)))
         {
             // Hit the object it collides with doing damage and knockback
-            attackScript.OnHit(damageAmount, knockbackDetails);
+            attackScript.OnHit(hitData);
+            owningAttack.AddHitObject(collider.gameObject);
             
             // Update total damge stat on player that made attack
             /* owningAttack.OwningPlayer.AddTotalDamage(damageAmount * attackStrength); */

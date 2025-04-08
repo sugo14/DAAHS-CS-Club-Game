@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -14,7 +15,7 @@ public class HurtBox : MonoBehaviour
         {
             Debug.Log("Attack Object hit!");
             AttackPhysics player = collider.gameObject.GetComponent<AttackPhysics>();
-            player.OnHit(HitDamage, new KnockbackDetails());
+            player.OnHit(new HitData());
         }
     }
 }

@@ -157,7 +157,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5142,6 +5142,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7590458150183652798, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      propertyPath: lagManager
+      value: 
+      objectReference: {fileID: 6736816297431317935}
+    - target: {fileID: 7590458150183652798, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       propertyPath: percentText
       value: 
       objectReference: {fileID: 0}
@@ -5175,6 +5179,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 953122851969902895, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3457772723164326274}
+    - targetCorrespondingSourceObject: {fileID: 953122851969902895, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6736816297431317935}
   m_SourcePrefab: {fileID: 100100000, guid: 0193901ae9b6c174fb599d714a357b0f, type: 3}
 --- !u!114 &277991104861924435 stripped
 MonoBehaviour:
@@ -5227,3 +5234,16 @@ MonoBehaviour:
   - {fileID: 358757531539358471, guid: f3536f5914021da4e8f48879c35b6d33, type: 3}
   - {fileID: 358757531539358471, guid: f1d2ac75ddd206944bbb4dfb35bd4694, type: 3}
   - {fileID: 358757531539358471, guid: 4e9c33465cb717c44882c72a2e6bfe07, type: 3}
+--- !u!114 &6736816297431317935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923109677055240254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e269c17084f304c4ba2abe4d80a047d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lagParticles: {fileID: 1836087500747826924}
