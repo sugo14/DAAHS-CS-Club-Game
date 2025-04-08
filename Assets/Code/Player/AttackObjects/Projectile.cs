@@ -99,7 +99,7 @@ public class Projectile : MonoBehaviour
         if (attackScript != null)
         {
             // Hit the object it it colliding with doing damage and knockback
-            attackScript.OnHit(DamageAmount, AttackStrength, this.transform.position);
+            /* attackScript.OnHit(DamageAmount, AttackStrength, this.transform.position); */
             // Update total damge stat on player that made projectile
             OwningClassScript.AddTotalDamage(DamageAmount * AttackStrength);
             // Destory the Projectile

@@ -41,7 +41,7 @@ public class Sword : MonoBehaviour
         if (attackScript != null)
         {
             // Hit the object it it colliding with doing damage and knockback
-            attackScript.OnHit(damageAmount, attackStrength, transform.position);
+            /* attackScript.OnHit(damageAmount, attackStrength, transform.position); */
             // Update total damge stat on player that made projectile
             OwningClassScript.AddTotalDamage(damageAmount * attackStrength);
             // Destory the Projectile

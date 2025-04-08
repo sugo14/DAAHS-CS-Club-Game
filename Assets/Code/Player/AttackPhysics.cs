@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -6,92 +7,83 @@ using UnityEngine;
 public class AttackPhysics : MonoBehaviour
 {
     public PlayerSplash playerSplash;
+    public LagManager lagManager;
 
     // The equivlent to your % in Smash Bros
     public float Damage;
-
-    // Debugging for damage
-    public bool DevDoImpulse;
-    bool DevDoImpulseOld;
-    public float DevDamagePerHitAmount = 0;
-
     public bool IsInvulnerable;
 
-    private Rigidbody2D RB;
-    private ClassBase ClassScript;
+    Rigidbody2D RB;
+    List<HitData> hitDataThisFrame;
+
+    /// <summary>
+    /// Adds an attack to the player for processing, dealing damage and applying knockback if successful.
+    /// This function is called by attack components when the player is hit.
+    /// The HitData with the highest priority this frame will be used.
+    /// </summary>
+    /// <param name="hitData">The hit data to add for processing.</param>
+    public void OnHit(HitData hitData) { hitDataThisFrame.Add(hitData); }
 
     void Start()
     {
-        // Get a refrence to the charcters RigidBody
+        Damage = 0;
+        // Initialize components
         RB = GetComponent<Rigidbody2D>();
-        ClassScript = GetComponent<ClassBase>();
-
-        Damage = 10;
+        hitDataThisFrame = new List<HitData>();
     }
 
     void Update()
     {
-        // Dev testing the Impulse funcionality
-        // If the impulse checkbox has changed do an impulse
-        if (DevDoImpulse != DevDoImpulseOld)
-        {
-            OnHit(DevDamagePerHitAmount, 1, new Vector2(0, -1.5f));
-            // Save the current state of the check box
-            DevDoImpulseOld = DevDoImpulse;
-        }
+        ProcessHitDataThisFrame();
     }
 
-    // Function for when somthing gets hit
-    // HitDamge is the amount to increase the damage by
-    // AttackSrength is a multiplier for if there a weak or strong attacks such as crits
-    // AttackFromPos is where the player is hit from such as another player or projectile
-    public void OnHit(float HitDamage, float AttackStrength, Vector2 AttackedFromPos)
+    /// <summary>
+    /// Processes the hit data for this frame, applying the only the single highest priority hit data to the player.
+    /// In the case of ties, the earlier hit data will be used.
+    /// </summary>
+    void ProcessHitDataThisFrame()
+    {
+        if (hitDataThisFrame.Count == 0) { return; }
+
+        HitData highestPriorityHitData = hitDataThisFrame[0];
+        for (int i = 1; i < hitDataThisFrame.Count; i++)
+        {
+            if (hitDataThisFrame[i].priority > highestPriorityHitData.priority)
+            {
+                highestPriorityHitData = hitDataThisFrame[i];
+            }
+        }
+
+        ApplyHitData(highestPriorityHitData);
+        hitDataThisFrame.Clear();
+    }
+
+    void ApplyHitData(HitData hitData)
     {
         if (RB != null && IsInvulnerable == false)
         {
             AudioManager.PlaySound("Hit1");
 
-            // Create variable to store which way the character is pushed
-            Vector2 dir = new Vector2(0,0);
+            Damage += hitData.damageAmount;
 
-            //OLD Dir.x Calcualtion
-            // Find which way to push the character
-            // Always 1 so that significant horizontal knockback is always applied
-            //if(AttackedFromPos.x > transform.position.x)
-            //{
-            //    dir.x = -1;
-            //}
-            //else
-            //{
-            //    dir.x = 1;
-            //}
-            
-            dir.x = this.transform.position.x - AttackedFromPos.x;
-            
-            dir.y = this.transform.position.y - AttackedFromPos.y;
-            UnityEngine.Debug.Log(this.transform.position.x);
-            UnityEngine.Debug.Log(AttackedFromPos.x);
-            // Increase the Damage
-            Damage = Damage + HitDamage;
-            dir.Normalize();
-            // Set the knockback values
-            // Horizontal is either positive or negative depending on Dir and the damage multiplied by attack strength
-            float horizontalForce = dir.x * Damage * AttackStrength * 0.625f;
-            // Vertical is the damage multiplied by attack strength
-            float verticalForce = dir.y * Damage * AttackStrength * 0.625f;
+            NewKnockbackFormula(hitData.knockbackDetails);
 
-            if(ClassScript != null)
-            {
-                ClassScript.ResetCharge();
-            }
+            // Apply lag to the player
+            lagManager.AddLag(hitData.lagProfiles);
 
-            RB.AddForce(new Vector2(horizontalForce, verticalForce + .25f), ForceMode2D.Impulse);
-            // Update Precent text
-            if (playerSplash != null) 
-            {
-                playerSplash.SetPercent((int)Damage - 10);
-            }  
+            if (playerSplash != null)  { playerSplash.SetPercent((int)Damage); }  
         }
     }
-}
 
+    void NewKnockbackFormula(KnockbackDetails knockbackDetails)
+    {
+        // Pseudo-smash bros knockback formula
+        float force = knockbackDetails.baseKnockback + (Damage * knockbackDetails.perPercentIncrease);
+        float x = force * Mathf.Cos(knockbackDetails.angle * Mathf.Deg2Rad);
+        float y = force * Mathf.Sin(knockbackDetails.angle * Mathf.Deg2Rad);
+
+        // We do not apply a force here because stacked knockback is very sketchy
+        Vector2 newVelocity = new Vector2(x, y);
+        RB.velocity = newVelocity;
+    }
+}

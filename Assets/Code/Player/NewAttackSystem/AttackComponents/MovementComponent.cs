@@ -7,6 +7,10 @@ public class MovementComponent : AttackComponent
 {
     Vector2 lastDisplacement = new Vector2(0, 0);
 
+    /// <summary>
+    /// Sets the displacement of the projectile in one component, in such a way that multiple movement components can work together.
+    /// </summary>
+    /// <param name="displacement"></param>
     protected void SetCurrentDisplacement(Vector2 displacement)
     {
         transform.position -= (Vector3)lastDisplacement;

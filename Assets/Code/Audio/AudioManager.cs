@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public float volume = 1;
     public Sound[] sounds;
 
     static AudioManager instance;
@@ -35,7 +36,7 @@ public class AudioManager : MonoBehaviour
         AudioSource source = instance.gameObject.AddComponent<AudioSource>();
         source.clip = sound.clip;
         source.loop = sound.loop;
-        source.volume = sound.volume * volumeMod;
+        source.volume = sound.volume * volumeMod * instance.volume;
         source.pitch = sound.pitch * pitchMod;
 
         source.Play();
