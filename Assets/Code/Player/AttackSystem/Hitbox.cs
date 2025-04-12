@@ -46,8 +46,10 @@ public class HitboxProfile : AttackComponent
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log(Time.time + " Hitbox has priority " + hitData.priority + " and hit " + collider.gameObject.name);
         onHitEvents.Invoke(collider);
 
+        // TODO: This breaks priority hitbox detection
         AttackPhysics attackScript = collider.gameObject.GetComponent<AttackPhysics>();
         if (attackScript != null && (hitMultipleTimes || !owningAttack.HasHitObject(collider.gameObject)))
         {

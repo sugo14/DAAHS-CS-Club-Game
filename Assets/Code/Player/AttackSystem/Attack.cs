@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,7 +61,7 @@ public class Attack : MonoBehaviour
 
     public void AddHitObject(GameObject hitObject)
     {
-        HitObjects.Add(hitObject);
+        StartCoroutine(AddHitObjectAfterFrame(hitObject));
     }
     public bool HasHitObject(GameObject hitObject)
     {
@@ -74,6 +75,12 @@ public class Attack : MonoBehaviour
             return;
         }
         HitObjects.Remove(hitObject);
+    }
+
+    IEnumerator AddHitObjectAfterFrame(GameObject hitObject)
+    {
+        yield return null;
+        HitObjects.Add(hitObject);
     }
 
     void Start()

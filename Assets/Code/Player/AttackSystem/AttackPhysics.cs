@@ -45,14 +45,20 @@ public class AttackPhysics : MonoBehaviour
     {
         if (hitDataThisFrame.Count == 0) { return; }
 
-        HitData highestPriorityHitData = hitDataThisFrame[0];
+        string logString = Time.time + " Priorities this frame: " + hitDataThisFrame[0].priority.ToString() + " ";
+        
+        HitData highestPriorityHitData = new HitData(hitDataThisFrame[0]);
         for (int i = 1; i < hitDataThisFrame.Count; i++)
         {
+            logString += hitDataThisFrame[i].priority.ToString() + " ";
             if (hitDataThisFrame[i].priority > highestPriorityHitData.priority)
             {
-                highestPriorityHitData = hitDataThisFrame[i];
+                highestPriorityHitData = new HitData(hitDataThisFrame[i]);
             }
         }
+
+        logString += "  Highest priority: " + highestPriorityHitData.priority.ToString();
+        Debug.Log(logString);
 
         ApplyHitData(highestPriorityHitData);
         hitDataThisFrame.Clear();

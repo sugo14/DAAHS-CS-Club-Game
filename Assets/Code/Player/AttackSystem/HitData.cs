@@ -14,6 +14,18 @@ public class HitData
         this.lagProfiles = lagProfiles;
     }
 
+    public HitData(HitData hitData)
+    {
+        priority = hitData.priority;
+        damageAmount = hitData.damageAmount;
+        knockbackDetails = hitData.knockbackDetails;
+        lagProfiles = new LagProfile[hitData.lagProfiles.Length];
+        for (int i = 0; i < hitData.lagProfiles.Length; i++)
+        {
+            lagProfiles[i] = new LagProfile(hitData.lagProfiles[i]);
+        }
+    }
+
     public HitData()
     {
         priority = 0;

@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     public GameObject SRObject;
     public LayerMask GroundLayer;
     public ClassBase playerClass;
-    public DemoClass attackScript;
     public AttackingCharacter attackScriptNew;
 
     // Movement
