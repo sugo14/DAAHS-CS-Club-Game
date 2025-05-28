@@ -5233,7 +5233,8 @@ MonoBehaviour:
   - {fileID: 6615429168200379790, guid: fa8703e582fabb548ada72da18bcbcfe, type: 3}
   - {fileID: 358757531539358471, guid: f3536f5914021da4e8f48879c35b6d33, type: 3}
   - {fileID: 358757531539358471, guid: f1d2ac75ddd206944bbb4dfb35bd4694, type: 3}
-  - {fileID: 358757531539358471, guid: 4e9c33465cb717c44882c72a2e6bfe07, type: 3}
+  - {fileID: 358757531539358471, guid: 89cfaaffa69d37c4097b6e4480a63a85, type: 3}
+  lagManager: {fileID: 6736816297431317935}
 --- !u!114 &6736816297431317935
 MonoBehaviour:
   m_ObjectHideFlags: 0

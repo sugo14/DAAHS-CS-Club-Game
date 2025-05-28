@@ -215,7 +215,7 @@ MonoBehaviour:
     knockbackDetails:
       baseKnockback: 20
       perPercentIncrease: 0.15
-      angle: 80
+      angle: 70
     lagProfiles:
     - frames: 20
       disableMomentumChange: 1
@@ -327,7 +327,7 @@ MonoBehaviour:
     knockbackDetails:
       baseKnockback: 20
       perPercentIncrease: 0.15
-      angle: 80
+      angle: 70
     lagProfiles:
     - frames: 20
       disableMomentumChange: 1

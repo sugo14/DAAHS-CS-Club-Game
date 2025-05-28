@@ -5,6 +5,7 @@ using UnityEngine;
 /// </summary>
 public class ProjectileComponent : MovementComponent
 {
+    [SerializeField] Rigidbody2D rb;
     [SerializeField] Vector2 InitialVelocity = new Vector2(1, 0);
     [SerializeField] Vector2 Acceleration = new Vector2(0, 0);
     
@@ -17,7 +18,7 @@ public class ProjectileComponent : MovementComponent
     {
         if (IsMoving == true)
         {
-            MoveProjectile();
+            /* MoveProjectile(); */
         }
     }
 
@@ -32,13 +33,15 @@ public class ProjectileComponent : MovementComponent
             Acceleration.x = -Acceleration.x;
         }
 
+        rb.velocity = currentVelocity;
+
         IsMoving = true;
     }
 
-    // Does Time.timeScale work as intended here?
+    /* // Does Time.timeScale work as intended here?
     void MoveProjectile()
     {
         AddMovement(currentVelocity * Time.timeScale / 60);
         currentVelocity += Acceleration * Time.timeScale / 60;
-    }
+    } */
 }

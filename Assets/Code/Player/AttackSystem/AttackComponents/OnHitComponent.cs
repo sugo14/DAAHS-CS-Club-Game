@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -10,9 +11,34 @@ public class OnHitComponent : AttackComponent
     [SerializeField] AttackComponent[] componentsToEnable;
     [SerializeField] AttackComponent[] componentsToDisable;
     [SerializeField] GameObject[] objectsToEnable;
+    [SerializeField] GameObject[] objectsToDisable;
 
     public void EnableComponents(Collider2D collider)
     {
+        StartCoroutine(EnableComponentsCoroutine(collider));
+    }
+
+    public void DisableComponents(Collider2D collider)
+    {
+        foreach (LayerMask layer in hitLayers)
+        {
+            if (layer == (layer | (1 << collider.gameObject.layer)))
+            {
+                foreach (AttackComponent component in componentsToDisable)
+                {
+                    Destroy(component);
+                    continue;
+                    component.enabled = false;
+                    component.gameObject.SetActive(false);
+                }
+                return;
+            }
+        }
+    }
+
+    IEnumerator EnableComponentsCoroutine(Collider2D collider)
+    {
+        yield return new WaitForEndOfFrame();
         foreach (LayerMask layer in hitLayers)
         {
             if (layer == (layer | (1 << collider.gameObject.layer)))
@@ -23,23 +49,6 @@ public class OnHitComponent : AttackComponent
                     component.gameObject.SetActive(true);
                     component.Initialize(owningAttack);
                 }
-                return;
-            }
-        }
-    }
-
-    public void DisableComponents(Collider2D collider)
-    {
-        foreach (LayerMask layer in hitLayers)
-        {
-            if (layer == (layer | (1 << collider.gameObject.layer)))
-            {
-                foreach (AttackComponent component in componentsToEnable)
-                {
-                    component.enabled = false;
-                    component.gameObject.SetActive(false);
-                }
-                return;
             }
         }
     }
@@ -53,6 +62,21 @@ public class OnHitComponent : AttackComponent
                 foreach (GameObject obj in objectsToEnable)
                 {
                     obj.SetActive(true);
+                }
+                return;
+            }
+        }
+    }
+
+    public void DisableObjects(Collider2D collider)
+    {
+        foreach (LayerMask layer in hitLayers)
+        {
+            if (layer == (layer | (1 << collider.gameObject.layer)))
+            {
+                foreach (GameObject obj in objectsToDisable)
+                {
+                    obj.SetActive(false);
                 }
                 return;
             }

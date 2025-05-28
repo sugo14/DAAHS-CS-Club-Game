@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -44,7 +43,7 @@ public class HitboxProfile : AttackComponent
         StartCoroutine(OnAttackBegin());
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void HandleHit(Collider2D collider)
     {
         Debug.Log(Time.time + " Hitbox has priority " + hitData.priority + " and hit " + collider.gameObject.name);
         onHitEvents.Invoke(collider);
@@ -60,6 +59,16 @@ public class HitboxProfile : AttackComponent
             // Update total damge stat on player that made attack
             /* owningAttack.OwningPlayer.AddTotalDamage(damageAmount * attackStrength); */
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        HandleHit(collider);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        HandleHit(collision.collider);
     }
 
     IEnumerator OnAttackBegin()

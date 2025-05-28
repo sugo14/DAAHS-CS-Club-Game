@@ -29,6 +29,7 @@ public enum Facing
 public class AttackingCharacter : MonoBehaviour
 {
     [SerializeField] GameObject[] attacks = new GameObject[6];
+    [SerializeField] LagManager lagManager;
 
     void Attack(GameObject attackPrefab, Facing facing)
     {
@@ -38,6 +39,11 @@ public class AttackingCharacter : MonoBehaviour
 
     public void Attack(AttackType attackType, Facing facing)
     {
+        if (!lagManager.CanAttack)
+        {
+            return;
+        }
+
         AudioManager.PlaySound("Gun1");
         Attack(attacks[(int)attackType], facing);
     }

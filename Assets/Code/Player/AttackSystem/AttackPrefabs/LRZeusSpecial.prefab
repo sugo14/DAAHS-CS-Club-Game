@@ -183,7 +183,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1395032345368523632, guid: 3777f14b673ddef4387c53f8153d864e, type: 3}
       propertyPath: m_Name
-      value: DownProjectile 1
+      value: ZeusSingleBolt
       objectReference: {fileID: 0}
     - target: {fileID: 8817214709635631006, guid: 3777f14b673ddef4387c53f8153d864e, type: 3}
       propertyPath: m_LocalPosition.x

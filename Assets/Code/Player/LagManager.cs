@@ -14,6 +14,7 @@ public class LagManager : MonoBehaviour
     public bool DisableMomentumChange { get { return disableMomentumChange == 0; } }
     public bool CanJump { get { return disableJump == 0; } }
     public bool NotForcedStationary { get { return forceStationary == 0; } }
+    public bool CanAttack { get { return lags.Count == 0; } }
 
     int disableMomentumChange;
     int disableJump;
